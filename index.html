@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>LMC Studios ™ | Minecraft Events </title>
+
+<link rel="icon" type="image/png" href="assets/avatars/lmcstudios.png">
+
+<link rel="preconnect" href="assets/avatars/lmcstudios.png">
+<link href="assets/avatars/lmcstudios.png" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+:root{
+--bg:#050505;
+--card:rgba(255,255,255,.05);
+--red:#ff1e1e;
+--red2:#a00000;
+--white:#ffffff;
+--gray:#aaaaaa;
+--glass:rgba(255,255,255,.07);
+--border:rgba(255,255,255,.1);
+--shadow:0 0 40px rgba(255,0,0,.25);
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+radial-gradient(circle at top,#300000 0%,#050505 40%),
+#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#0a0a0a;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(to bottom,#ff0000,#600000);
+border-radius:10px;
+}
+
+/* PARTICLES */
+
+.particles{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+z-index:-1;
+overflow:hidden;
+}
+
+.particle{
+position:absolute;
+width:2px;
+height:2px;
+background:red;
+border-radius:50%;
+opacity:.4;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) scale(0);
+}
+100%{
+transform:translateY(-10vh) scale(1);
+}
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+width:90%;
+max-width:1300px;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+z-index:999;
+box-shadow:var(--shadow);
+}
+
+nav h1{
+font-size:1.4rem;
+font-weight:800;
+letter-spacing:2px;
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:.3s;
+}
+
+nav a:hover{
+color:var(--red);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 20px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:800px;
+height:800px;
+background:radial-gradient(circle,rgba(255,0,0,.35),transparent 70%);
+filter:blur(80px);
+z-index:-1;
+animation:pulse 5s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+transform:scale(1);
+opacity:.8;
+}
+50%{
+transform:scale(1.2);
+opacity:1;
+}
+}
+
+.hero-content{
+max-width:700px;
+}
+
+.hero-logo{
+width:400px;
+margin-bottom:25px;
+filter:drop-shadow(0 0 30px red);
+}
+
+.hero h1{
+font-size:6rem;
+font-weight:900;
+line-height:1;
+margin-bottom:20px;
+text-shadow:0 0 30px rgba(255,0,0,.6);
+}
+
+.hero h2{
+font-size:1.8rem;
+margin-bottom:20px;
+color:#ff4d4d;
+}
+
+.hero p{
+font-size:1.2rem;
+color:#ccc;
+line-height:1.8;
+margin-bottom:40px;
+}
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.socials a{
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+font-size:1.3rem;
+color:white;
+transition:.4s;
+backdrop-filter:blur(10px);
+}
+
+.socials a:hover{
+transform:translateY(-8px) scale(1.1);
+background:rgba(255,0,0,.15);
+box-shadow:0 0 25px rgba(255,0,0,.7);
+}
+
+/* SECTIONS */
+
+section{
+padding:120px 8%;
+position:relative;
+}
+
+.section-title{
+font-size:3rem;
+font-weight:900;
+margin-bottom:60px;
+text-align:center;
+text-transform:uppercase;
+letter-spacing:3px;
+}
+
+.section-title span{
+color:var(--red);
+}
+
+/* GLASS CARD */
+
+.glass{
+background:var(--glass);
+backdrop-filter:blur(20px);
+border:1px solid var(--border);
+border-radius:25px;
+padding:40px;
+box-shadow:var(--shadow);
+}
+
+/* ABOUT */
+
+.about p{
+line-height:2;
+color:#ccc;
+font-size:1.05rem;
+}
+
+.management{
+margin-top:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.management div{
+background:rgba(255,255,255,.04);
+padding:20px;
+border-radius:18px;
+text-align:center;
+border:1px solid rgba(255,255,255,.05);
+}
+
+/* SERVICES */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.service-card{
+padding:35px;
+border-radius:22px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+backdrop-filter:blur(20px);
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(255,0,0,.35);
+}
+
+.service-card i{
+font-size:2rem;
+margin-bottom:20px;
+color:red;
+}
+
+.service-card h3{
+margin-bottom:15px;
+}
+
+/* PROJECTS */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.project-card{
+position:relative;
+overflow:hidden;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+backdrop-filter:blur(20px);
+}
+
+.project-card:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 35px rgba(255,0,0,.45);
+}
+
+.project-card img{
+width:100%;
+height:140px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+/* SPONSORS */
+
+.sponsors{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.sponsor-card{
+padding:10px;
+border-radius:15px;
+text-align:center;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.sponsor-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(255,0,0,.35);
+}
+/* FOOTER */
+
+footer{
+padding:70px 20px;
+text-align:center;
+background:#020202;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer h2{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+footer p{
+color:#888;
+}
+
+/* BACK TO TOP */
+
+.top-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(45deg,#ff0000,#600000);
+color:white;
+font-size:1.2rem;
+cursor:pointer;
+box-shadow:0 0 25px rgba(255,0,0,.5);
+z-index:999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:4rem;
+}
+
+nav ul{
+display:none;
+}
+
+}
+
+@media(max-width:800px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.section-title{
+font-size:2rem;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="particles"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+<h1>LMC STUDIOS ™</h1>
+
+<ul>
+<li><a href="#about">Nosotros</a></li>
+<li><a href="#projects">Proyectos</a></li>
+<li><a href="#sponsors">Sponsors</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img src="assets/avatars/lmcstudios.png"
+class="hero-logo">
+
+<h1>LMC STUDIOS</h1>
+
+<h2>Minecraft Events</h2>
+
+<p>
+Desarrollo profesional de proyectos Minecraft, administración de servidores, branding visual y eventos.
+</p>
+
+<div class="socials">
+
+<a href="https://x.com/@lmcstudi0s" target="_blank">
+<i class="fab fa-x-twitter"></i>
+</a>
+
+<a href="https://discord.gg/jCFjYJ5Eye" target="_blank">
+<i class="fab fa-discord"></i>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LMC STUDIOS -->
+
+<section id="about">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="glass">
+
+<p style="line-height:2;color:#ccc;">
+LMC Studios es la división especializada en el desarrollo profesional de proyectos Minecraft, enfocada en la creación y administración de servidores, branding visual, eventos personalizados y sistemas avanzados para comunidades y creadores de contenido.
+</p>
+
+</div>
+
+<br><br>
+
+<div class="services-grid">
+
+<div class="service-card">
+<i class="fa-solid fa-server"></i>
+<h3>Desarrollo de servidores Minecraft</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-gears"></i>
+<h3>Configuración avanzada</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-palette"></i>
+<h3>Branding y diseño</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-calendar"></i>
+<h3>Eventos personalizados</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-code"></i>
+<h3>Sistemas avanzados</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-network-wired"></i>
+<h3>Infraestructura</h3>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-gauge-high"></i>
+<h3>Optimización y rendimiento</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title">
+PROYECTOS</span>
+</h2>
+
+<div class="projects-grid">
+
+  <div class="project-card"
+       onclick="window.open('https://www.tiktok.com/@zanfrix_network')">
+    <img src="assets/avatars/zanfrixz.png">
+    <h3>ZanFirxz</h3>
+    <p>Network con modalidades by zFrixz, Zansumi.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://www.tiktok.com/@sumixcraft')">
+    <img src="assets/avatars/sm.png">
+    <h3>SumixCraft</h3>
+    <p>Servidor y comunidad Minecraft by zFrixz.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://www.twitch.tv/videos/2673904387')">
+    <img src="assets/avatars/oshanzumi.png">
+    <h3>OshanZumi</h3>
+    <p>Proyecto Hardcore by Oshawott, Zansumi.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://www.tiktok.com/@alicia_usu/video/7598013922939112716')">
+    <img src="assets/avatars/logo2he.png">
+    <h3>Hardcore Of Elite</h3>
+    <p>Experiencia survival extrema by Alicia_usu.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://x.com/Andreuspf/status/2033276977755377756')">
+    <img src="assets/avatars/a (1).png">
+    <h3>EXODO SMP</h3>
+    <p>Servidor SMP Hardcore.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://x.com/team__lmc/status/2038030653686501456')">
+    <img src="assets/avatars/TEAM LMC NEW - 2026.png">
+    <h3>Team LMCraft Roleplay</h3>
+    <p>Roleplay basado en comunidad y lore by LMC Studios™.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://x.com/LMCStudi0s/status/2049005507633979520')">
+    <img src="assets/avatars/logo.png">
+    <h3>LMC Project</h3>
+    <p>Proyecto Survival Custom by LMC Studios™.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://www.youtube.com/watch?v=ehaIvwu6S5o')">
+    <img src="assets/avatars/image-removebg-preview_4.png">
+    <h3>SKYBLOCK DE LOS PANAS</h3>
+    <p>Modo Skyblock para Team LMC by TheAndreusPR.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://x.com/DeadLandsSMP/status/2055123133535867182')">
+    <img src="assets/avatars/COMISION_ANDREUS_WASA.png">
+    <h3>DeadLands SMP</h3>
+    <p>Supervivencia apocalíptica y Roleplay by TheAndreusPR.</p>
+  </div>
+
+  <div class="project-card"
+       onclick="window.open('https://x.com/LMCStudi0s/status/2057556127861129547')">
+    <img src="assets/avatars/pedaafio2026.png">
+    <h3>PEDSAFIO</h3>
+    <p>Evento extremo basado en DEDSAFIO 3 by LMC Studios™, Axolotl Studios.</p>
+  </div>
+
+    <div class="project-card"
+       onclick="window.open('https://x.com/LMCStudi0s/status/2060623384254296328?s=20')">
+    <img src="assets/avatars/baner fd.png">
+    <h3>Final Legacy</h3>
+    <p>COMING SOON.</p>
+  </div>
+
+</div>
+
+</section>
+
+<!-- SPONSORS -->
+
+<section>
+
+<section id="sponsors"></section>
+
+<h2 class="sponsors">
+SPONSORS</span>
+</h2>
+
+<div class="sponsors">
+
+<div class="sponsor-card"
+onclick="window.open('https://www.minemu.net/')">
+<h3>Minemu Hosting</h3>
+<img src="assets/avatars/minemu.png">
+<br>
+<p>Código:</p>
+<h2 style="color:#ff2d2d;">TEAMLMC</h2>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="staff">
+
+<h2 class="section-title">
+Staff </span>
+</h2>
+
+
+<div class="management">
+
+<div class="manager-card"
+onclick="window.open('https://www.youtube.com/@Zansumii')">
+
+<h3>Zansumi</h3>
+<p>Founder</p>
+</div>
+
+<div class="manager-card"
+onclick="window.open('https://www.kick.com/theandreuspr')">
+<h3>TheAndreusPR</h3>
+<p>Owner</p>
+</div>
+
+<div class="manager-card"
+onclick="window.open('https://www.twitch.tv/@Iwanhx')">
+<h3>IwanMC</h3>
+<p>Co Owner</p>
+</div>
+
+</div>
+
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+Powered by LMC STUDIOS ™
+</h2>
+
+<p>
+Desarrollado por LMC Studios ™
+
+Todos los derechos reservados ™ 2026
+
+Team LMC, responsable de la gestión, administración y supervisión de todos sus proyectos y servicios, garantizando calidad y organización en cada desarrollo.
+
+Para cualquier duda o información adicional, puedes contactar a Team LMC Management, donde recibirás el soporte necesario..
+</p>
+
+</footer>
+
+<!-- TOP BUTTON -->
+
+<div class="top-btn" id="topBtn">
+<i class="fa-solid fa-arrow-up"></i>
+</div>
+
+<script>
+
+/* PARTICLES */
+
+const particles = document.querySelector('.particles');
+
+for(let i=0;i<80;i++){
+
+const particle = document.createElement('div');
+
+particle.classList.add('particle');
+
+particle.style.left = Math.random()*100+'%';
+
+particle.style.animationDuration =
+(5 + Math.random()*10)+'s';
+
+particle.style.opacity =
+Math.random();
+
+particle.style.width =
+particle.style.height =
+Math.random()*4+'px';
+
+particles.appendChild(particle);
+
+}
+
+/* ACCORDION */
+
+const accordionItems =
+document.querySelectorAll('.accordion-item');
+
+accordionItems.forEach(item=>{
+
+item.querySelector('.accordion-header')
+.addEventListener('click',()=>{
+
+item.classList.toggle('active');
+
+});
+
+});
+
+/* TOP BUTTON */
+
+const topBtn =
+document.getElementById('topBtn');
+
+topBtn.addEventListener('click',()=>{
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+});
+
+/* SCROLL ANIMATION */
+
+const observer =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity = 1;
+entry.target.style.transform = "translateY(0px)";
+
+}
+
+});
+
+});
+
+document.querySelectorAll('section').forEach(sec=>{
+
+sec.style.opacity = 0;
+sec.style.transform = "translateY(80px)";
+sec.style.transition = ".8s";
+
+observer.observe(sec);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -431,6 +431,102 @@ font-size:2rem;
 
 }
 
+.roster-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.member-card{
+position:relative;
+overflow:hidden;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:25px;
+padding:30px;
+text-align:center;
+transition:.4s;
+backdrop-filter:blur(18px);
+cursor:pointer;
+}
+
+.member-card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 35px rgba(255,0,0,.4);
+border-color:red;
+}
+
+.member-card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(
+45deg,
+transparent,
+rgba(255,0,0,.25),
+transparent
+);
+transform:rotate(25deg);
+animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+0%{
+transform:translateX(-100%) rotate(25deg);
+}
+100%{
+transform:translateX(100%) rotate(25deg);
+}
+}
+
+.member-card img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid rgba(255,0,0,.5);
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,0,0,.5);
+}
+
+.member-card h3{
+font-size:1.5rem;
+margin-bottom:10px;
+}
+
+.role{
+color:#ff3b3b;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.member-card p{
+color:#bbb;
+line-height:1.7;
+font-size:.95rem;
+margin-bottom:20px;
+}
+
+.member-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 20px;
+border-radius:12px;
+background:linear-gradient(45deg,#ff0000,#700000);
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.member-btn:hover{
+transform:scale(1.05);
+}
+
 </style>
 
 </head>
@@ -648,7 +744,7 @@ SPONSORS</span>
 <div class="sponsor-card"
 onclick="window.open('https://www.minemu.net/')">
 <h3>Minemu Hosting</h3>
-<img src="assets/avatars/minemu.png">
+<img src="assets/avatars/24Sep24 Simon Free Upl444oad .png">
 <br>
 <p>Código:</p>
 <h2 style="color:#ff2d2d;">TEAMLMC</h2>
@@ -658,38 +754,97 @@ onclick="window.open('https://www.minemu.net/')">
 
 </section>
 
-<!-- ABOUT -->
+<!-- Roster-->
 
 <section id="staff">
 
-<h2 class="section-title">
+<h2 class="staff">
 Staff </span>
 </h2>
 
+<div class="roster-grid">
 
-<div class="management">
 
-<div class="manager-card"
-onclick="window.open('https://www.youtube.com/@Zansumii')">
+    <div class="member-card"
+onclick="window.open('https://www.youtube.com/@zansumii')">
+
+<img src="assets/avatars/zansumi.png">
 
 <h3>Zansumi</h3>
-<p>Founder</p>
+
+<div class="role">
+Founder y manager general de LMC Studios™,
+encargado de la dirección creativa, desarrollo de proyectos, 
+administración de servidores y eventos relacionados con Minecraft.
 </div>
 
-<div class="manager-card"
+<a class="member-btn">
+<i class="fab fa-youtube"></i>
+YouTube
+</a>
+
+</div>
+
+    <div class="member-card"
 onclick="window.open('https://www.kick.com/theandreuspr')">
-<h3>TheAndreusPR</h3>
-<p>Owner</p>
+
+<img src="assets/avatars/andreus.png">
+
+<h3>TheandreusPR</h3>
+
+<div class="role">
+Co-founder y manager general de LMC Studios™,
 </div>
 
-<div class="manager-card"
-onclick="window.open('https://www.twitch.tv/@Iwanhx')">
+<a class="member-btn">
+<i class="fab fa-kick"></i>
+Kick
+</a>
+
+</div>
+
+    <div class="member-card"
+onclick="window.open('https://www.twitch.tv/iwanhx')">
+
+<img src="assets/avatars/iwan.png">
+
 <h3>IwanMC</h3>
-<p>Co Owner</p>
+
+<div class="role">
+Co-Owner y gestion infomativa de LMC Studios™,
+encargado de la gestión de información, 
+comunicación y soporte para la comunidad de LMC Studios™.
 </div>
 
+<a class="member-btn">
+<i class="fab fa-twitch"></i>
+Twitch
+</a>
+
+</div>
 </div>
 
+</section>
+
+<section id="LMC STUDIOS">
+
+    <div class="member-card"
+onclick="window.open('https://zansumilmc.github.io/TeamLMC2/')">
+
+<img src="assets/avatars/TEAM LMC NEW - 2026.png">
+
+<h3>Team LMC ™</h3>
+
+<div class="role">
+Division secundaria de LMC Studios™ enfocada en cracion de contenido y comunidad de varios juegos, con énfasis en Minecraft, eventos y proyectos relacionados.
+</div>
+
+<a class="member-btn">
+<i class="fab fa-web"></i>
+Website
+</a>
+
+</div>
 
 </section>
 
@@ -703,12 +858,8 @@ Powered by LMC STUDIOS ™
 
 <p>
 Desarrollado por LMC Studios ™
-
-Todos los derechos reservados ™ 2026
-
-Team LMC, responsable de la gestión, administración y supervisión de todos sus proyectos y servicios, garantizando calidad y organización en cada desarrollo.
-
-Para cualquier duda o información adicional, puedes contactar a Team LMC Management, donde recibirás el soporte necesario..
+© Todos los derechos reservados 2026
+Para cualquier duda o información adicional, puedes contactar a LMC Management, donde recibirás el soporte necesario..
 </p>
 
 </footer>

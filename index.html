@@ -1,988 +1,675 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>LMC Studios ™ | Minecraft Events </title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMC Studios ™ | Estudio creativo de eventos y experiencias de Minecraft</title>
+<meta name="description" content="LMC Studios ™ diseña, desarrolla, produce y promociona eventos, servidores y experiencias personalizadas de Minecraft para comunidades y creadores de contenido.">
+<meta name="theme-color" content="#e0212f">
+<link rel="canonical" href="https://zansumilmc.github.io/LMC-STUDIOS/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LMC Studios ™">
+<meta property="og:locale" content="es_MX">
+<meta property="og:title" content="LMC Studios ™ | Eventos, servidores y experiencias de Minecraft">
+<meta property="og:description" content="Creamos experiencias que dejan huella: eventos, servidores y sistemas personalizados de Minecraft para comunidades y creadores de contenido.">
+<meta property="og:url" content="https://zansumilmc.github.io/LMC-STUDIOS/">
+<meta property="og:image" content="https://zansumilmc.github.io/LMC-STUDIOS/assets/avatars/banerlmcst.png">
+<meta property="og:image:alt" content="Banner de LMC Studios ™">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@LMCStudi0s">
+<meta name="twitter:title" content="LMC Studios ™ | Eventos, servidores y experiencias de Minecraft">
+<meta name="twitter:description" content="Creamos experiencias que dejan huella: eventos, servidores y sistemas personalizados de Minecraft para comunidades y creadores de contenido.">
+<meta name="twitter:image" content="https://zansumilmc.github.io/LMC-STUDIOS/assets/avatars/banerlmcst.png">
+<meta name="twitter:image:alt" content="Banner de LMC Studios ™">
 <link rel="icon" type="image/png" href="assets/avatars/lmcstudios.png">
-
-<link rel="preconnect" href="assets/avatars/lmcstudios.png">
-<link href="assets/avatars/lmcstudios.png" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
 :root{
---bg:#050505;
---card:rgba(255,255,255,.05);
---red:#ff1e1e;
---red2:#a00000;
---white:#ffffff;
---gray:#aaaaaa;
---glass:rgba(255,255,255,.07);
---border:rgba(255,255,255,.1);
---shadow:0 0 40px rgba(255,0,0,.25);
+  --bg:#09090a; --panel:#141415; --line:#262628; --text:#f2f2f0; --muted:#a3a3a0;
+  --red:#e0212f; --red-soft:#ff5560;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;
+  --wrap:min(1200px,92vw);
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden}
+main{flex:1}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+:focus-visible{outline:2px solid var(--red-soft);outline-offset:3px;border-radius:4px}
+.wrap{width:var(--wrap);margin-inline:auto}
+section{padding:clamp(72px,10vw,130px) 0}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(36px,5vw,64px);max-width:760px}
+.sec-head h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:700}
+.sec-head p{color:var(--muted);max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;border:1px solid var(--line);transition:background .25s,border-color .25s,transform .25s var(--ease),box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+.btn.primary:hover{background:#f2323f;box-shadow:0 10px 30px -10px rgba(224,33,47,.7)}
+.btn.ghost:hover{border-color:var(--text)}
 
-body{
-font-family:'Inter',sans-serif;
-background:
-radial-gradient(circle at top,#300000 0%,#050505 40%),
-#050505;
-color:white;
-overflow-x:hidden;
-}
+/* PÁGINAS */
+.page{display:none;min-height:70vh}
+.page.active{display:block;animation:pageIn .55s var(--ease) both}
+.page:focus{outline:none}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
-/* SCROLLBAR */
+/* REVEAL AL ENTRAR EN PANTALLA */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
+.js .reveal.in{opacity:1;transform:none}
 
-::-webkit-scrollbar{
-width:10px;
-}
-
-::-webkit-scrollbar-track{
-background:#0a0a0a;
-}
-
-::-webkit-scrollbar-thumb{
-background:linear-gradient(to bottom,#ff0000,#600000);
-border-radius:10px;
-}
-
-/* PARTICLES */
-
-.particles{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-pointer-events:none;
-z-index:-1;
-overflow:hidden;
-}
-
-.particle{
-position:absolute;
-width:2px;
-height:2px;
-background:red;
-border-radius:50%;
-opacity:.4;
-animation:float 10s linear infinite;
-}
-
-@keyframes float{
-0%{
-transform:translateY(100vh) scale(0);
-}
-100%{
-transform:translateY(-10vh) scale(1);
-}
-}
-
-/* NAVBAR */
-
-nav{
-position:fixed;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-width:90%;
-max-width:1300px;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.5);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
-border-radius:20px;
-z-index:999;
-box-shadow:var(--shadow);
-}
-
-nav h1{
-font-size:1.4rem;
-font-weight:800;
-letter-spacing:2px;
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-font-weight:600;
-transition:.3s;
-}
-
-nav a:hover{
-color:var(--red);
-}
+/* NAV */
+.topbar{background:var(--panel);border-bottom:1px solid var(--line);font-size:.88rem;color:var(--muted);text-align:center;padding:9px 4vw}
+.topbar a{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s}
+.topbar a:hover{color:var(--red-soft)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,9,10,.92);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font:700 1.05rem var(--display);letter-spacing:.02em}
+.brand img{width:36px;height:36px;object-fit:contain;transition:transform .5s var(--ease)}
+.brand:hover img{transform:rotate(-8deg) scale(1.08)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:.95rem;color:var(--muted)}
+.nav ul a{position:relative;padding:6px 0;transition:color .2s}
+.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav ul a:hover,.nav ul a[aria-current]{color:var(--text)}
+.nav ul a:hover::after,.nav ul a[aria-current]::after{transform:scaleX(1)}
+.nav .btn{padding:10px 20px;font-size:.92rem}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:10px;font-size:1.1rem;cursor:pointer}
 
 /* HERO */
+.hero{position:relative;min-height:calc(100svh - 112px);display:flex;align-items:flex-end;padding:0 0 clamp(48px,8vw,96px);isolation:isolate;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:#0d0d0e url('assets/avatars/zoulcraft.gif') center/cover no-repeat;animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,9,10,.55) 0%,rgba(9,9,10,.5) 35%,rgba(9,9,10,.96) 100%),linear-gradient(90deg,rgba(9,9,10,.85),transparent 70%)}
+.hero .wrap{display:grid;gap:22px;padding-top:120px}
+.hero small{color:var(--muted);font-size:.95rem;letter-spacing:.14em}
+.hero small b{color:var(--red-soft);font-weight:600}
+.hero h1{font-size:clamp(2.8rem,8.4vw,7rem);font-weight:800;max-width:13ch}
+.hero p{max-width:50ch;color:#d4d4d1;font-size:1.15rem}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.hero .wrap>*{animation:rise .8s var(--ease) both}
+.hero .wrap>*:nth-child(2){animation-delay:.12s}.hero .wrap>*:nth-child(3){animation-delay:.24s}.hero .wrap>*:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:0 20px;
-position:relative;
-overflow:hidden;
+/* ESTUDIO */
+.studio .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
+.studio h2{font-size:clamp(2.2rem,5.6vw,4.4rem);font-weight:700;max-width:12ch}
+.studio .txt{display:grid;gap:20px;color:var(--muted);max-width:52ch;margin-top:28px}
+.studio figure{overflow:hidden;border:1px solid var(--line)}
+.studio figure img{width:100%;height:auto;background:var(--panel);transition:transform .8s var(--ease)}
+.studio figure:hover img{transform:scale(1.02)}
+.studio figcaption{font-size:.85rem;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);background:var(--bg)}
+
+
+/* HISTORIA */
+.story .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,90px);align-items:start}
+.story h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;max-width:10ch;position:sticky;top:110px}
+.story .txt{display:grid;gap:22px;color:var(--muted);max-width:62ch;justify-items:start}
+.story .txt p b{color:var(--text);font-weight:600}
+.story mark{background:none;color:var(--red-soft);font-weight:600}
+.story .txt a{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s,border-color .2s}
+.story .txt a:hover{color:var(--red-soft);border-color:var(--red-soft)}
+.story .txt a.btn{border-bottom:1px solid var(--line);font-weight:600}
+.story .txt a.btn.primary{border-color:var(--red);color:#fff}
+.story .txt a.btn.ghost:hover{border-color:var(--text);color:var(--text)}
+.story .actions{display:flex;flex-wrap:wrap;gap:14px}
+.story{scroll-margin-top:72px}
+.jump{display:inline-block;margin-top:6px;color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s}
+.jump:hover{color:var(--red-soft)}
+.jump i{margin-left:6px;font-size:.8rem}
+.story .tag{font:700 .9rem var(--display);letter-spacing:.08em;color:var(--red-soft);padding-top:22px;border-top:1px solid var(--line)}
+
+.affiliate{padding-top:0}
+.affiliate .division{margin-top:0;width:100%;grid-template-columns:150px 1fr 150px;gap:24px;align-items:center;padding:14px 24px;border:1px solid var(--line);background:none}
+.affiliate .division>img{justify-self:start}
+.affiliate .division>.btn{justify-self:end}
+.affiliate .division p{max-width:none}
+.affiliate .division img{width:72px;height:72px;opacity:1}
+.affiliate .division h3{font-size:1.05rem;margin-bottom:4px}
+.affiliate .division p{font-size:.88rem;line-height:1.5}
+.affiliate .division .btn{padding:7px 16px;font-size:.85rem;color:var(--muted)}
+.affiliate .division .btn:hover{color:var(--text)}
+
+/* SERVICIOS */
+.alt{background:var(--panel);border-block:1px solid var(--line)}
+.svc-list{border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:70px 1fr 1.2fr;gap:24px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}
+.svc>i{font-size:1.5rem;color:var(--red-soft);padding-top:6px;transition:transform .4s var(--ease)}
+.svc:hover>i{transform:translateY(-4px) scale(1.15)}
+.svc h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700}
+.svc h3 span{display:block;font:500 .95rem var(--body);color:var(--muted);margin-top:8px;letter-spacing:0}
+.svc ul{list-style:none;display:grid;gap:8px;color:#d4d4d1}
+.svc li{padding-left:18px;position:relative}
+.svc li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:1px;background:var(--red-soft);transition:width .3s var(--ease)}
+.svc:hover li::before{width:12px}
+.note{margin-top:28px;color:var(--muted);font-size:.95rem}
+
+/* PORTFOLIO */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.chip{background:none;border:1px solid var(--line);color:var(--muted);padding:9px 18px;border-radius:999px;font:500 .92rem var(--body);cursor:pointer;transition:.25s var(--ease)}
+.chip:hover{color:var(--text);border-color:var(--muted);transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:border-color .3s}
+.card::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:3}
+.card:hover{border-color:#3a3a3d}
+.card:hover::before{transform:scaleX(1)}
+.card .media{position:relative;isolation:isolate;aspect-ratio:16/10;background:#0e0e0f;overflow:hidden}
+.card .media::before{content:"";position:absolute;inset:-24px;z-index:-1;background:var(--bg) center/cover no-repeat;filter:blur(18px) brightness(.55) saturate(1.1)}
+.card .media img{width:100%;height:100%;object-fit:contain;transition:transform .7s var(--ease)}
+.card:hover .media img{transform:scale(1.03)}
+.card .body{display:grid;gap:8px;padding:22px 24px 26px;position:relative;align-content:start;flex:1}
+.card .cat{font-size:.82rem;color:var(--red-soft);font-weight:600}
+.card h3{font-size:1.5rem;font-weight:700}
+.card p{color:var(--muted);font-size:.98rem}
+.card .credit{font-size:.88rem;color:#7d7d7a}
+.card .more{margin-top:auto;padding-top:6px;font-weight:600;font-size:.95rem}
+.card .more::after{content:"";position:absolute;inset:0}
+.card .more i{margin-left:6px;font-size:.8rem;transition:transform .3s var(--ease)}
+.card:hover .more i{transform:translate(4px,-4px)}
+.status{justify-self:start;font-size:.8rem;border:1px solid #3a3a3d;color:var(--muted);padding:3px 12px;border-radius:999px}
+.card[hidden]{display:none}
+.card.pop{animation:pop .45s var(--ease) both;animation-delay:calc(var(--k,0)*60ms)}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+
+/* PROCESO */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.step{padding:28px 20px 8px 0;border-right:1px solid var(--line);margin-right:20px;position:relative}
+.step::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--red);transition:width .9s var(--ease) .3s}
+.step.in::before{width:48px}
+.step:last-child{border:0;margin:0}
+.step b{font:700 2.6rem var(--display);color:var(--red-soft);display:block;margin-bottom:12px}
+.step h3{font-size:1.2rem;margin-bottom:10px}
+.step p{color:var(--muted);font-size:.98rem}
+
+/* PARTNERS */
+.logos{display:flex;flex-wrap:wrap;gap:20px}
+.logo-card{display:grid;gap:14px;justify-items:start;padding:26px 30px;border:1px solid var(--line);background:var(--panel);min-width:280px;transition:border-color .3s,box-shadow .4s}
+.logo-card:hover{border-color:var(--red);box-shadow:0 20px 50px -30px rgba(224,33,47,.8)}
+.logo-card img{height:56px;width:auto;object-fit:contain}
+.logo-card span{color:var(--muted);font-size:.92rem}
+.logo-card b{color:var(--text)}
+
+/* EQUIPO */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.member{display:grid;gap:14px;padding:28px;border:1px solid var(--line);background:var(--bg);align-content:start;transition:border-color .3s}
+.member:hover{border-color:#3a3a3d}
+.member img{width:96px;height:96px;object-fit:cover;border-radius:50%;border:1px solid var(--line);background:#0e0e0f;transition:transform .5s var(--ease),border-color .3s}
+.member:hover img{transform:scale(1.06);border-color:var(--red)}
+.member h3{font-size:1.5rem}
+.member .role{color:var(--red-soft);font-weight:600;font-size:.95rem}
+.member p{color:var(--muted);font-size:.98rem}
+.member a.link{margin-top:auto;font-weight:600;font-size:.95rem;transition:color .2s}
+.member a.link i{margin-right:8px}
+.member a.link:hover{color:var(--red-soft)}
+.division{margin-top:20px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:28px;border:1px dashed #3a3a3d}
+.division img{width:84px;height:84px;object-fit:contain}
+.division h3{font-size:1.4rem;margin-bottom:6px}
+.division p{color:var(--muted);max-width:60ch}
+
+/* CONTACTO + FOOTER */
+.cta{background:radial-gradient(900px 400px at 85% 0,rgba(224,33,47,.16),transparent 70%),var(--bg)}
+.cta h2{font-size:clamp(2.4rem,6.5vw,5.2rem);font-weight:800;max-width:14ch}
+.cta p{color:var(--muted);margin:22px 0 32px;max-width:52ch;font-size:1.15rem}
+.cta .actions{display:flex;flex-wrap:wrap;gap:14px}
+footer{border-top:1px solid var(--line);padding:56px 0 36px;font-size:.95rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot p{color:var(--muted);max-width:38ch;margin-top:14px}
+.foot h4{font:600 .95rem var(--body);margin-bottom:14px}
+.foot ul{list-style:none;display:grid;gap:8px;color:var(--muted)}
+.foot ul a{transition:color .2s}.foot ul a:hover{color:var(--text)}
+.socials{display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
+.socials a{width:42px;height:42px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--muted);transition:.3s var(--ease)}
+.socials a:hover{color:var(--text);border-color:var(--red);transform:translateY(-4px)}
+.legal{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:#7d7d7a;font-size:.8rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px}
+.legal strong{color:var(--muted);font-weight:600}
+
+@media(max-width:980px){
+  .nav ul,.nav .btn{display:none}
+  .burger{display:block}
+  .nav.open ul{display:grid;position:absolute;top:72px;left:0;right:0;background:var(--bg);padding:12px 4vw 28px;gap:0;border-bottom:1px solid var(--line)}
+  .nav.open ul a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--text)}
+  .studio .wrap,.story .wrap{grid-template-columns:1fr}
+  .story h2{position:static}
+  .svc{grid-template-columns:44px 1fr}
+  .svc ul{grid-column:2}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr 1fr}
+  .step{border:0;margin:0;padding:24px 20px 24px 0;border-bottom:1px solid var(--line)}
+  .team-grid{grid-template-columns:1fr}
+  .division,.affiliate .division{grid-template-columns:1fr;justify-items:start}
+  .affiliate .division>.btn{justify-self:start}
+  .foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}
 }
-
-.hero::before{
-content:"";
-position:absolute;
-width:800px;
-height:800px;
-background:radial-gradient(circle,rgba(255,0,0,.35),transparent 70%);
-filter:blur(80px);
-z-index:-1;
-animation:pulse 5s infinite;
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
 }
-
-@keyframes pulse{
-0%,100%{
-transform:scale(1);
-opacity:.8;
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
 }
-50%{
-transform:scale(1.2);
-opacity:1;
-}
-}
-
-.hero-content{
-max-width:700px;
-}
-
-.hero-logo{
-width:400px;
-margin-bottom:25px;
-filter:drop-shadow(0 0 30px red);
-}
-
-.hero h1{
-font-size:6rem;
-font-weight:900;
-line-height:1;
-margin-bottom:20px;
-text-shadow:0 0 30px rgba(255,0,0,.6);
-}
-
-.hero h2{
-font-size:1.8rem;
-margin-bottom:20px;
-color:#ff4d4d;
-}
-
-.hero p{
-font-size:1.2rem;
-color:#ccc;
-line-height:1.8;
-margin-bottom:40px;
-}
-
-.socials{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.socials a{
-width:60px;
-height:60px;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-font-size:1.3rem;
-color:white;
-transition:.4s;
-backdrop-filter:blur(10px);
-}
-
-.socials a:hover{
-transform:translateY(-8px) scale(1.1);
-background:rgba(255,0,0,.15);
-box-shadow:0 0 25px rgba(255,0,0,.7);
-}
-
-/* SECTIONS */
-
-section{
-padding:120px 8%;
-position:relative;
-}
-
-.section-title{
-font-size:3rem;
-font-weight:900;
-margin-bottom:60px;
-text-align:center;
-text-transform:uppercase;
-letter-spacing:3px;
-}
-
-.section-title span{
-color:var(--red);
-}
-
-/* GLASS CARD */
-
-.glass{
-background:var(--glass);
-backdrop-filter:blur(20px);
-border:1px solid var(--border);
-border-radius:25px;
-padding:40px;
-box-shadow:var(--shadow);
-}
-
-/* ABOUT */
-
-.about p{
-line-height:2;
-color:#ccc;
-font-size:1.05rem;
-}
-
-.management{
-margin-top:40px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.management div{
-background:rgba(255,255,255,.04);
-padding:20px;
-border-radius:18px;
-text-align:center;
-border:1px solid rgba(255,255,255,.05);
-}
-
-/* SERVICES */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.service-card{
-padding:35px;
-border-radius:22px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
-backdrop-filter:blur(20px);
-}
-
-.service-card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(255,0,0,.35);
-}
-
-.service-card i{
-font-size:2rem;
-margin-bottom:20px;
-color:red;
-}
-
-.service-card h3{
-margin-bottom:15px;
-}
-
-/* PROJECTS */
-
-.projects-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.project-card{
-position:relative;
-overflow:hidden;
-padding:30px;
-border-radius:25px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
-backdrop-filter:blur(20px);
-}
-
-.project-card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 0 35px rgba(255,0,0,.45);
-}
-
-.project-card img{
-width:100%;
-height:140px;
-object-fit:cover;
-border-radius:15px;
-margin-bottom:20px;
-}
-
-/* SPONSORS */
-
-.sponsors{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-}
-
-.sponsor-card{
-padding:10px;
-border-radius:15px;
-text-align:center;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
-}
-
-.sponsor-card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 35px rgba(255,0,0,.35);
-}
-/* FOOTER */
-
-footer{
-padding:70px 20px;
-text-align:center;
-background:#020202;
-border-top:1px solid rgba(255,255,255,.08);
-}
-
-footer h2{
-font-size:2rem;
-margin-bottom:15px;
-}
-
-footer p{
-color:#888;
-}
-
-/* BACK TO TOP */
-
-.top-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(45deg,#ff0000,#600000);
-color:white;
-font-size:1.2rem;
-cursor:pointer;
-box-shadow:0 0 25px rgba(255,0,0,.5);
-z-index:999;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-
-.hero h1{
-font-size:4rem;
-}
-
-nav ul{
-display:none;
-}
-
-}
-
-@media(max-width:800px){
-
-.hero h1{
-font-size:3rem;
-}
-
-.section-title{
-font-size:2rem;
-}
-
-}
-
-.roster-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-}
-
-.member-card{
-position:relative;
-overflow:hidden;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:25px;
-padding:30px;
-text-align:center;
-transition:.4s;
-backdrop-filter:blur(18px);
-cursor:pointer;
-}
-
-.member-card:hover{
-transform:translateY(-10px) scale(1.03);
-box-shadow:0 0 35px rgba(255,0,0,.4);
-border-color:red;
-}
-
-.member-card::before{
-content:"";
-position:absolute;
-top:-50%;
-left:-50%;
-width:200%;
-height:200%;
-background:linear-gradient(
-45deg,
-transparent,
-rgba(255,0,0,.25),
-transparent
-);
-transform:rotate(25deg);
-animation:shine 5s linear infinite;
-}
-
-@keyframes shine{
-0%{
-transform:translateX(-100%) rotate(25deg);
-}
-100%{
-transform:translateX(100%) rotate(25deg);
-}
-}
-
-.member-card img{
-width:120px;
-height:120px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid rgba(255,0,0,.5);
-margin-bottom:20px;
-box-shadow:0 0 25px rgba(255,0,0,.5);
-}
-
-.member-card h3{
-font-size:1.5rem;
-margin-bottom:10px;
-}
-
-.role{
-color:#ff3b3b;
-font-weight:700;
-margin-bottom:15px;
-}
-
-.member-card p{
-color:#bbb;
-line-height:1.7;
-font-size:.95rem;
-margin-bottom:20px;
-}
-
-.member-btn{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:12px 20px;
-border-radius:12px;
-background:linear-gradient(45deg,#ff0000,#700000);
-color:white;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.member-btn:hover{
-transform:scale(1.05);
-}
-
 </style>
-
 </head>
 <body>
 
-<div class="particles"></div>
+<div class="topbar">Orgullosos partners de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></div>
 
-<!-- NAVBAR -->
-
-<nav>
-<h1>LMC STUDIOS ™</h1>
-
-<ul>
-<li><a href="#about">Nosotros</a></li>
-<li><a href="#projects">Proyectos</a></li>
-<li><a href="#sponsors">Sponsors</a></li>
-</ul>
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<img src="assets/avatars/lmcstudios.png"
-class="hero-logo">
-
-<h1>LMC STUDIOS</h1>
-
-<h2>Minecraft Events</h2>
-
-<p>
-Desarrollo profesional de proyectos Minecraft, administración de servidores, branding visual y eventos.
-</p>
-
-<div class="socials">
-
-<a href="https://x.com/@lmcstudi0s" target="_blank">
-<i class="fab fa-x-twitter"></i>
-</a>
-
-<a href="https://discord.gg/jCFjYJ5Eye" target="_blank">
-<i class="fab fa-discord"></i>
-</a>
-
-<a href="https://www.tiktok.com/@lmcstudi0s" target="_blank">
-<i class="fab fa-tiktok"></i>
-</a>
-
-<a href="https://www.instagram.com/lmcstudi0s/" target="_blank">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://www.youtube.com/@LMC_Studi0s" target="_blank">
-<i class="fab fa-youtube"></i>
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- LMC STUDIOS -->
-
-<section id="about">
-
-<section class="hero">
-
-<div class="hero-content">
-
-<div class="glass">
-
-<p style="line-height:2;color:#ccc;">
-LMC Studios es la división especializada en el desarrollo profesional de proyectos Minecraft, enfocada en la creación y administración de servidores, branding visual, eventos personalizados y sistemas avanzados para comunidades y creadores de contenido.
-</p>
-
-</div>
-
-<br><br>
-
-<div class="services-grid">
-
-<div class="service-card">
-<i class="fa-solid fa-server"></i>
-<h3>Desarrollo de servidores Minecraft</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-gears"></i>
-<h3>Configuración avanzada</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-palette"></i>
-<h3>Branding y diseño</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-calendar"></i>
-<h3>Eventos personalizados</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-code"></i>
-<h3>Sistemas avanzados</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-network-wired"></i>
-<h3>Infraestructura</h3>
-</div>
-
-<div class="service-card">
-<i class="fa-solid fa-gauge-high"></i>
-<h3>Optimización y rendimiento</h3>
-</div>
-
-</div>
-
-</section>
-
-<!-- PROJECTS -->
-
-<section id="projects">
-
-<h2 class="section-title">
-PROYECTOS</span>
-</h2>
-
-<div class="projects-grid">
-
-  <div class="project-card"
-       onclick="window.open('https://www.tiktok.com/@zanfrix_network')">
-    <img src="assets/avatars/zanfrixz.png">
-    <h3>ZanFirxz</h3>
-    <p>Network con modalidades by zFrixz, Zansumi.</p>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#/inicio" aria-label="LMC Studios ™, inicio">
+      <img src="assets/avatars/lmcstudios.png" alt="Logotipo de LMC Studios">LMC Studios ™
+    </a>
+    <ul id="menu">
+      <li><a href="#/inicio" data-link="inicio">Inicio</a></li>
+      <li><a href="#/servicios" data-link="servicios">Servicios</a></li>
+      <li><a href="#/proyectos" data-link="proyectos">Proyectos</a></li>
+      <li><a href="#/estudio" data-link="estudio">Nosotros</a></li>
+      <li><a href="#/partners" data-link="partners">Partners</a></li>
+      <li><a href="#/contacto" data-link="contacto">Contacto</a></li>
+    </ul>
+    <a class="btn primary" href="#/contacto">Hablemos de tu proyecto</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
   </div>
+</header>
 
-  <div class="project-card"
-       onclick="window.open('https://www.tiktok.com/@sumixcraft')">
-    <img src="assets/avatars/sm.png">
-    <h3>SumixCraft</h3>
-    <p>Servidor y comunidad Minecraft by zFrixz.</p>
-  </div>
+<main>
 
-  <div class="project-card"
-       onclick="window.open('https://www.twitch.tv/videos/2673904387')">
-    <img src="assets/avatars/oshanzumi.png">
-    <h3>OshanZumi</h3>
-    <p>Proyecto Hardcore by Oshawott, Zansumi.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://www.tiktok.com/@alicia_usu/video/7598013922939112716')">
-    <img src="assets/avatars/logo2he.png">
-    <h3>Hardcore Of Elite</h3>
-    <p>Experiencia survival extrema by Alicia_usu.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/Andreuspf/status/2033276977755377756')">
-    <img src="assets/avatars/a (1).png">
-    <h3>EXODO SMP</h3>
-    <p>Servidor SMP Hardcore.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/team__lmc/status/2038030653686501456')">
-    <img src="assets/avatars/TEAM LMC NEW - 2026.png">
-    <h3>Team LMCraft Roleplay</h3>
-    <p>Roleplay basado en comunidad y lore by LMC Studios™.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/LMCStudi0s/status/2049005507633979520')">
-    <img src="assets/avatars/logo.png">
-    <h3>LMC Project</h3>
-    <p>Proyecto Survival Custom by LMC Studios™.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://www.youtube.com/watch?v=ehaIvwu6S5o')">
-    <img src="assets/avatars/image-removebg-preview_4.png">
-    <h3>SKYBLOCK DE LOS PANAS</h3>
-    <p>Modo Skyblock para Team LMC by TheAndreusPR.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/DeadLandsSMP/status/2055123133535867182')">
-    <img src="assets/avatars/COMISION_ANDREUS_WASA.png">
-    <h3>DeadLands SMP</h3>
-    <p>Supervivencia apocalíptica y Roleplay by TheAndreusPR.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/LMCStudi0s/status/2057556127861129547')">
-    <img src="assets/avatars/pedaafio2026.png">
-    <h3>PEDSAFIO</h3>
-    <p>Evento extremo basado en DEDSAFIO 3 by LMC Studios™, Axolotl Studios.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/Andreuspf/status/2073634084044120107')">
-    <img src="assets/avatars/destruyeelnexus.png">
-    <h3>Destruye el Nexus</h3>
-    <p>Evento de la modalidad Destruye el Nexus para la comunidad, by TheandreusPR.</p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/LMCStudi0s/status/2082207789443604546')">
-    <img src="assets/avatars/buildbate.png">
-    <h3>LMC Battles </h3>
-    <p>Evento de la modalidad Buil Battles para la comunidad, By TheandreusPR. </p>
-  </div>
-
-  <div class="project-card"
-       onclick="window.open('https://x.com/LMCStudi0s/status/2105026597166125064')">
-    <img src="assets/avatars/zoulcraft.gif">
-    <h3>ZoulCraft</h3>
-    <p>ZOULCRAFT, un evento donde 60 participantes competirán por sobrevivir a una invasión zombie, by LMC Studios ™ and yDaantiX.</p>
-  </div>
-
+<!-- INICIO -->
+<div class="page active" data-page="inicio" tabindex="-1">
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="Escena del evento ZOULCRAFT producido por LMC Studios"></div>
+    <div class="wrap">
+      <small><b>LMC STUDIOS ™</b> &nbsp;Eventos de Minecraft y mas</small>
+      <h1>Creamos experiencias que dejan huella.</h1>
+      <p>Diseñamos, desarrollamos y producimos eventos y proyectos de Minecraft para comunidades y creadores de contenido.</p>
+      <div class="actions">
+        <a class="btn primary" href="#/proyectos">Explorar proyectos</a>
+        <a class="btn ghost" href="#/contacto">Hablemos de tu idea</a>
+      </div>
+    </div>
+  </section>
+  <section class="studio">
+    <div class="wrap">
+      <div>
+        <h2>Ideas que se convierten en experiencias.</h2>
+        <div class="txt">
+          <p>LMC Studios ™ reúne creatividad, desarrollo técnico y producción para llevar un concepto hasta un proyecto funcional dentro de Minecraft.</p>
+          <p>También nos encargamos del branding y la promoción de cada proyecto, para que llegue a su comunidad con una imagen coherente.</p>
+        </div>
+      </div>
+      <figure>
+        <img src="assets/avatars/pedaafio2026.png" alt="Imagen del evento PEDSAFIO" loading="lazy">
+        <figcaption>PEDSAFIO, evento producido con Axolotl Studios.</figcaption>
+      </figure>
+    </div>
+  </section>
 </div>
 
-</section>
-
-<!-- SPONSORS -->
-
-<section>
-
-<section id="sponsors"></section>
-
-<h2 class="sponsors">
-SPONSORS</span>
-</h2>
-
-<div class="sponsors">
-
-<div class="sponsor-card"
-onclick="window.open('https://www.minemu.net/')">
-<h3>Minemu Hosting</h3>
-<img src="assets/avatars/24Sep24 Simon Free Upl444oad .png">
-<br>
-<p>Código:</p>
-<h2 style="color:#ff2d2d;">lmc</h2>
+<!-- SERVICIOS -->
+<div class="page" data-page="servicios" tabindex="-1">
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Lo que hacemos</h2>
+        <p>Cuatro áreas de trabajo que se combinan según lo que necesite cada proyecto.</p>
+      </div>
+      <div class="svc-list">
+        <article class="svc">
+          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+          <h3>Event Production<span>Producción de eventos</span></h3>
+          <ul>
+            <li>Diseño y organización de eventos</li>
+            <li>Mecánicas personalizadas</li>
+            <li>Configuración de dinámicas y desafíos</li>
+            <li>Preparación técnica y soporte durante el evento</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <i class="fa-solid fa-server" aria-hidden="true"></i>
+          <h3>Server Development<span>Desarrollo de servidores</span></h3>
+          <ul>
+            <li>Configuración y personalización de servidores</li>
+            <li>Plugins, sistemas y funcionalidades</li>
+            <li>Modalidades personalizadas</li>
+            <li>Optimización y administración técnica</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+          <h3>Creative Design<span>Diseño creativo</span></h3>
+          <ul>
+            <li>Identidad visual de proyectos</li>
+            <li>Branding y recursos gráficos</li>
+            <li>Promoción y difusión de proyectos</li>
+            <li>Interfaces y presentación visual</li>
+            <li>Ambientación y coherencia estética</li>
+          </ul>
+        </article>
+        <article class="svc">
+          <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+          <h3>Custom Experiences<span>Experiencias a medida</span></h3>
+          <ul>
+            <li>Survival y hardcore</li>
+            <li>Roleplay y experiencias narrativas</li>
+            <li>Minijuegos y competiciones</li>
+            <li>Eventos para comunidades y creadores</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note">El alcance de cada trabajo se define según el proyecto. Si tu idea no encaja exactamente en estas áreas, consúltanos.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Cómo trabajamos</h2></div>
+      <div class="steps">
+        <div class="step"><b>01</b><h3>Aprobación</h3><p>Un Owner de LMC Studios ™ revisa tu proyecto y confirma si podemos trabajar en él.</p></div>
+        <div class="step"><b>02</b><h3>Concepto</h3><p>Definimos la idea, los objetivos y el formato del proyecto.</p></div>
+        <div class="step"><b>03</b><h3>Diseño y desarrollo</h3><p>Construimos la experiencia, configuramos sus sistemas y preparamos su identidad visual y su promoción.</p></div>
+        <div class="step"><b>04</b><h3>Preparación y pruebas</h3><p>Revisamos mecánicas, funcionamiento, rendimiento y detalles técnicos.</p></div>
+        <div class="step"><b>05</b><h3>Producción</h3><p>Coordinamos la puesta en marcha y el desarrollo del proyecto.</p></div>
+      </div>
+    </div>
+  </section>
 </div>
 
+<!-- PROYECTOS -->
+<div class="page" data-page="proyectos" tabindex="-1">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Proyectos</h2>
+        <p>Eventos, servidores y experiencias en las que ha participado LMC Studios ™, solo o junto a otros equipos.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar proyectos">
+        <button class="chip" data-f="all" aria-pressed="true">Todos</button>
+        <button class="chip" data-f="Eventos" aria-pressed="false">Eventos</button>
+        <button class="chip" data-f="Servidores y networks" aria-pressed="false">Servidores y networks</button>
+        <button class="chip" data-f="Survival y hardcore" aria-pressed="false">Survival y hardcore</button>
+        <button class="chip" data-f="Roleplay y experiencias" aria-pressed="false">Roleplay y experiencias</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
 </div>
 
-</section>
-
-<!-- Roster-->
-
-<section id="staff">
-
-<h2 class="staff">
-Staff </span>
-</h2>
-
-<div class="roster-grid">
-
-
-    <div class="member-card"
-onclick="window.open('https://www.youtube.com/@zansumii')">
-
-<img src="assets/avatars/zansumi.png">
-
-<h3>Zansumi</h3>
-
-<div class="role">
-Founder y manager general de LMC Studios™,
-encargado de la dirección creativa, desarrollo de proyectos, 
-administración de servidores y eventos relacionados con Minecraft.
+<!-- EL ESTUDIO -->
+<div class="page" data-page="estudio" tabindex="-1">
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Nosotros</h2>
+        <p>Las personas que dirigen LMC Studios ™ y la división que lo acompaña. <a class="jump" href="#/estudio" data-jump="historia">Mira abajo para conocer más sobre nosotros y nuestra historia <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></p>
+      </div>
+      <div class="team-grid">
+        <article class="member">
+          <img src="assets/avatars/zansumi.png" alt="Avatar de Zansumi" loading="lazy">
+          <h3>Zansumi</h3>
+          <div class="role">Founder y manager general</div>
+          <p>Dirección creativa, desarrollo de proyectos, administración de servidores y eventos de Minecraft.</p>
+          <a class="link" href="https://www.youtube.com/@zansumii" target="_blank" rel="noopener"><i class="fab fa-youtube"></i>YouTube</a>
+        </article>
+        <article class="member">
+          <img src="assets/avatars/andreus.png" alt="Avatar de TheandreusPR" loading="lazy">
+          <h3>TheandreusPR</h3>
+          <div class="role">Co-founder y manager general</div>
+          <p>Cofundador de LMC Studios ™.</p>
+          <a class="link" href="https://www.kick.com/theandreuspr" target="_blank" rel="noopener"><i class="fa-solid fa-play"></i>Kick</a>
+        </article>
+        <article class="member">
+          <img src="assets/avatars/iwan.png" alt="Avatar de IwanMC" loading="lazy">
+          <h3>IwanMC</h3>
+          <div class="role">Co-owner y gestión informativa</div>
+          <p>Gestión de la información, comunicación y soporte para la comunidad de LMC Studios ™.</p>
+          <a class="link" href="https://www.twitch.tv/iwanhx" target="_blank" rel="noopener"><i class="fab fa-twitch"></i>Twitch</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="story" id="historia">
+    <div class="wrap">
+      <h2>Nuestra historia</h2>
+      <div class="txt">
+        <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <mark>OshanZumi</mark>, marcó el inicio de este camino, seguido por <mark>Hardcore of Elite</mark>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
+        <p>En <mark>junio de 2026</mark>, alcanzamos un hito importante al convertirnos en <b>partners oficiales de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></b>, cuyo apoyo con hosting y promoción nos ha permitido desarrollar eventos con mayor facilidad y ampliar nuestro alcance.</p>
+        <p>En <mark>julio de 2026</mark>, nos <b>independizamos oficialmente de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a></b> para enfocarnos plenamente en el desarrollo de proyectos de Minecraft. Más adelante, nuestra colaboración con <a href="https://x.com/yDaantiX" target="_blank" rel="noopener">yDaantix</a>, participante de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a>, dio vida a <a href="#/proyectos">ZOULCRAFT</a>, un evento finalizado el <mark>9 de octubre de 2026</mark> que nos brindó una gran exposición y representó un nuevo logro para el estudio.</p>
+        <p>Hoy seguimos creciendo gracias a <b>nuestra comunidad, nuestros colaboradores</b> y el respaldo de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>. La expectativa por nuestros próximos eventos nos impulsa a continuar creando experiencias cada vez más ambiciosas.</p>
+        <p>Agradecemos a todas las personas y colaboradores que han formado parte de este recorrido. LMC Studios ™ sigue escribiendo su historia y estamos <b>abiertos a nuevos talentos, colaboraciones y proyectos</b> que quieran crecer junto a nosotros.</p>
+        <p class="tag">LMC STUDIOS ™ — CREAMOS EXPERIENCIAS, CONSTRUIMOS HISTORIAS Y EL SIGUIENTE CAPÍTULO LO ESCRIBIMOS JUNTOS.</p>
+        <div class="actions">
+          <a class="btn primary" href="#/contacto">Escríbenos</a>
+          <a class="btn ghost" href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener"><i class="fab fa-discord"></i>Unirse a la comunidad</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="affiliate">
+    <div class="wrap">
+      <div class="division">
+        <img src="assets/avatars/sas.png" alt="Logotipo de Team LMC" loading="lazy">
+        <div>
+          <h3>Team LMC ™</h3>
+          <p>Proyecto independiente de creación de contenido y desarrollo de talento digital, operado bajo la administración y supervisión de LMC Studios ™. Mantiene su propia identidad y enfoque, formando parte de los proyectos independientes que se desarrollan bajo el nombre de LMC.</p>
+        </div>
+        <a class="btn ghost" href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Visitar web</a>
+      </div>
+    </div>
+  </section>
 </div>
 
-<a class="member-btn">
-<i class="fab fa-youtube"></i>
-YouTube
-</a>
-
+<!-- PARTNERS -->
+<div class="page" data-page="partners" tabindex="-1">
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Partners</h2>
+        <p>LMC Studios ™ es afiliado de Minemu Hosting, nuestro partner de infraestructura.</p>
+      </div>
+      <div class="logos">
+        <a class="logo-card" href="https://www.minemu.net/" target="_blank" rel="noopener">
+          <img src="assets/avatars/24Sep24%20Simon%20Free%20Upl444oad%20.png" alt="Logotipo de Minemu Hosting" loading="lazy">
+          <span><b>Minemu Hosting</b><br>Partner afiliado. Usa el código <b>lmc</b>.</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
 
-    <div class="member-card"
-onclick="window.open('https://www.kick.com/theandreuspr')">
-
-<img src="assets/avatars/andreus.png">
-
-<h3>TheandreusPR</h3>
-
-<div class="role">
-Co-founder y manager general de LMC Studios™,
+<!-- CONTACTO -->
+<div class="page" data-page="contacto" tabindex="-1">
+  <section class="cta">
+    <div class="wrap">
+      <h2>¿Tienes una idea para tu próximo evento?</h2>
+      <p>Cuéntanos tu concepto y exploremos cómo convertirlo en una experiencia dentro de Minecraft.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://x.com/LMCStudi0s" target="_blank" rel="noopener">Contactar con LMC Studios ™</a>
+        <a class="btn ghost" href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener"><i class="fab fa-discord"></i>Unirse a la comunidad</a>
+      </div>
+    </div>
+  </section>
 </div>
 
-<a class="member-btn">
-<i class="fab fa-kick"></i>
-Kick
-</a>
-
-</div>
-
-    <div class="member-card"
-onclick="window.open('https://www.twitch.tv/iwanhx')">
-
-<img src="assets/avatars/iwan.png">
-
-<h3>IwanMC</h3>
-
-<div class="role">
-Co-Owner y gestion infomativa de LMC Studios™,
-encargado de la gestión de información, 
-comunicación y soporte para la comunidad de LMC Studios™.
-</div>
-
-<a class="member-btn">
-<i class="fab fa-twitch"></i>
-Twitch
-</a>
-
-</div>
-</div>
-
-</section>
-
-<section id="LMC STUDIOS">
-
-    <div class="member-card"
-onclick="window.open('https://zansumilmc.github.io/TeamLMC2/')">
-
-<img src="assets/avatars/sas.png">
-
-<h3>Team LMC ™</h3>
-
-<div class="role">
-Division secundaria de LMC Studios™ enfocada en cracion de contenido y comunidad de varios juegos, con énfasis en Minecraft, eventos y proyectos relacionados.
-</div>
-
-<a class="member-btn">
-<i class="fab fa-web"></i>
-Website
-</a>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
+</main>
 
 <footer>
-
-<h2>
-Powered by LMC STUDIOS ™
-</h2>
-
-<p>
-Desarrollado por LMC Studios ™
-© Todos los derechos reservados 2026
-Para cualquier duda o información adicional, puedes contactar a LMC Management, donde recibirás el soporte necesario..
-</p>
-
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#/inicio"><img src="assets/avatars/lmcstudios.png" alt="">LMC Studios ™</a>
+        <p>Estudio creativo de eventos, servidores y experiencias de Minecraft.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#/servicios">Servicios</a></li>
+          <li><a href="#/proyectos">Proyectos</a></li>
+          <li><a href="#/estudio">Nosotros</a></li>
+          <li><a href="#/partners">Partners</a></li>
+          <li><a href="#/contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <div class="socials">
+          <a href="https://x.com/LMCStudi0s" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://www.tiktok.com/@lmcstudi0s" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/lmcstudi0s/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@LMC_Studi0s" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 LMC Studios ™. Todos los derechos reservados.</span>
+      <span><strong>Trade Mark:</strong> marca comercial de uso propio, sin registro oficial. Minecraft es marca de Mojang AB; sin afiliación.</span>
+    </div>
+  </div>
 </footer>
 
-<!-- TOP BUTTON -->
-
-<div class="top-btn" id="topBtn">
-<i class="fa-solid fa-arrow-up"></i>
-</div>
-
 <script>
+/* DATOS DE PROYECTOS: para añadir uno nuevo, copia un bloque y edítalo */
+const A = 'assets/avatars/';
+const projects = [
+  {name:'PEDSAFIO', cat:'Eventos', img:'pedaafio2026.png',
+   desc:'Evento extremo basado en DEDSAFIO 3.',
+   credit:'LMC Studios ™ y Axolotl Studios', url:'https://x.com/LMCStudi0s/status/2057556127861129547'},
+  {name:'Destruye el Nexus', cat:'Eventos', img:'destruyeelnexus.png',
+   desc:'Evento de la modalidad Destruye el Nexus para la comunidad.',
+   credit:'TheandreusPR', url:'https://x.com/Andreuspf/status/2073634084044120107'},
+  {name:'LMC Battles', cat:'Eventos', img:'buildbate.png',
+   desc:'Evento de Build Battles para la comunidad.',
+   credit:'TheandreusPR', url:'https://x.com/LMCStudi0s/status/2082207789443604546'},
+  {name:'ZanFirxz', cat:'Servidores y networks', img:'zanfrixz.png',
+   desc:'Network con varias modalidades.',
+   credit:'zFrixz y Zansumi', url:'https://www.tiktok.com/@zanfrix_network'},
+  {name:'SumixCraft', cat:'Servidores y networks', img:'sm.png',
+   desc:'Servidor y comunidad de Minecraft.',
+   credit:'zFrixz', url:'https://www.tiktok.com/@sumixcraft'},
+  {name:'Skyblock de los Panas', cat:'Servidores y networks', img:'image-removebg-preview_4.png',
+   desc:'Modalidad Skyblock para la comunidad de Team LMC.',
+   credit:'TheandreusPR', url:'https://www.youtube.com/watch?v=ehaIvwu6S5o'},
+  {name:'OshanZumi', cat:'Survival y hardcore', img:'oshanzumi.png',
+   desc:'Proyecto hardcore.',
+   credit:'Oshawott y Zansumi', url:'https://www.twitch.tv/videos/2673904387'},
+  {name:'Hardcore Of Elite', cat:'Survival y hardcore', img:'logo2he.png',
+   desc:'Experiencia de supervivencia extrema.',
+   credit:'Alicia_usu', url:'https://www.tiktok.com/@alicia_usu/video/7598013922939112716'},
+  {name:'EXODO SMP', cat:'Survival y hardcore', img:'a (1).png',
+   desc:'Servidor SMP hardcore.',
+   credit:'', url:'https://x.com/Andreuspf/status/2033276977755377756'},
+  {name:'LMC Project', cat:'Survival y hardcore', img:'logo.png',
+   desc:'Proyecto survival personalizado.',
+   credit:'LMC Studios ™', url:'https://x.com/LMCStudi0s/status/2049005507633979520'},
+  {name:'Team LMCraft Roleplay', cat:'Roleplay y experiencias', img:'TEAM LMC NEW - 2026.png',
+   desc:'Roleplay basado en comunidad y lore.',
+   credit:'LMC Studios ™', url:'https://x.com/team__lmc/status/2038030653686501456'},
+  {name:'DeadLands SMP', cat:'Roleplay y experiencias', img:'COMISION_ANDREUS_WASA.png',
+   desc:'Supervivencia apocalíptica con roleplay.',
+   credit:'TheandreusPR', url:'https://x.com/DeadLandsSMP/status/2055123133535867182'},
+  {name:'ZOULCRAFT', cat:'Eventos', img:'zoulcraft.gif', status:'Evento finalizado',
+   desc:'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
+   credit:'LMC Studios ™ y yDaantiX', url:'https://x.com/LMCStudi0s/status/2105026597166125064'}
+];
 
-/* PARTICLES */
+const grid = document.getElementById('grid');
+projects.forEach(p => {
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.dataset.cat = p.cat;
+  const label = p.cat === 'Eventos' ? 'Ver publicación' : 'Ver más';
+  el.innerHTML =
+    `<div class="media" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="Imagen de ${p.name}" loading="lazy"></div>
+     <div class="body">
+       ${p.status ? `<span class="status">${p.status}</span>` : ''}
+       <span class="cat">${p.cat}</span>
+       <h3>${p.name}</h3>
+       <p>${p.desc}</p>
+       ${p.credit ? `<span class="credit">${p.credit}</span>` : ''}
+       <a class="more" href="${p.url}" target="_blank" rel="noopener" aria-label="${label}: ${p.name}">${label}<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+     </div>`;
+  grid.appendChild(el);
+});
 
-const particles = document.querySelector('.particles');
+/* FILTROS */
+const chips = document.querySelectorAll('.chip');
+chips.forEach(chip => chip.addEventListener('click', () => {
+  chips.forEach(c => c.setAttribute('aria-pressed', c === chip));
+  const f = chip.dataset.f;
+  let k = 0;
+  grid.querySelectorAll('.card').forEach(card => {
+    const show = f === 'all' || card.dataset.cat === f;
+    card.hidden = !show;
+    card.classList.remove('pop');
+    if (show) { void card.offsetWidth; card.style.setProperty('--k', k++); card.classList.add('pop'); }
+  });
+}));
 
-for(let i=0;i<80;i++){
+/* NAVEGACIÓN POR PÁGINAS (hash: #/servicios, #/proyectos, ...) */
+const pages = [...document.querySelectorAll('.page')];
+const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', estudio:'Nosotros', partners:'Partners', contacto:'Contacto'};
+const base = document.title;
+let firstLoad = true;
+function route(){
+  let id = location.hash.replace(/^#\/?/, '') || 'inicio';
+  if (!(id in titles)) id = 'inicio';
+  pages.forEach(p => p.classList.toggle('active', p.dataset.page === id));
+  document.querySelectorAll('[data-link]').forEach(a =>
+    a.dataset.link === id ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  document.title = id === 'inicio' ? base : titles[id] + ' | LMC Studios ™';
+  window.scrollTo({top:0, behavior:'instant'});
+  if (!firstLoad) document.querySelector('.page.active').focus({preventScroll:true});
+  firstLoad = false;
+  setMenu(false);
+}
+window.addEventListener('hashchange', route);
 
-const particle = document.createElement('div');
+/* MENÚ MÓVIL */
+const nav = document.getElementById('nav'), burger = document.getElementById('burger');
+function setMenu(open){
+  nav.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+}
+burger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-particle.classList.add('particle');
+/* ANIMACIÓN AL ENTRAR EN PANTALLA */
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target;
+    el.classList.add('in');
+    io.unobserve(el);
+    el.addEventListener('transitionend', e => {
+      if (e.propertyName === 'opacity') el.classList.remove('reveal');
+    }, {once:true});
+  });
+}, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
 
-particle.style.left = Math.random()*100+'%';
-
-particle.style.animationDuration =
-(5 + Math.random()*10)+'s';
-
-particle.style.opacity =
-Math.random();
-
-particle.style.width =
-particle.style.height =
-Math.random()*4+'px';
-
-particles.appendChild(particle);
-
+if (io) {
+  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story h2,.story .txt,.note,.cta .wrap>*,.filters,.card').forEach(el => {
+    el.style.setProperty('--i', Math.min([...el.parentElement.children].indexOf(el) % 6, 5));
+    el.classList.add('reveal');
+    io.observe(el);
+  });
 }
 
-/* ACCORDION */
+/* ENLACE "MIRA ABAJO" */
+document.querySelectorAll('[data-jump]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const t = document.getElementById(a.dataset.jump);
+  if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
+}));
 
-const accordionItems =
-document.querySelectorAll('.accordion-item');
-
-accordionItems.forEach(item=>{
-
-item.querySelector('.accordion-header')
-.addEventListener('click',()=>{
-
-item.classList.toggle('active');
-
-});
-
-});
-
-/* TOP BUTTON */
-
-const topBtn =
-document.getElementById('topBtn');
-
-topBtn.addEventListener('click',()=>{
-
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
-
-});
-
-/* SCROLL ANIMATION */
-
-const observer =
-new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity = 1;
-entry.target.style.transform = "translateY(0px)";
-
-}
-
-});
-
-});
-
-document.querySelectorAll('section').forEach(sec=>{
-
-sec.style.opacity = 0;
-sec.style.transform = "translateY(80px)";
-sec.style.transition = ".8s";
-
-observer.observe(sec);
-
-});
-
+route();
 </script>
-
 </body>
 </html>

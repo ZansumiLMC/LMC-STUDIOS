@@ -172,7 +172,7 @@ section{padding:clamp(72px,10vw,130px) 0}
 .card .more{margin-top:auto;padding-top:6px;font-weight:600;font-size:.95rem}
 .card .more::after{content:"";position:absolute;inset:0}
 .card .more i{margin-left:6px;font-size:.8rem;transition:transform .3s var(--ease)}
-.card:hover .more i{transform:translate(4px,-4px)}
+.card:hover .more i{transform:translateX(4px)}
 .status{justify-self:start;font-size:.8rem;border:1px solid #3a3a3d;color:var(--muted);padding:3px 12px;border-radius:999px}
 .card[hidden]{display:none}
 .card.pop{animation:pop .45s var(--ease) both;animation-delay:calc(var(--k,0)*60ms)}
@@ -214,11 +214,99 @@ section{padding:clamp(72px,10vw,130px) 0}
 .division p{color:var(--muted);max-width:60ch}
 
 /* CONTACTO + FOOTER */
-.cta{background:radial-gradient(900px 400px at 85% 0,rgba(224,33,47,.16),transparent 70%),var(--bg)}
-.cta h2{font-size:clamp(2.4rem,6.5vw,5.2rem);font-weight:800;max-width:14ch}
-.cta p{color:var(--muted);margin:22px 0 32px;max-width:52ch;font-size:1.15rem}
-.cta .actions{display:flex;flex-wrap:wrap;gap:14px}
-footer{border-top:1px solid var(--line);padding:56px 0 36px;font-size:.95rem}
+/* CONTACTO (imagen a la izquierda, formulario a la derecha) */
+.contact-sec{background:radial-gradient(900px 400px at 85% 0,rgba(224,33,47,.16),transparent 70%),var(--bg)}
+.contact{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr);gap:clamp(32px,6vw,80px);align-items:start}
+.contact-img{position:sticky;top:110px;display:grid;place-items:center;padding:24px}
+.contact-img::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,rgba(224,33,47,.32),transparent 70%);pointer-events:none}
+.contact-img img{position:relative;width:100%;max-width:380px;height:auto;max-height:60vh;object-fit:contain;filter:drop-shadow(0 0 22px rgba(224,33,47,.4))}
+.contact-info h2{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:800;margin-bottom:18px}
+.contact-info>p{color:var(--muted);max-width:58ch;margin-top:12px}
+.mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:22px 0 4px}
+.mail-addr{min-height:46px;padding:10px 18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;color:var(--text);font:600 .95rem var(--body);letter-spacing:.02em;cursor:pointer;word-break:break-all;text-align:left;transition:border-color .25s,box-shadow .25s}
+.mail-addr:hover{border-color:var(--red);box-shadow:0 0 18px rgba(224,33,47,.35)}
+.mailbox .btn{padding:11px 20px;font-size:.92rem;cursor:pointer;background:none;color:var(--text);font-family:var(--body)}
+.mailbox .btn.ghost:hover{border-color:var(--text)}
+.sr{position:absolute;left:-999px}
+.cform{display:grid;gap:16px;margin-top:28px}
+.cform .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{position:relative;display:block}
+.fld input,.fld textarea{width:100%;padding:18px 48px 18px 16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--text);font:400 1rem var(--body);transition:border-color .25s,box-shadow .25s}
+.fld input::placeholder,.fld textarea::placeholder{color:#7d7d7a}
+.fld>i{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#6f6f6c;pointer-events:none}
+.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--red);box-shadow:0 0 16px rgba(224,33,47,.28)}
+.fld.area textarea{min-height:140px;resize:vertical;padding-right:16px;display:block}
+.fld.area label{display:block;font-size:.8rem;font-weight:600;margin-bottom:8px;color:var(--muted)}
+.cform b{color:var(--red-soft);font-weight:600}
+.cform .hint{margin:-6px 0 0 4px;font-size:.82rem;color:var(--muted)}
+.cform .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.cform .row .btn{cursor:pointer;font-family:var(--body);font-size:1rem}
+.cform .row .btn.ghost{background:none;color:var(--text)}
+.cform-status{min-height:1.4em;font-size:.92rem;color:var(--muted)}
+
+/* PÁGINA DE PROYECTO (detalle) */
+.proj-hero{position:relative;isolation:isolate;height:clamp(260px,40vw,430px);display:grid;place-items:center;overflow:hidden;background:#0d0d0e}
+.proj-hero::before{content:"";position:absolute;inset:-30px;z-index:-2;background:var(--bgimg) center/cover no-repeat;filter:blur(22px) brightness(.5) saturate(1.1)}
+.proj-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,9,10,.15) 0%,rgba(9,9,10,0) 45%,var(--bg) 100%)}
+.proj-hero img{max-height:78%;max-width:min(82%,900px);object-fit:contain;filter:drop-shadow(0 14px 40px rgba(0,0,0,.6))}
+.proj-wrap{width:min(1100px,92vw);margin-inline:auto;padding:8px 0 clamp(72px,9vw,120px)}
+.back{display:inline-flex;align-items:center;gap:8px;color:var(--muted);font-size:.92rem;font-weight:500;padding:10px 0;margin-bottom:10px;transition:color .2s}
+.back:hover{color:var(--text)}
+.back i{font-size:.8rem;transition:transform .3s var(--ease)}
+.back:hover i{transform:translateX(-4px)}
+.proj-tags{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.proj-tags .cat{font-size:.85rem;color:var(--red-soft);font-weight:600}
+.proj-wrap h1{font-size:clamp(2.2rem,5.4vw,3.8rem);font-weight:800;margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 28px;padding:18px 22px;background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:26px}
+.stat{display:flex;align-items:baseline;gap:10px;color:var(--muted);font-size:.95rem;min-width:0}
+.stat i{color:var(--muted);width:18px;text-align:center;flex:none}
+.stat b{color:var(--text);font-weight:600}
+.proj-desc{display:grid;gap:16px;color:#d4d4d1;max-width:78ch}
+.proj-desc a{color:var(--text);border-bottom:1px solid var(--red)}
+.proj-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.proj-sec{margin-top:clamp(44px,6vw,72px)}
+.proj-sec h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.proj-sec h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.embed{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000}
+.embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.shot{position:relative;display:block;aspect-ratio:16/10;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel);cursor:zoom-in;padding:0;color:inherit;font:inherit;text-align:left}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.shot:hover img{transform:scale(1.05)}
+.shot span{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;font-size:.82rem;background:linear-gradient(0deg,rgba(9,9,10,.9),transparent);opacity:0;transition:opacity .3s}
+.shot:hover span,.shot:focus-visible span{opacity:1}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.tool{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:border-color .3s}
+.tool:hover{border-color:#3a3a3d}
+.tool>i{color:var(--red-soft);font-size:1.2rem;padding-top:3px;width:22px;text-align:center;flex:none}
+.tool h3{font-size:1.05rem;font-family:var(--body);font-weight:600;letter-spacing:0;margin-bottom:2px}
+.tool p{color:var(--muted);font-size:.9rem;line-height:1.5}
+.crew{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.crew-m{display:flex;gap:14px;align-items:center;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;transition:border-color .3s}
+.crew-m:hover{border-color:#3a3a3d}
+.crew-m .av{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:#0e0e0f;display:grid;place-items:center;font:700 1.2rem var(--display);color:var(--red-soft);flex:none}
+.crew-m h3{font-size:1.05rem;font-family:var(--body);font-weight:600;letter-spacing:0}
+.crew-m p{color:var(--muted);font-size:.88rem}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(0,0,0,.92);padding:4vw}
+.lb.open{display:grid}
+.lb figure{display:grid;gap:12px;justify-items:center;max-width:100%}
+.lb img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:8px}
+.lb figcaption{color:var(--muted);font-size:.9rem;text-align:center}
+.lb button{position:absolute;background:rgba(20,20,21,.8);border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1rem;transition:border-color .25s}
+.lb button:hover{border-color:var(--red)}
+.lb .x{top:18px;right:18px}.lb .pv{left:18px;top:50%}.lb .nx{right:18px;top:50%}
+
+/* BOTONES DISCRETOS PARA CAMBIAR DE SECCIÓN */
+.pager{position:fixed;right:clamp(12px,2.2vw,28px);bottom:clamp(12px,2.2vw,28px);z-index:40;display:flex;gap:8px}
+.pg{display:inline-flex;align-items:center;justify-content:center;height:40px;min-width:40px;padding:0 13px;border:1px solid var(--line);border-radius:999px;background:rgba(20,20,21,.82);backdrop-filter:blur(6px);color:var(--muted);font-size:.8rem;opacity:.55;transition:opacity .25s,color .25s,border-color .25s,box-shadow .25s}
+.pg i{font-size:.75rem}
+.pg span{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .35s var(--ease),opacity .25s,margin .35s var(--ease)}
+.pg:hover,.pg:focus-visible{opacity:1;color:var(--text);border-color:var(--red);box-shadow:0 0 14px rgba(224,33,47,.4)}
+.pg:hover span,.pg:focus-visible span{max-width:140px;opacity:1;margin:0 9px}
+.pg[hidden]{display:none}
+footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
 .foot p{color:var(--muted);max-width:38ch;margin-top:14px}
 .foot h4{font:600 .95rem var(--body);margin-bottom:14px}
@@ -246,8 +334,15 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px;font-size:.95rem}
   .division,.affiliate .division{grid-template-columns:1fr;justify-items:start}
   .affiliate .division>.btn{justify-self:start}
   .foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}
+  .contact{grid-template-columns:1fr;gap:28px}
+  .contact-img{position:static;padding:0;justify-self:start}
+  .contact-img img{max-width:150px;max-height:150px}
+  .stats{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
+  .cform .two{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .proj-desc{font-size:1rem}
   .grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr}
@@ -485,17 +580,39 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px;font-size:.95rem}
 
 <!-- CONTACTO -->
 <div class="page" data-page="contacto" tabindex="-1">
-  <section class="cta">
-    <div class="wrap">
-      <h2>¿Tienes una idea para tu próximo evento?</h2>
-      <p>Cuéntanos tu concepto y exploremos cómo convertirlo en una experiencia dentro de Minecraft.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://x.com/LMCStudi0s" target="_blank" rel="noopener">Contactar con LMC Studios ™</a>
-        <a class="btn ghost" href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener"><i class="fab fa-discord"></i>Unirse a la comunidad</a>
+  <section class="contact-sec">
+    <div class="wrap contact">
+      <div class="contact-img"><img src="assets/avatars/lmcstudios.png" alt="LMC Studios ™"></div>
+      <div class="contact-info">
+        <h2>Contacto</h2>
+        <p>Si tienes una idea para tu evento, servidor o experiencia de Minecraft, escríbenos. Revisaremos tu propuesta, evaluaremos su alcance y te responderemos con los siguientes pasos para llevarla a cabo.</p>
+        <p>¿Tienes una idea y no sabes por dónde empezar? ¡Contáctanos y trabajemos juntos!</p>
+        <p>Contacto:</p>
+        <div class="mailbox">
+          <button class="mail-addr" type="button" id="mail-addr" aria-label="Copiar correo electrónico"></button>
+          <button class="btn ghost" type="button" id="copy-mail">Copiar correo</button>
+          <a class="btn ghost" href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener"><i class="fab fa-discord"></i>Discord</a>
+        </div>
+        <span class="sr" id="copy-status" role="status"></span>
+        <form class="cform" id="cform" novalidate>
+          <div class="two">
+            <label class="fld"><input name="nombre" required autocomplete="name" placeholder="Nombre *" aria-label="Nombre"><i class="fa-regular fa-user" aria-hidden="true"></i></label>
+            <label class="fld"><input name="correo" type="email" required autocomplete="email" inputmode="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Correo electrónico *" aria-label="Correo electrónico"><i class="fa-regular fa-envelope" aria-hidden="true"></i></label>
+          </div>
+          <label class="fld"><input name="asunto" required placeholder="Asunto *" aria-label="Asunto"><i class="fa-solid fa-align-left" aria-hidden="true"></i></label>
+          <div class="fld area"><label for="f-msg">Mensaje <b>*</b></label><textarea id="f-msg" name="mensaje" rows="5" required placeholder="Escribe tu mensaje para nosotros aquí."></textarea></div>
+          <p class="hint">Recuerda incluir tu idea, el servicio que necesitas, la fecha estimada y el número de participantes.</p>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+          <div class="row"><button class="btn primary" type="submit">Enviar mensaje</button><button class="btn ghost" type="button" id="copy-msg">Copiar mensaje</button></div>
+          <p class="cform-status" id="cform-status" role="status"></p>
+        </form>
       </div>
     </div>
   </section>
 </div>
+
+<!-- DETALLE DE PROYECTO (se rellena con JS: #/proyecto/nombre) -->
+<div class="page" data-page="proyecto" tabindex="-1"><article id="proj"></article></div>
 
 </main>
 
@@ -534,9 +651,37 @@ footer{border-top:1px solid var(--line);padding:56px 0 36px;font-size:.95rem}
   </div>
 </footer>
 
+<nav class="pager" id="pager" aria-label="Cambiar de sección">
+  <a class="pg" id="pg-prev" href="#/inicio" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span></span></a>
+  <a class="pg" id="pg-next" href="#/servicios"><span></span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+</nav>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+  <button class="x" id="lb-x" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+  <button class="pv" id="lb-pv" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="nx" id="lb-nx" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+</div>
+
 <script>
-/* DATOS DE PROYECTOS: para añadir uno nuevo, copia un bloque y edítalo */
+/* DATOS DE PROYECTOS: para añadir uno nuevo, copia un bloque y edítalo.
+
+   Cada proyecto puede llevar un bloque opcional "details" con la ficha completa.
+   Todo es opcional: las secciones que no tengan datos NO se muestran.
+
+   details:{
+     stats:[ {icon:'fa-regular fa-calendar', value:'9 oct 2026', label:'Fecha de finalización'},
+             {icon:'fa-solid fa-users', value:'60', label:'Participantes'} ],       // cifras de la franja superior
+     long:['Párrafo 1…', 'Párrafo 2…'],                                              // descripción ampliada
+     video:'ID_DE_YOUTUBE',                                                           // ej. 'dQw4w9WgXcQ'
+     gallery:[ {src:'zoulcraft/01.png', caption:'Mapa en desarrollo'} ],             // archivos en assets/projects/
+     tools:[ {name:'Paper 1.21', note:'Servidor base', icon:'fa-solid fa-server'},
+             {name:'Plugin propio', note:'Mecánica de la invasión'} ],               // herramientas, mods, plugins
+     team:[ {name:'Zansumi', role:'Dirección y desarrollo'} ]                         // si se omite, se toma de "credit"
+   }
+*/
 const A = 'assets/avatars/';
+const G = 'assets/projects/';
 const projects = [
   {name:'PEDSAFIO', cat:'Eventos', img:'pedaafio2026.png',
    desc:'Evento extremo basado en DEDSAFIO 3.',
@@ -576,26 +721,109 @@ const projects = [
    credit:'TheandreusPR', url:'https://x.com/DeadLandsSMP/status/2055123133535867182'},
   {name:'ZOULCRAFT', cat:'Eventos', img:'zoulcraft.gif', status:'Evento finalizado',
    desc:'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
-   credit:'LMC Studios ™ y yDaantiX', url:'https://x.com/LMCStudi0s/status/2105026597166125064'}
+   credit:'LMC Studios ™ y yDaantiX', url:'https://x.com/LMCStudi0s/status/2105026597166125064',
+   details:{
+     stats:[
+       {icon:'fa-regular fa-calendar', value:'9 oct 2026', label:'Fecha de finalización'},
+       {icon:'fa-solid fa-users', value:'60', label:'Participantes'}
+     ],
+     long:[
+       'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
+       'Producido por LMC Studios ™ en colaboración con yDaantiX, participante de Team LMC. El evento finalizó el 9 de octubre de 2026 y nos brindó una gran exposición como estudio.'
+     ]
+   }}
 ];
+
+const slugify = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+projects.forEach(p => p.slug = slugify(p.name));
+const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 const grid = document.getElementById('grid');
 projects.forEach(p => {
   const el = document.createElement('article');
   el.className = 'card';
   el.dataset.cat = p.cat;
-  const label = p.cat === 'Eventos' ? 'Ver publicación' : 'Ver más';
   el.innerHTML =
-    `<div class="media" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="Imagen de ${p.name}" loading="lazy"></div>
+    `<div class="media" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="Imagen de ${esc(p.name)}" loading="lazy"></div>
      <div class="body">
-       ${p.status ? `<span class="status">${p.status}</span>` : ''}
-       <span class="cat">${p.cat}</span>
-       <h3>${p.name}</h3>
-       <p>${p.desc}</p>
-       ${p.credit ? `<span class="credit">${p.credit}</span>` : ''}
-       <a class="more" href="${p.url}" target="_blank" rel="noopener" aria-label="${label}: ${p.name}">${label}<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+       ${p.status ? `<span class="status">${esc(p.status)}</span>` : ''}
+       <span class="cat">${esc(p.cat)}</span>
+       <h3>${esc(p.name)}</h3>
+       <p>${esc(p.desc)}</p>
+       ${p.credit ? `<span class="credit">${esc(p.credit)}</span>` : ''}
+       <a class="more" href="#/proyecto/${p.slug}" aria-label="Ver detalles: ${esc(p.name)}">Ver detalles<i class="fa-solid fa-arrow-right"></i></a>
      </div>`;
   grid.appendChild(el);
+});
+
+/* ---------- DETALLE DE PROYECTO ---------- */
+const KNOWN = {'zansumi':'zansumi.png','theandreuspr':'andreus.png','iwanmc':'iwan.png','lmc studios ™':'lmcstudios.png','team lmc ™':'sas.png'};
+const srcLabel = u => /x\.com|twitter/.test(u) ? ['Ver publicación en X','fa-brands fa-x-twitter']
+  : /tiktok/.test(u) ? ['Ver en TikTok','fa-brands fa-tiktok']
+  : /youtube|youtu\.be/.test(u) ? ['Ver en YouTube','fa-brands fa-youtube']
+  : /twitch/.test(u) ? ['Ver en Twitch','fa-brands fa-twitch']
+  : ['Ver publicación','fa-solid fa-arrow-up-right-from-square'];
+let shots = [];
+
+function renderProject(p){
+  const d = p.details || {};
+  const img = encodeURI(A + p.img);
+  const stats = [
+    {icon:'fa-solid fa-layer-group', value:p.cat, label:'Categoría'},
+    ...(p.credit ? [{icon:'fa-solid fa-people-group', value:p.credit, label:'Producción'}] : []),
+    ...(p.status ? [{icon:'fa-solid fa-circle-check', value:p.status, label:''}] : []),
+    ...(d.stats || [])
+  ];
+  const paras = d.long && d.long.length ? d.long : [p.desc];
+  const team = d.team && d.team.length ? d.team
+    : (p.credit ? p.credit.split(/\s+y\s+/).map(n => ({name:n.trim()})) : []);
+  const [lbl, ico] = srcLabel(p.url);
+  shots = (d.gallery || []).map(g => typeof g === 'string' ? {src:g} : g)
+    .map(g => ({src: /^https?:|^assets\//.test(g.src) ? g.src : G + g.src, caption: g.caption || ''}));
+
+  document.getElementById('proj').innerHTML =
+  `<div class="proj-hero" style="--bgimg:url('${img}')"><img src="${img}" alt="Imagen de ${esc(p.name)}"></div>
+   <div class="proj-wrap">
+     <a class="back" href="#/proyectos"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Todos los proyectos</a>
+     <div class="proj-tags"><span class="cat">${esc(p.cat)}</span></div>
+     <h1>${esc(p.name)}</h1>
+     <div class="stats">${stats.map(x => `<div class="stat"><i class="${x.icon}" aria-hidden="true"></i><span><b>${esc(x.value)}</b>${x.label ? ' ' + esc(x.label) : ''}</span></div>`).join('')}</div>
+     <div class="proj-desc">${paras.map(t => `<p>${esc(t)}</p>`).join('')}</div>
+     <div class="proj-actions">
+       <a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>
+       <a class="btn ghost" href="#/contacto">Quiero algo así</a>
+     </div>
+     ${d.video ? `<div class="proj-sec"><h2>Video</h2><div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(d.video)}" title="Video de ${esc(p.name)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>` : ''}
+     ${shots.length ? `<div class="proj-sec"><h2>Capturas del desarrollo</h2><div class="shots">${shots.map((g,i) => `<button class="shot" type="button" data-i="${i}" aria-label="Ampliar imagen ${i+1}"><img src="${encodeURI(g.src)}" alt="${esc(g.caption || 'Captura de ' + p.name)}" loading="lazy">${g.caption ? `<span>${esc(g.caption)}</span>` : ''}</button>`).join('')}</div></div>` : ''}
+     ${d.tools && d.tools.length ? `<div class="proj-sec"><h2>Herramientas y mods</h2><div class="tools">${d.tools.map(t => `<div class="tool"><i class="${t.icon || 'fa-solid fa-puzzle-piece'}" aria-hidden="true"></i><div><h3>${esc(t.name)}</h3>${t.note ? `<p>${esc(t.note)}</p>` : ''}</div></div>`).join('')}</div></div>` : ''}
+     ${team.length ? `<div class="proj-sec"><h2>Equipo</h2><div class="crew">${team.map(m => {
+        const f = KNOWN[m.name.toLowerCase()];
+        return `<div class="crew-m">${f ? `<img class="av" src="${A + f}" alt="">` : `<span class="av" aria-hidden="true">${esc(m.name.trim()[0] || '?').toUpperCase()}</span>`}<div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div></div>`;
+      }).join('')}</div></div>` : ''}
+   </div>`;
+}
+
+/* LIGHTBOX */
+const lb = document.getElementById('lb'); let lbI = 0;
+function lbShow(i){
+  lbI = (i + shots.length) % shots.length;
+  document.getElementById('lb-img').src = encodeURI(shots[lbI].src);
+  document.getElementById('lb-cap').textContent = shots[lbI].caption;
+  const multi = shots.length > 1;
+  document.getElementById('lb-pv').hidden = document.getElementById('lb-nx').hidden = !multi;
+  lb.classList.add('open');
+}
+const lbClose = () => lb.classList.remove('open');
+document.getElementById('proj').addEventListener('click', e => { const b = e.target.closest('.shot'); if (b) lbShow(+b.dataset.i); });
+document.getElementById('lb-x').addEventListener('click', lbClose);
+document.getElementById('lb-pv').addEventListener('click', () => lbShow(lbI - 1));
+document.getElementById('lb-nx').addEventListener('click', () => lbShow(lbI + 1));
+lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') lbClose();
+  if (e.key === 'ArrowLeft') lbShow(lbI - 1);
+  if (e.key === 'ArrowRight') lbShow(lbI + 1);
 });
 
 /* FILTROS */
@@ -614,19 +842,48 @@ chips.forEach(chip => chip.addEventListener('click', () => {
 
 /* NAVEGACIÓN POR PÁGINAS (hash: #/servicios, #/proyectos, ...) */
 const pages = [...document.querySelectorAll('.page')];
-const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', estudio:'Nosotros', partners:'Partners', contacto:'Contacto'};
+const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', estudio:'Nosotros', partners:'Partners', contacto:'Contacto', proyecto:''};
+const ORDER = ['inicio','servicios','proyectos','estudio','partners','contacto'];
 const base = document.title;
-let firstLoad = true;
+let firstLoad = true, prevId = '', savedY = 0;
+const pgPrev = document.getElementById('pg-prev'), pgNext = document.getElementById('pg-next');
+
+function updatePager(id){
+  const i = ORDER.indexOf(id === 'proyecto' ? 'proyectos' : id);
+  const set = (a, target) => {
+    a.hidden = !target;
+    if (!target) return;
+    const name = target === 'inicio' ? 'Inicio' : titles[target];
+    a.href = '#/' + target;
+    a.querySelector('span').textContent = name;
+    a.setAttribute('aria-label', 'Ir a ' + name);
+    a.title = name;
+  };
+  set(pgPrev, ORDER[i - 1]);
+  set(pgNext, ORDER[i + 1]);
+}
+
 function route(){
-  let id = location.hash.replace(/^#\/?/, '') || 'inicio';
+  const [rawId, arg] = (location.hash.replace(/^#\/?/, '') || 'inicio').split('/');
+  let id = rawId, proj = null;
   if (!(id in titles)) id = 'inicio';
+  if (id === 'proyecto') {
+    proj = projects.find(p => p.slug === arg);
+    if (!proj) { location.replace('#/proyectos'); return; }
+    renderProject(proj);
+  }
+  if (id === 'proyecto' && prevId === 'proyectos') savedY = window.scrollY;
+  lbClose();
   pages.forEach(p => p.classList.toggle('active', p.dataset.page === id));
+  const navId = id === 'proyecto' ? 'proyectos' : id;
   document.querySelectorAll('[data-link]').forEach(a =>
-    a.dataset.link === id ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
-  document.title = id === 'inicio' ? base : titles[id] + ' | LMC Studios ™';
-  window.scrollTo({top:0, behavior:'instant'});
+    a.dataset.link === navId ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  document.title = proj ? proj.name + ' | LMC Studios ™' : id === 'inicio' ? base : titles[id] + ' | LMC Studios ™';
+  updatePager(id);
+  const back = id === 'proyectos' && prevId === 'proyecto';
+  window.scrollTo({top: back ? savedY : 0, behavior:'instant'});
   if (!firstLoad) document.querySelector('.page.active').focus({preventScroll:true});
-  firstLoad = false;
+  firstLoad = false; prevId = id;
   setMenu(false);
 }
 window.addEventListener('hashchange', route);
@@ -655,7 +912,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries =
 }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
 
 if (io) {
-  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story h2,.story .txt,.note,.cta .wrap>*,.filters,.card').forEach(el => {
+  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story h2,.story .txt,.note,.contact-sec .contact>*,.filters,.card').forEach(el => {
     el.style.setProperty('--i', Math.min([...el.parentElement.children].indexOf(el) % 6, 5));
     el.classList.add('reveal');
     io.observe(el);
@@ -668,6 +925,82 @@ document.querySelectorAll('[data-jump]').forEach(a => a.addEventListener('click'
   const t = document.getElementById(a.dataset.jump);
   if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
 }));
+
+
+/* ---------- CONTACTO ----------
+   Envío directo con FormSubmit a este correo. La primera vez que alguien envíe un mensaje,
+   FormSubmit mandará un correo de activación a esta dirección: hay que confirmarlo una sola vez. */
+const CONTACT = {
+  email: 'LMC-Studios-business@hotmail.com',
+  endpoint: 'https://formsubmit.co/ajax/LMC-Studios-business@hotmail.com',
+  /* URL de tu Cloudflare Worker que reenvía a Discord (ver discord-worker.js).
+     Vacío = solo se envía por correo. Ejemplo: 'https://lmc-contacto.TU-USUARIO.workers.dev' */
+  discord: 'https://crimson-credit-c1f7.lmc-studios-business.workers.dev/'
+};
+(function(){
+  const mailBtn = document.getElementById('mail-addr'), copyBtn = document.getElementById('copy-mail');
+  const status = document.getElementById('copy-status');
+  mailBtn.textContent = CONTACT.email;
+  const copyText = txt => {
+    const ok = () => { copyBtn.textContent = '¡Correo copiado!'; status.textContent = 'Correo copiado al portapapeles'; clearTimeout(copyBtn._t); copyBtn._t = setTimeout(() => { copyBtn.textContent = 'Copiar correo'; status.textContent = ''; }, 2200); };
+    const old = () => { const ta = document.createElement('textarea'); ta.value = txt; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy') ? ok() : alert(txt); } catch (_) { alert(txt); } ta.remove(); };
+    navigator.clipboard && window.isSecureContext ? navigator.clipboard.writeText(txt).then(ok, old) : old();
+  };
+  mailBtn.addEventListener('click', () => copyText(CONTACT.email));
+  copyBtn.addEventListener('click', () => copyText(CONTACT.email));
+
+  const f = document.getElementById('cform'), st = document.getElementById('cform-status');
+  const build = () => { const d = new FormData(f); return { subject: d.get('asunto'), body: `Nombre: ${d.get('nombre')}\nCorreo: ${d.get('correo')}\n\n${d.get('mensaje')}` }; };
+  const mail = f.correo;
+  mail.addEventListener('input', () => mail.setCustomValidity(''));
+  mail.addEventListener('invalid', () => mail.setCustomValidity(mail.validity.valueMissing ? 'Escribe tu correo para poder responderte.' : 'Escribe un correo válido, por ejemplo nombre@correo.com.'));
+  const valid = () => f.checkValidity() || (f.reportValidity(), false);
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); if (!valid()) return;
+    const { subject } = build();
+    st.textContent = 'Enviando…';
+    const fd = new FormData(f);
+    const post = (url, opts, ms) => { const c = new AbortController(); const t = setTimeout(() => c.abort(), ms); return fetch(url, { ...opts, signal: c.signal }).finally(() => clearTimeout(t)); };
+    const viaMail = async () => {
+      try {
+        const data = new FormData(f);
+        data.append('_subject', 'LMC Studios ™ · ' + subject); data.append('_replyto', data.get('correo')); data.append('_template', 'table'); data.append('_captcha', 'false');
+        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data }, 10000);
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.success !== 'false' && j.success !== false) return true;
+        console.warn('FormSubmit:', r.status, j);
+      } catch (err) { console.warn('FormSubmit:', err); }
+      return false;
+    };
+    const viaDiscord = async () => {
+      if (!CONTACT.discord) return false;
+      try {
+        const r = await post(CONTACT.discord, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre: fd.get('nombre'), correo: fd.get('correo'), asunto: fd.get('asunto'), mensaje: fd.get('mensaje'), _honey: fd.get('_honey') }) }, 10000);
+        if (r.ok) return true;
+        console.warn('Discord:', r.status);
+      } catch (err) { console.warn('Discord:', err); }
+      return false;
+    };
+    /* avisa en cuanto UNO de los dos envíos funcione, sin esperar al más lento */
+    const ok = await new Promise(res => {
+      let left = 2, done = false;
+      [viaMail(), viaDiscord()].forEach((pr, i) => pr.then(v => {
+        console.info((i ? 'Discord' : 'Correo') + ':', v ? 'enviado' : 'falló');
+        if (v && !done) { done = true; res(true); }
+        if (--left === 0 && !done) res(false);
+      }));
+    });
+    if (ok) { f.reset(); st.textContent = '¡Mensaje enviado! Te responderemos pronto.'; return; }
+    st.textContent = 'No pudimos enviar tu mensaje en este momento. Usa «Copiar mensaje» y mándalo a nuestro correo.';
+  });
+  document.getElementById('copy-msg').addEventListener('click', () => {
+    if (!valid()) return;
+    const { subject, body } = build(), txt = `Para: ${CONTACT.email}\nAsunto: ${subject}\n\n${body}`;
+    if (!navigator.clipboard) { st.textContent = 'Tu navegador no permite copiar.'; return; }
+    navigator.clipboard.writeText(txt).then(() => st.textContent = 'Mensaje copiado.', () => st.textContent = 'No se pudo copiar.');
+  });
+})();
 
 route();
 </script>

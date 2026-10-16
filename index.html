@@ -83,11 +83,11 @@ section{padding:clamp(72px,10vw,130px) 0}
 .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:10px;font-size:1.1rem;cursor:pointer}
 
 /* HERO */
-.hero{position:relative;min-height:calc(100svh - 112px);display:flex;align-items:flex-end;padding:0 0 clamp(48px,8vw,96px);isolation:isolate;overflow:hidden}
+.hero{position:relative;min-height:clamp(380px,56svh,540px);display:flex;align-items:flex-end;padding:0 0 clamp(48px,8vw,96px);isolation:isolate;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:-2;background:#0d0d0e url('assets/avatars/zoulcraft.gif') center/cover no-repeat;animation:drift 24s ease-in-out infinite alternate}
 @keyframes drift{from{transform:scale(1)}to{transform:scale(1.08)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(9,9,10,.55) 0%,rgba(9,9,10,.5) 35%,rgba(9,9,10,.96) 100%),linear-gradient(90deg,rgba(9,9,10,.85),transparent 70%)}
-.hero .wrap{display:grid;gap:22px;padding-top:120px}
+.hero .wrap{display:grid;gap:18px;padding-top:72px}
 .hero small{color:var(--muted);font-size:.95rem;letter-spacing:.14em}
 .hero small b{color:var(--red-soft);font-weight:600}
 .hero h1{font-size:clamp(2.8rem,8.4vw,7rem);font-weight:800;max-width:13ch}
@@ -109,7 +109,13 @@ section{padding:clamp(72px,10vw,130px) 0}
 
 /* HISTORIA */
 .story .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,90px);align-items:start}
-.story h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;max-width:10ch;position:sticky;top:110px}
+.story h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;max-width:10ch}
+.story-side{position:sticky;top:110px;display:grid;gap:28px;align-content:start}
+.renew{border:1px solid var(--line);background:var(--panel);border-radius:14px;overflow:hidden;max-width:340px}
+.renew video{display:block;width:100%;aspect-ratio:16/9;background:#000;object-fit:cover}
+.renew figcaption{padding:14px 16px 16px;font-size:.88rem;line-height:1.5;color:var(--muted)}
+.renew figcaption b{display:block;color:var(--text);font-family:var(--display);font-size:1rem;margin-bottom:4px}
+.renew .rtag{display:inline-block;font-size:.72rem;letter-spacing:.08em;color:var(--red-soft);font-weight:600;margin-bottom:6px}
 .story .txt{display:grid;gap:22px;color:var(--muted);max-width:62ch;justify-items:start}
 .story .txt p b{color:var(--text);font-weight:600}
 .story mark{background:none;color:var(--red-soft);font-weight:600}
@@ -152,11 +158,12 @@ section{padding:clamp(72px,10vw,130px) 0}
 
 /* PORTFOLIO */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
-.chip{background:none;border:1px solid var(--line);color:var(--muted);padding:9px 18px;border-radius:999px;font:500 .92rem var(--body);cursor:pointer;transition:.25s var(--ease)}
-.chip:hover{color:var(--text);border-color:var(--muted);transform:translateY(-2px)}
+.chip,.sortbtn{background:none;border:1px solid var(--line);color:var(--muted);padding:9px 18px;border-radius:999px;font:500 .92rem var(--body);cursor:pointer;transition:.25s var(--ease)}
+.sortbtn{margin-left:auto}
+.chip:hover,.sortbtn:hover{color:var(--text);border-color:var(--muted);transform:translateY(-2px)}
 .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:border-color .3s}
+.card{position:relative;cursor:pointer;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:border-color .3s}
 .card::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:3}
 .card:hover{border-color:#3a3a3d}
 .card:hover::before{transform:scaleX(1)}
@@ -164,8 +171,9 @@ section{padding:clamp(72px,10vw,130px) 0}
 .card .media::before{content:"";position:absolute;inset:-24px;z-index:-1;background:var(--bg) center/cover no-repeat;filter:blur(18px) brightness(.55) saturate(1.1)}
 .card .media img{width:100%;height:100%;object-fit:contain;transition:transform .7s var(--ease)}
 .card:hover .media img{transform:scale(1.03)}
-.card .body{display:grid;gap:8px;padding:22px 24px 26px;position:relative;align-content:start;flex:1}
+.card .body{display:grid;gap:8px;padding:22px 24px 26px;align-content:start;flex:1}
 .card .cat{font-size:.82rem;color:var(--red-soft);font-weight:600}
+.card .cat .date{color:#7d7d7a;font-weight:500}
 .card h3{font-size:1.5rem;font-weight:700}
 .card p{color:var(--muted);font-size:.98rem}
 .card .credit{font-size:.88rem;color:#7d7d7a}
@@ -288,6 +296,43 @@ section{padding:clamp(72px,10vw,130px) 0}
 .crew-m h3{font-size:1.05rem;font-family:var(--body);font-weight:600;letter-spacing:0}
 .crew-m p{color:var(--muted);font-size:.88rem}
 
+
+/* NOVEDADES */
+.news{padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,6vw,80px)}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.nw{border:1px solid var(--line);background:var(--panel);border-radius:14px;transition:border-color .3s,transform .3s var(--ease)}
+.nw-discord{display:grid;gap:14px;align-content:start;padding:28px;background:radial-gradient(500px 240px at 100% 0,rgba(224,33,47,.16),transparent 70%),var(--panel)}
+.nw-top{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--red-soft)}
+.nw-top i{font-size:1.3rem}
+.nw-top em{margin-left:auto;font-style:normal;font-size:.85rem;color:var(--muted);font-weight:500}
+.nw-discord img{width:100%;border-radius:10px;border:1px solid var(--line)}
+.nw-discord h3{font-size:1.7rem}
+.nw-discord p{color:var(--muted);white-space:pre-line}
+.nw-discord .btn{justify-self:start;margin-top:6px}
+.nw-list{display:grid;gap:14px;align-content:start}
+.nw-ev{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;padding:14px 18px 14px 14px}
+.nw-ev:hover{border-color:var(--red);transform:translateX(4px)}
+.nw-ev img{width:120px;height:90px;object-fit:contain;background:#0e0e0f;border-radius:10px}
+.nw-ev .cat{font-size:.8rem;color:var(--red-soft);font-weight:600}
+.nw-ev h3{font-size:1.25rem;margin:2px 0 4px}
+.nw-ev p{color:var(--muted);font-size:.9rem;line-height:1.45}
+
+/* DETALLE: texto a la izquierda, capturas a la derecha */
+.proj-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.proj-text .proj-desc{max-width:none}
+.dev-h{font-size:clamp(1.3rem,2.4vw,1.7rem);font-weight:700;margin:32px 0 16px}
+.dev{list-style:none;display:grid;gap:12px;color:#d4d4d1}
+.dev li{position:relative;padding-left:24px}
+.dev li::before{content:"";position:absolute;left:0;top:.6em;width:10px;height:10px;border-radius:2px;background:var(--red);transform:rotate(45deg) scale(.7)}
+.proj-media{display:grid;gap:16px;position:sticky;top:96px}
+.mv{display:grid;gap:8px}
+.mv video{width:100%;aspect-ratio:16/9;background:#000;border:1px solid var(--line);border-radius:14px}
+.mv figcaption{font-size:.85rem;color:var(--muted)}
+.proj-media .shots{grid-template-columns:1fr 1fr}
+.proj-media .shot.wide{grid-column:1/-1}
+.media-empty{display:grid;place-items:center;gap:10px;aspect-ratio:16/10;border:1px dashed #3a3a3d;border-radius:14px;color:var(--muted);text-align:center;padding:20px;font-size:.92rem}
+.media-empty i{font-size:1.8rem;color:var(--red-soft)}
+
 /* LIGHTBOX */
 .lb{position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(0,0,0,.92);padding:4vw}
 .lb.open{display:grid}
@@ -324,7 +369,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   .nav.open ul{display:grid;position:absolute;top:72px;left:0;right:0;background:var(--bg);padding:12px 4vw 28px;gap:0;border-bottom:1px solid var(--line)}
   .nav.open ul a{display:block;padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem;color:var(--text)}
   .studio .wrap,.story .wrap{grid-template-columns:1fr}
-  .story h2{position:static}
+  .story-side{position:static}
+  .news-grid,.proj-main{grid-template-columns:1fr}
+  .proj-media{position:static}
   .svc{grid-template-columns:44px 1fr}
   .svc ul{grid-column:2}
   .grid{grid-template-columns:repeat(2,1fr)}
@@ -343,6 +390,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   .cform .two{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
   .proj-desc{font-size:1rem}
+  .nw-ev{grid-template-columns:90px 1fr}.nw-ev img{width:90px;height:68px}
+  .sortbtn{margin-left:0}
   .grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .foot{grid-template-columns:1fr}
@@ -350,6 +399,114 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* MEJORAS: ancho completo, simetría, línea de tiempo, visor de X, avatares */
+:root{--wrap:min(1320px,92vw)}
+.proj-wrap{width:min(1320px,92vw)}
+.proj-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.proj-media{position:static}
+.stats{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.status{display:inline-flex;align-items:center;gap:7px}
+.status i{color:#5ec27a;font-size:.78rem}
+.proj-sec h2{text-transform:none}
+.tl{list-style:none;position:relative;display:grid;gap:20px;padding:6px 0}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);background:linear-gradient(180deg,var(--red),var(--line))}
+.tl-i{position:relative;display:grid;grid-template-columns:1fr 1fr}
+.tl-i::before{content:"";position:absolute;left:50%;top:26px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--red);transform:translateX(-50%);z-index:1}
+.tl-c{padding:20px 24px;background:var(--panel);border:1px solid var(--line);border-radius:14px;transition:border-color .3s,transform .3s var(--ease)}
+.tl-c:hover{border-color:var(--red);transform:translateY(-2px)}
+.tl-i:nth-child(odd) .tl-c{grid-column:1;margin-right:44px}
+.tl-i:nth-child(even) .tl-c{grid-column:2;margin-left:44px}
+.tl-n{display:block;font:700 .78rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--red-soft);margin-bottom:6px}
+.tl-c p{color:#d4d4d1;font-size:.98rem;line-height:1.6}
+.xv{display:grid;gap:12px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
+.xv-head{display:flex;align-items:center;gap:10px;font-family:var(--display)}
+.xv-head i{color:var(--red-soft)}
+.xv-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.xv-tab{background:none;border:1px solid var(--line);color:var(--muted);padding:7px 14px;border-radius:999px;font:500 .85rem var(--body);cursor:pointer;transition:.25s}
+.xv-tab:hover{color:var(--text);border-color:var(--muted)}
+.xv-tab[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.xv-stage{display:flex;justify-content:center;min-height:200px;max-height:640px;overflow:auto}
+.xv-stage .twitter-tweet,.xv-stage iframe{margin:0 auto!important;max-width:100%!important}
+.xv-open{justify-self:end;font-size:.88rem;font-weight:600;color:var(--muted);transition:color .2s}
+.xv-open:hover{color:var(--red-soft)}
+.crew{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.crew-m{min-height:84px}
+.crew-m .av{width:56px;height:56px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;object-position:center;overflow:hidden}
+.crew-m .av.logo{object-fit:contain;padding:7px}
+.crew-m>div{flex:1;min-width:0}
+.crew-m p{line-height:1.4;margin-top:2px}
+.crew-m .go{color:var(--muted);font-size:.8rem;flex:none;transition:color .2s,transform .3s var(--ease)}
+.crew-m.lnk:hover{border-color:var(--red)}
+.crew-m.lnk:hover .go{color:var(--red-soft);transform:translate(2px,-2px)}
+@media(max-width:980px){
+  .proj-main{grid-template-columns:1fr}
+  .tl::before{left:14px;transform:none}
+  .tl-i{grid-template-columns:1fr}
+  .tl-i::before{left:14px}
+  .tl-i:nth-child(n) .tl-c{grid-column:1;margin:0 0 0 44px}
+}
+
+/* CARRUSEL DE NOVEDADES */
+.news-grid{display:block}
+.cs{position:relative;padding-bottom:44px}
+.cs-stage{position:relative;height:460px;perspective:1500px;transform-style:preserve-3d;overflow:hidden}
+.cs-slide{position:absolute;left:50%;top:0;width:min(66%,780px);height:100%;display:flex;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .7s var(--ease),opacity .7s var(--ease);will-change:transform}
+.cs-slide[data-off="0"]{border-color:#3a3a3d;box-shadow:0 30px 60px -30px rgba(224,33,47,.45)}
+.cs-d{flex-direction:column;gap:12px;padding:28px 32px;background:radial-gradient(520px 260px at 100% 0,rgba(224,33,47,.18),transparent 70%),var(--panel)}
+.cs-d h3{font-size:clamp(1.3rem,2.4vw,1.8rem)}
+.cs-txt{display:grid;gap:10px;color:var(--muted);font-size:.98rem;line-height:1.55;overflow:auto}
+.cs-txt a{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);word-break:break-all}
+.cs-foot{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.cs-foot .btn{padding:10px 20px;font-size:.9rem}
+.cs-p{flex-direction:row;align-items:stretch}
+.cs-img{position:relative;isolation:isolate;flex:0 0 46%;background:#0e0e0f;overflow:hidden;display:grid;place-items:center}
+.cs-img::before{content:"";position:absolute;inset:-20px;z-index:-1;background:var(--bg) center/cover;filter:blur(18px) brightness(.5)}
+.cs-img img{width:100%;height:100%;object-fit:contain;padding:12px}
+.cs-body{flex:1;display:grid;gap:10px;align-content:center;padding:28px 30px}
+.cs-body .cat{font-size:.82rem;color:var(--red-soft);font-weight:600}
+.cs-body h3{font-size:clamp(1.5rem,3vw,2.2rem)}
+.cs-body p{color:var(--muted)}
+.cs-body .more{font-weight:600;margin-top:6px}
+.cs-nav{position:absolute;top:calc(230px - 22px);z-index:20;width:44px;height:44px;border-radius:50%;background:rgba(20,20,21,.85);border:1px solid var(--line);color:var(--text);cursor:pointer;transition:border-color .25s}
+.cs-nav:hover{border-color:var(--red)}
+.cs-nav.pv{left:0}.cs-nav.nx{right:0}
+.cs-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:10px}
+.cs-dots button{width:10px;height:10px;border-radius:50%;border:0;background:#3a3a3d;cursor:pointer;transition:.3s var(--ease)}
+.cs-dots button[aria-current="true"]{background:var(--red);width:28px;border-radius:999px}
+.news .jump{display:table;margin:10px auto 0}
+@media(max-width:760px){
+  .cs-stage{height:600px}
+  .cs-slide{width:88%}
+  .cs-p{flex-direction:column}
+  .cs-img{flex:0 0 200px}
+  .cs-nav{top:auto;bottom:0}
+  .cs-nav.pv{left:4px}.cs-nav.nx{right:4px}
+}
+
+/* HERO: texto a la izquierda, novedades a la derecha */
+.hero{min-height:calc(100svh - 112px);align-items:center;padding:clamp(40px,6vw,72px) 0}
+.hero .wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,64px);align-items:center;padding-top:0}
+.hero-copy{display:grid;gap:18px;justify-items:start}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5.6rem);max-width:none;line-height:1}
+.hero .lead{font:700 clamp(1.3rem,2.4vw,1.9rem) var(--display);letter-spacing:-.01em;color:var(--text);max-width:22ch}
+.hero-news{display:grid;gap:14px;min-width:0}
+.hero .cs-stage{height:450px}
+.hero .cs-slide{width:80%}
+.hero .cs-nav{top:196px}
+.hero .cs-txt{font-size:.93rem}
+.hero .cs-d{padding:24px 26px}
+.hero .cs-body{padding:22px}
+.hero .cs-img{flex-basis:40%}
+@media(max-width:980px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero{min-height:0}
+}
+@media(max-width:760px){
+  .hero .cs-stage{height:600px}
+  .hero .cs-slide{width:92%}
+  .hero .cs-nav{top:auto}
 }
 </style>
 </head>
@@ -382,12 +539,19 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   <section class="hero">
     <div class="hero-bg" role="img" aria-label="Escena del evento ZOULCRAFT producido por LMC Studios"></div>
     <div class="wrap">
-      <small><b>LMC STUDIOS ™</b> &nbsp;Eventos de Minecraft y mas</small>
-      <h1>Creamos experiencias que dejan huella.</h1>
-      <p>Diseñamos, desarrollamos y producimos eventos y proyectos de Minecraft para comunidades y creadores de contenido.</p>
-      <div class="actions">
-        <a class="btn primary" href="#/proyectos">Explorar proyectos</a>
-        <a class="btn ghost" href="#/contacto">Hablemos de tu idea</a>
+      <div class="hero-copy">
+        <small><b>LMC STUDIOS ™</b> &nbsp;Eventos, servidores y experiencias de Minecraft</small>
+        <h1>LMC Studios ™</h1>
+        <h2 class="lead">Creamos experiencias que dejan huella.</h2>
+        <p>Diseñamos, desarrollamos y producimos eventos y proyectos de Minecraft para comunidades y creadores de contenido.</p>
+        <div class="actions">
+          <a class="btn primary" href="#/proyectos">Explorar proyectos</a>
+          <a class="btn ghost" href="#/contacto">Hablemos de tu idea</a>
+        </div>
+      </div>
+      <div class="hero-news" id="novedades">
+        <small class="news-label"><b>NOVEDADES</b> &nbsp;Lo más reciente del estudio</small>
+        <div class="news-grid" id="news"></div>
       </div>
     </div>
   </section>
@@ -490,6 +654,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         <button class="chip" data-f="Servidores y networks" aria-pressed="false">Servidores y networks</button>
         <button class="chip" data-f="Survival y hardcore" aria-pressed="false">Survival y hardcore</button>
         <button class="chip" data-f="Roleplay y experiencias" aria-pressed="false">Roleplay y experiencias</button>
+        <button class="sortbtn" id="sort" type="button" aria-label="Cambiar orden cronológico"><i class="fa-solid fa-arrow-down-wide-short" aria-hidden="true"></i> <span>Más recientes primero</span></button>
       </div>
       <div class="grid" id="grid"></div>
     </div>
@@ -531,7 +696,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   </section>
   <section class="story" id="historia">
     <div class="wrap">
-      <h2>Nuestra historia</h2>
+      <div class="story-side">
+        <h2>Nuestra historia</h2>
+        <figure class="renew">
+          <video controls preload="metadata" playsinline src="assets/LMC%20Studios%20se%20renueva.mp4"></video>
+          <figcaption><span class="rtag">NUEVO LOGO · 7 JUN 2026</span><b>LMC Studios se renueva</b>Video con el que anunciamos el cambio de logo, lanzado junto a nuestra independencia de Team LMC el 7 de junio de 2026.</figcaption>
+        </figure>
+      </div>
       <div class="txt">
         <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <mark>OshanZumi</mark>, marcó el inicio de este camino, seguido por <mark>Hardcore of Elite</mark>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
         <p>En <mark>junio de 2026</mark>, alcanzamos un hito importante al convertirnos en <b>partners oficiales de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></b>, cuyo apoyo con hosting y promoción nos ha permitido desarrollar eventos con mayor facilidad y ampliar nuestro alcance.</p>
@@ -665,74 +836,221 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 
 <script>
 /* DATOS DE PROYECTOS: para añadir uno nuevo, copia un bloque y edítalo.
-
-   Cada proyecto puede llevar un bloque opcional "details" con la ficha completa.
-   Todo es opcional: las secciones que no tengan datos NO se muestran.
-
-   details:{
-     stats:[ {icon:'fa-regular fa-calendar', value:'9 oct 2026', label:'Fecha de finalización'},
-             {icon:'fa-solid fa-users', value:'60', label:'Participantes'} ],       // cifras de la franja superior
-     long:['Párrafo 1…', 'Párrafo 2…'],                                              // descripción ampliada
-     video:'ID_DE_YOUTUBE',                                                           // ej. 'dQw4w9WgXcQ'
-     gallery:[ {src:'zoulcraft/01.png', caption:'Mapa en desarrollo'} ],             // archivos en assets/projects/
-     tools:[ {name:'Paper 1.21', note:'Servidor base', icon:'fa-solid fa-server'},
-             {name:'Plugin propio', note:'Mecánica de la invasión'} ],               // herramientas, mods, plugins
-     team:[ {name:'Zansumi', role:'Dirección y desarrollo'} ]                         // si se omite, se toma de "credit"
-   }
-*/
+   Campos: name, cat, img (logo en assets/avatars/), date (YYYY-MM-DD, para el orden cronológico),
+   dateLabel (fecha visible), dateNote (Inicio / Finalización…), desc (resumen de la tarjeta),
+   credit, url, status (opcional), news:true (aparece en Novedades del inicio).
+   details (todo opcional; lo que no tenga datos no se muestra):
+     stats:[{icon,value,label}]   long:['párrafo',…]   points:['punto de la historia de desarrollo',…]
+     gallery:[{src:'assets/captura.png', caption:'…'}]   ← CAPTURAS: se muestran a la derecha del texto
+     videos:[{src:'assets/video.mp4', caption:'…'}]       ← videos locales, también a la derecha
+     twitch:{clip:'SlugDelClip', caption:'…'}   video:'ID_YOUTUBE'
+     links:[{label,url,icon}]   tools:[{name,note,icon}]   team:[{name,role}]
+   Para subir capturas: copia el archivo a la carpeta assets/ y agrega una línea en gallery. */
 const A = 'assets/avatars/';
 const G = 'assets/projects/';
 const projects = [
-  {name:'PEDSAFIO', cat:'Eventos', img:'pedaafio2026.png',
-   desc:'Evento extremo basado en DEDSAFIO 3.',
-   credit:'LMC Studios ™ y Axolotl Studios', url:'https://x.com/LMCStudi0s/status/2057556127861129547'},
-  {name:'Destruye el Nexus', cat:'Eventos', img:'destruyeelnexus.png',
-   desc:'Evento de la modalidad Destruye el Nexus para la comunidad.',
-   credit:'TheandreusPR', url:'https://x.com/Andreuspf/status/2073634084044120107'},
-  {name:'LMC Battles', cat:'Eventos', img:'buildbate.png',
-   desc:'Evento de Build Battles para la comunidad.',
-   credit:'TheandreusPR', url:'https://x.com/LMCStudi0s/status/2082207789443604546'},
-  {name:'ZanFirxz', cat:'Servidores y networks', img:'zanfrixz.png',
-   desc:'Network con varias modalidades.',
-   credit:'zFrixz y Zansumi', url:'https://www.tiktok.com/@zanfrix_network'},
-  {name:'SumixCraft', cat:'Servidores y networks', img:'sm.png',
-   desc:'Servidor y comunidad de Minecraft.',
-   credit:'zFrixz', url:'https://www.tiktok.com/@sumixcraft'},
-  {name:'Skyblock de los Panas', cat:'Servidores y networks', img:'image-removebg-preview_4.png',
-   desc:'Modalidad Skyblock para la comunidad de Team LMC.',
-   credit:'TheandreusPR', url:'https://www.youtube.com/watch?v=ehaIvwu6S5o'},
-  {name:'OshanZumi', cat:'Survival y hardcore', img:'oshanzumi.png',
-   desc:'Proyecto hardcore.',
-   credit:'Oshawott y Zansumi', url:'https://www.twitch.tv/videos/2673904387'},
-  {name:'Hardcore Of Elite', cat:'Survival y hardcore', img:'logo2he.png',
-   desc:'Experiencia de supervivencia extrema.',
-   credit:'Alicia_usu', url:'https://www.tiktok.com/@alicia_usu/video/7598013922939112716'},
-  {name:'EXODO SMP', cat:'Survival y hardcore', img:'a (1).png',
-   desc:'Servidor SMP hardcore.',
-   credit:'', url:'https://x.com/Andreuspf/status/2033276977755377756'},
-  {name:'LMC Project', cat:'Survival y hardcore', img:'logo.png',
-   desc:'Proyecto survival personalizado.',
-   credit:'LMC Studios ™', url:'https://x.com/LMCStudi0s/status/2049005507633979520'},
-  {name:'Team LMCraft Roleplay', cat:'Roleplay y experiencias', img:'TEAM LMC NEW - 2026.png',
-   desc:'Roleplay basado en comunidad y lore.',
-   credit:'LMC Studios ™', url:'https://x.com/team__lmc/status/2038030653686501456'},
-  {name:'DeadLands SMP', cat:'Roleplay y experiencias', img:'COMISION_ANDREUS_WASA.png',
-   desc:'Supervivencia apocalíptica con roleplay.',
-   credit:'TheandreusPR', url:'https://x.com/DeadLandsSMP/status/2055123133535867182'},
-  {name:'ZOULCRAFT', cat:'Eventos', img:'zoulcraft.gif', status:'Evento finalizado',
+  {name:'PEDSAFIO', cat:'Eventos', img:'pedaafio2026.png', date:'2026-05-21', dateLabel:'21 may 2026', dateNote:'Inicio', news:true,
+   desc:'Evento extremo fanmade basado en DEDSAFIO 3. ¿Crees poder sobrevivir?',
+   credit:'LMC Studios ™ y Axolotl Studios', url:'https://x.com/LMCStudi0s/status/2057556127861129547', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'~40', label:'Jugadores'},{icon:'fa-solid fa-microchip', value:'Forge 1.20.1', label:'Loader'}],
+     long:['Un servidor fanmade de la serie Dedsafio que recrea sus novedades y cambios de dificultad. ¿Crees poder sobrevivir?',
+       'Idea traída por Axolotl Studios y gestionada promocionalmente por LMC Studios. Zansumi y B4m3, fundadores de sus respectivos estudios, lideraron un desarrollo que recreó DEDSAFIO 3 de la forma más fiel posible, con animaciones de muerte, avisos y eventos custom.'],
+     points:['Inició el 21 de mayo de 2026 con picos de 25 jugadores el primer día.',
+       'Los cupos se llenaron y el evento llegó a unos 40 jugadores aprox.',
+       'Desarrollado en Forge 1.20.1 con mods y datapacks de dominio público.',
+       'Animaciones de muerte, avisos y eventos personalizados para acercarse a DEDSAFIO 3.',
+       'Se detectó una acumulación irregular de tótems por parte de un equipo; se decidió no intervenir para preservar la dinámica del evento.',
+       'Un día después, Axolotl Studios cesó su actividad sin previo aviso y los derechos del nombre quedaron en manos de LMC Studios.',
+       'Con la salida del estudio desarrollador, el evento se dio por concluido.'],
+     gallery:[{src:'assets/avatars/pedaafio2026.png', caption:'Logo oficial, diseñado por Zansumi'},{src:'assets/HI8lNSAWMAAVFLP.jpg', caption:'Cuando se llenaron los cupos'}],
+     team:[{name:'Zansumi', role:'Desarrollo, diseño y dueño del estudio'},{name:'B4m3', role:'Desarrollo · fundador de su estudio'},{name:'Axolotl Studios', role:'Idea original'}]}},
+
+  {name:'Destruye el Nexus', cat:'Eventos', img:'destruyeelnexus.png', date:'2026-07-12', dateLabel:'12 jul 2026', dateNote:'Finalización', news:true,
+   desc:'Volvemos a la 1.8 para conquistar el Nexus del equipo rival.',
+   credit:'TheandreusPR y LMC Studios ™', url:'https://x.com/Andreuspf/status/2073634084044120107', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'10', label:'Pico de jugadores'},{icon:'fa-solid fa-microchip', value:'Paper 1.8', label:'Loader'}],
+     long:['El 12 de julio inauguramos el estudio con Destruye el Nexus. Volvimos al pasado, a la 1.8, para intentar conquistar el Nexus del equipo rival.',
+       'Fue nuestro primer evento oficial como estudio independiente: una modalidad poco vista en eventos que trajo el aire de nostalgia de la 1.8.'],
+     points:['Pico de 10 jugadores; evento recreativo, sin premio.',
+       'Plugin de la modalidad pagado a un externo del team, con colaboradores externos.',
+       'Realizado gracias a TheandreusPR; producción y gestión promocional por LMC Studios y Andreus.',
+       'Hosteado oficialmente por nuestro partner Minemu Hosting.',
+       'Loader Paper 1.8. Evento finalizado el 12 de julio.'],
+     gallery:[{src:'assets/nexo.png', caption:'Archivos de pruebas'}],
+     team:[{name:'TheandreusPR', role:'Desarrollo y producción'},{name:'LMC Studios ™', role:'Producción y promoción'}]}},
+
+  {name:'LMC Battles', cat:'Eventos', img:'buildbate.png', date:'2026-08-01', dateLabel:'1 ago 2026', dateNote:'Anunciado',
+   desc:'Batalla de construcción, nuestro 2.º evento oficial. En espera de relanzamiento.',
+   credit:'LMC Studios ™ · Zansumi', url:'https://x.com/LMCStudi0s/status/2082207789443604546', status:'Terminado · en espera de relanzamiento',
+   details:{
+     stats:[{icon:'fa-solid fa-microchip', value:'Fabric 1.21.1', label:'Loader'}],
+     long:['Una batalla de construcción como segundo evento oficial del estudio, anunciada para el 1 de agosto. Por razones de gestión no llegó a realizarse y hoy solo queda como proyecto mencionado.',
+       'Todo el desarrollo está hecho (mapa build y plugin pagado a un externo) y el setup quedó guardado, en espera de ser retrabajado para su lanzamiento próximamente.'],
+     points:['Anunciado como LMC BATTLES, 2.º evento oficial del estudio, para el 1 de agosto.',
+       'Versión 1.21.1 con loader Fabric.',
+       'Setup desarrollado por el equipo de LMC Studios; una de las primeras producciones de Zansumi como estudio independiente.',
+       'Mapa build y plugin hechos; setup guardado a la espera de rework.'],
+     team:[{name:'Zansumi', role:'Desarrollo del setup'}]}},
+
+  {name:'ZanFirxz', cat:'Servidores y networks', img:'zanfrixz.png', date:'2024-04-20', dateLabel:'20 abr 2024', dateNote:'Apertura',
+   desc:'Network con skywars, bedwars, survival, pvp y más. Hecha bajo Team LMC.',
+   credit:'zFrixz y Zansumi', url:'https://www.tiktok.com/@zanfrix_network', status:'Servidor terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'20', label:'Jugadores simultáneos (aprox.)'},{icon:'fa-solid fa-microchip', value:'Paper 1.20.4', label:'Loader'}],
+     long:['Un servidor de minijuegos (skywars, bedwars, survival, pvp y más) hecho fuera del estudio, pero considerado parte de él porque se creó bajo Team LMC Studios, antes de separarse de Team LMC en 2024.',
+       'Idea de zFrixz y Zansumi, motivados por explorar la creación de servidores y eventos. Tras una experiencia poco satisfactoria en otras networks, levantaron la propia sobre el equipo local de Zansumi.'],
+     points:['Abrió sus puertas el 20 de abril de 2024.',
+       'Producido por Zansumi como programador de plugins, con cosas custom.',
+       'Se promocionó por TikTok e invitando streamers, gestionado por zFrixz desde las cuentas oficiales.',
+       'No hay registro exacto de jugadores; lo más cercano son 20 simultáneos, un resultado esperado.',
+       'Consolidó la idea de crear más experiencias, dando paso a LMC Studios.',
+       'El cierre del servidor se realizó en un ambiente distendido junto a la comunidad (clip a la derecha).'],
+     twitch:{clip:'PiercingLightHawkSeemsGood-RIo9-XtNTc6wm2Er', caption:'Clip del cierre del server, por zansumi en Twitch'},
+     gallery:[{src:'assets/zanfirxz.png', caption:'El server abierto'}],
+     team:[{name:'Zansumi', role:'Desarrollo y plugins'},{name:'zFrixz', role:'Desarrollo y promoción desde las cuentas oficiales'},{name:'HOLAQUEASE201', role:'Builder'},{name:'ULIMAN276', role:'Builder'}]}},
+
+  {name:'SumixCraft', cat:'Servidores y networks', img:'sm.png', date:'2025-11-15', dateLabel:'nov 2025 (aprox.)', dateNote:'Lanzamiento',
+   desc:'Network ambiciosa con tienda web, hosting externo y 10 jugadores activos.',
+   credit:'zFrixz', url:'https://www.tiktok.com/@sumixcraft', status:'Servidor terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'10', label:'Pico de jugadores activos'},{icon:'fa-solid fa-microchip', value:'Paper 1.21.1', label:'Loader'}],
+     long:['Una network que tomó un rumbo raro: se consolidó como uno de los primeros proyectos de Team LMC Studios, incluso antes de OshanZumi, con un presupuesto más grande y hosting externo (no mencionado por exclusividad).',
+       'Producido exclusivamente por zFrixz, fue uno de sus primeros trabajos incluidos al estudio por petición suya, con ayuda de un dev, ProgamerYT.'],
+     points:['Lanzado durante todo un mes; no hay registro de fechas, pero fue aprox. en noviembre de 2025.',
+       'Uno de los proyectos más ambiciosos: tienda web y plugins públicos (warps, tpa, scoreboard y más).',
+       'Sufrió tropiezos: zFrixz se quedó sin PC y ProgamerYT tomó el mando.',
+       'Cerró porque zFrixz no pudo financiarlo más (hosting, mapas y configuración).',
+       'Quedó como setup para el studio, reservado para lanzarse o venderse. No se conserva registro del proyecto tras su cierre.'],
+     team:[{name:'Zansumi', role:'Dirección del estudio y soporte técnico'},{name:'ProgamerYT', role:'Desarrollo y administración tras la salida de zFrixz'},{name:'zFrixz', role:'Producción, financiación y configuración'}]}},
+
+  {name:'Skyblock de los Panas', cat:'Servidores y networks', img:'image-removebg-preview_4.png', date:'2026-04-13', dateLabel:'13 abr 2026', dateNote:'Evento privado',
+   desc:'Servidor privado para amigos y para grabar el primer video oficial de Team LMC.',
+   credit:'LMC Studios ™ para TheandreusPR', url:'https://www.youtube.com/watch?v=ehaIvwu6S5o', status:'Evento privado terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-microchip', value:'Paper 1.21.11', label:'Loader'},{icon:'fa-regular fa-clock', value:'1 día', label:'Activo'}],
+     long:['Evento producido totalmente por LMC Studios: un servidor para amigos y para grabar un video de Team LMC. Fue muy chill y se hizo para que Andreus grabara el primer video oficial con todos los miembros, en su canal de YouTube y en el de Team LMC.',
+       'Hosteado por Minemu Hosting y activo un día con los miembros del team.'],
+     points:['Se realizó el 13/04/2026, de forma privada.',
+       'Texture pack custom para incluir logos en el tab y más.',
+       'Banners hechos por Zansumi y sistema de voicechat con mods visuales de uso público.',
+       'Plugin desarrollado por Zansumi para el server, junto a plugins públicos.',
+       'Jugadores: Zansumi, Iwan, TheandreusPR, Spritii y más. Promoción en directo por Andreus y video subido a YouTube.',
+       'Setup a la venta o para uso en eventos próximamente.'],
+     gallery:[{src:'assets/sky.png', caption:'Pruebas del desarrollo'},{src:'assets/sky.jpg', caption:'Banners y desarrollo'},{src:'assets/sky2.png', caption:'Pruebas del desarrollo'}],
+     team:[{name:'Zansumi', role:'Desarrollo, banners y plugin'},{name:'TheandreusPR', role:'Producción promocional'}]}},
+
+  {name:'OshanZumi', cat:'Survival y hardcore', img:'oshanzumi.png', date:'2025-12-15', dateLabel:'dic 2025 (aprox.)', dateNote:'Apertura',
+   desc:'Nuestro primer evento con mods y plugins: 3 vidas y un mundo enorme.',
+   credit:'Oshawott y Zansumi', url:'https://www.twitch.tv/videos/2673904387', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'10', label:'Jugadores activos'},{icon:'fa-regular fa-clock', value:'2 semanas', label:'De actividad'},{icon:'fa-solid fa-microchip', value:'Mohist 1.20.1', label:'Loader'}],
+     long:['Evento producido bajo el nombre de Team LMC Studios (hoy LMC Studios) y uno de los primeros proyectos independientes de Zansumi: un trabajo arduo de un mes creando escenarios únicos para eventos, música custom y más. Funcionó 24/7 con eventos y actividades, 3 vidas y un mundo amplio con datapacks de dungeons y mazmorras.',
+       'Gestionado promocionalmente por el estudio a través de X. Según sus comentarios, los jugadores vivieron una experiencia única y de mucho gusto.'],
+     points:['Se planeó abrir en diciembre por las vacaciones, cuando había gente disponible tras las clases.',
+       'Duró 2 semanas de actividad con 10 jugadores activos.',
+       'Primer evento del estudio usando mods y plugins públicos; dio mucha experiencia al equipo.',
+       'Host pagado y financiado por los desarrolladores Zansumi y Oshawott0M.',
+       'Logo y promocionales hechos por Zansumi, de sus primeros trabajos de este tipo para X y redes.',
+       'Trailer anunciado en X (a la derecha) y pruebas del desarrollo de escenarios.'],
+     videos:[{src:'assets/oshansumi.mp4', caption:'El lobby'},{src:'assets/ssstwitter.com_1792110105564.mp4', caption:'Trailer anunciado en X'}],
+     gallery:[{src:'assets/sohjamzumi.png', caption:'Desarrollo de escenarios'},{src:'assets/Proyecto_nuevo.png', caption:'Promocional'},{src:'assets/oshanzumi.png', caption:'Promocional'}],
+     team:[{name:'Zansumi', role:'Desarrollo, logo y promocionales'},{name:'Oshawott0M', role:'Desarrollo'}]}},
+
+  {name:'Hardcore Of Elite', cat:'Survival y hardcore', img:'logo2he.png', date:'2026-01-20', dateLabel:'20 ene 2026', dateNote:'Finalización',
+   desc:'Hardcore semi vanilla con mobs e ítems custom, hecho en una semana.',
+   credit:'Alicia_usu', url:'https://www.tiktok.com/@alicia_usu/video/7598013922939112716', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'20', label:'Pico de jugadores'},{icon:'fa-solid fa-trophy', value:'Santi', label:'Ganador · 5 USD'}],
+     long:['Idea traída por Alicia_USU (Manuytgm): un proyecto hardcore semi vanilla con mobs e ítems custom, hecho con plugins por el equipo de desarrolladores del estudio. Un formato al que el estudio volvía y que resultó una experiencia única en su ámbito.',
+       'Alicia gestionó la promoción por TikTok con un gran resultado, y el servidor se completó en tiempo récord: una semana.'],
+     points:['Terminó el 20 de enero de 2026; fue el último trabajo con esta creadora por diferencias creativas.',
+       'Solo plugins de uso público, como ItemAdder y más.',
+       'Eventos constantes: invasiones zombie, PVE, guerras de clanes, sistema de tickets y soporte de bugs.',
+       'Ganó Santi, jugador argentino, el último en pie, con premio de 5 dólares puesto por la creadora.',
+       'El estudio ofreció el servicio gratis como promoción, que no se dio del todo; nos quedamos con setup y programación para futuros eventos o venta.',
+       'Logo hecho por Zansumi, de sus trabajos de diseño más avanzados hasta esa fecha.'],
+     team:[{name:'Zansumi', role:'Desarrollo y logo'},{name:'zFrixz', role:'Desarrollo'},{name:'ProgamerYT', role:'Desarrollo'},{name:'Alicia_USU', role:'Ideas creativas y promoción'}]}},
+
+  {name:'EXODO SMP', cat:'Survival y hardcore', img:'a (1).png', date:'2026-03-15', dateLabel:'mar 2026', dateNote:'Finalización',
+   desc:'SMP hardcore con pvp, cambios de dificultad y streamers.',
+   credit:'TheandreusPR', url:'https://x.com/Andreuspf/status/2033276977755377756', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'20', label:'Pico de jugadores'},{icon:'fa-solid fa-microchip', value:'Forge 1.21.1', label:'Loader'},{icon:'fa-regular fa-clock', value:'3 días', label:'De duración'}],
+     long:['Evento SMP hardcore con pvp, eventos, cambios de dificultad y cosas custom, producido y promocionado por Andreus junto a varios streamers que se enfrentaban entre sí.',
+       'Con el respaldo de Minemu Hosting para el servidor. LMC Studios ayudó en el diseño de logotipos y la organización.'],
+     points:['Desarrollado en Forge 1.21.1 por Andreus, con mods de uso público y cosas custom.',
+       'Picos de 20 jugadores durante 3 días.',
+       'Evento finalizado en marzo de 2026.',
+       'LMC Studios aportó diseño de logotipos y gestión de organización.'],
+     team:[{name:'TheandreusPR', role:'Producción y desarrollo'}]}},
+
+  {name:'LMC Project', cat:'Survival y hardcore', img:'logo.png', date:'2026-04-27', dateLabel:'27 abr 2026', dateNote:'Apertura',
+   desc:'Survival custom con crossplay Java y Bedrock, misiones y minijuegos.',
+   credit:'LMC Studios ™', url:'https://x.com/LMCStudi0s/status/2049005507633979520', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'20', label:'Pico de jugadores'},{icon:'fa-solid fa-microchip', value:'Paper 1.21.11', label:'Loader'}],
+     long:['Un survival custom que abrió sus puertas el 27 de abril, producido y promocionado por LMC Studios para divertir a las comunidades de los streamers invitados. Uno de los proyectos más ambiciosos del estudio.',
+       'Con presupuesto de Zansumi y zFrixz y hosting pagado por ellos.'],
+     points:['Plugins de uso público, sistema de rangos y crossplay entre Bedrock y Java.',
+       'Se sumaron modalidades como TNT Tag y Luz Verde, Luz Roja.',
+       'Sistema de misiones e imágenes en el tabulador y el scoreboard.',
+       'Picos de hasta 20 jugadores.',
+       'Ayuda de zFrixz en programación; pruebas del desarrollo a la derecha.'],
+     gallery:[{src:'assets/lmcpr.png', caption:'Pruebas del desarrollo'},{src:'assets/image.png', caption:'Pruebas del desarrollo'}],
+     team:[{name:'Zansumi', role:'Desarrollo'},{name:'zFrixz', role:'Programación'}]}},
+
+  {name:'Team LMCraft Roleplay', cat:'Roleplay y experiencias', img:'TEAM LMC NEW - 2026.png', date:'2026-03-30', dateLabel:'30 mar 2026', dateNote:'Finalización',
+   desc:'Serie de roleplay con mods, estadio gigante y mini ciudad. Inconclusa.',
+   credit:'LMC Studios ™', url:'https://x.com/team__lmc/status/2038030653686501456', status:'Serie terminada',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'~5', label:'Jugadores'},{icon:'fa-solid fa-microchip', value:'Mohist 1.20.1', label:'Loader'}],
+     long:['TeamLMCraft, una serie de roleplay con mods y cosas interesantes presentada por Zansumi y zFrixz. Quedó inconclusa por falta de actividad y compromiso de los participantes; se desarrolló con rapidez reutilizando mods y el setup de OshanZumi.',
+       'No logró avanzar mucho y se decidió cerrar y seguir guardando el setup.'],
+     points:['El desarrollo constó de un mapa y cosas para los roleplayers: un estadio de eventos gigante y una mini ciudad con coches y locales funcionales.',
+       'Divirtió por unos días a los pocos jugadores que entraron (unos 5).',
+       'Mismo loader que OshanZumi; hosting externo no mencionado por exclusividad.',
+       'Evento finalizado el 30 de marzo de 2026.',
+       'Setup guardado para usarse próximamente o venderse para uso público.'],
+     links:[{label:'Ver preview en X', url:'https://x.com/team__lmc/status/2038030653686501456/video/1', icon:'fa-brands fa-x-twitter'}],
+     team:[{name:'Zansumi', role:'Presentación de la serie, mapa y setup'},{name:'zFrixz', role:'Presentación de la serie y coordinación'},{name:'Oshawott0M', role:'Desarrollo del setup base (OshanZumi)'}]}},
+
+  {name:'DeadLands SMP', cat:'Roleplay y experiencias', img:'COMISION_ANDREUS_WASA.png', date:'2026-05-17', dateLabel:'17 may 2026', dateNote:'Finalización',
+   desc:'SMP de lore y roleplay durante mes y medio, con cine comunitario incluido.',
+   credit:'TheandreusPR', url:'https://x.com/DeadLandsSMP/status/2055123133535867182', status:'Evento terminado',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'20', label:'Pico de jugadores'},{icon:'fa-regular fa-clock', value:'1.5 meses', label:'De duración'},{icon:'fa-solid fa-microchip', value:'Mohist 1.21.1', label:'Loader'}],
+     long:['Evento hecho por TheandreusPR como iniciativa de nuevos proyectos en el estudio, de los primeros en concretarse y con una duración de mes y medio. Lore, roleplay y una experiencia inmersiva con mods gratuitos, producida por LMC Studios.',
+       'Con aportaciones de Santiagovlog, que ayudó a Andreus y al estudio a convertirlo en un servidor muy entretenido: cumpleaños, series en un cine comunitario y más. Marcó un antes y un después en el estudio.'],
+     points:['Idea de Juliokingdom, ElMarcoPlays, TheKingMathias e Iwan.',
+       'Dos versiones: pasó de Mohist 1.20.1 a Mohist 1.21.1, con ayuda de Santiagovlog y Zansumi, trayendo mejores cosas y mods.',
+       'Raulcasual_07 ayudó a optimizar el modpack.',
+       'Apoyado económicamente por Emcant tras pedir ayuda para pagar el host.',
+       'Concluyó el 17 de mayo con picos de 20 jugadores simultáneos.',
+       'Hosteado por Minemu Hosting y promocionado por @DeadLandsSMP en X.',
+       'Fue uno de los proyectos más grandes en su momento, hasta que ZOULCRAFT lo superó.'],
+     links:[{label:'Cine comunitario', url:'https://x.com/LMCStudi0s/status/2056803443797360729/video/1', icon:'fa-brands fa-x-twitter'},{label:'Créditos finales', url:'https://x.com/LMCStudi0s/status/2056226683246563512/video/1', icon:'fa-brands fa-x-twitter'}],
+     team:[{name:'TheandreusPR', role:'Producción, dirección y promoción del evento'},{name:'Zansumi', role:'Migración a 1.21.1, desarrollo y configuración'},{name:'Santiagovlog', role:'Apoyo en desarrollo y dinámicas: cumpleaños y cine comunitario'},{name:'Raulcasual_07', role:'Optimización del modpack'}]}},
+
+  {name:'ZOULCRAFT', cat:'Eventos', img:'zoulcraft.gif', date:'2026-10-09', dateLabel:'9 oct 2026', dateNote:'Finalización', news:true, status:'Evento terminado',
    desc:'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
    credit:'LMC Studios ™ y yDaantiX', url:'https://x.com/LMCStudi0s/status/2105026597166125064',
    details:{
-     stats:[
-       {icon:'fa-regular fa-calendar', value:'9 oct 2026', label:'Fecha de finalización'},
-       {icon:'fa-solid fa-users', value:'60', label:'Participantes'}
-     ],
-     long:[
-       'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
-       'Producido por LMC Studios ™ en colaboración con yDaantiX, participante de Team LMC. El evento finalizó el 9 de octubre de 2026 y nos brindó una gran exposición como estudio.'
-     ]
-   }}
+     stats:[{icon:'fa-solid fa-users', value:'60', label:'Participantes'},{icon:'fa-solid fa-trophy', value:'HOLAQUEASE201', label:'Ganador · 5 USD'}],
+     long:['Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie. Producido por LMC Studios ™ en colaboración con yDaantiX, participante de Team LMC. Nos brindó una gran exposición como estudio.',
+       'Uno de los mayores eventos de LMC Studios como estudio independiente, desarrollado completamente por su equipo: Zansumi y yDaantiX. Idea de yDaantiX por completo, con libertad creativa, y una recreación inspirada en Hardcore Z 2 del creador de contenido Farfadox.'],
+     points:['Zansumi creó plugins propios: un libro de revivición y un sistema de muertes custom.',
+       'Desarrollo completado en 10 horas debido a una planificación ajustada.',
+       'De 140 formularios de ingreso se eligió a lo mejor de lo mejor: 60 participantes. Al final el server tuvo más de 80 jugadores.',
+       'Zansumi fue pieza clave también en promocionales: banners, flyers y anuncios en directo de las tandas de participantes.',
+       'Finalizó el 9 de octubre: HOLAQUEASE201 ganó 5 USD al resistir hasta el final, sin equipo, frente a la invasión zombie.',
+       'Hosteado oficialmente por Minemu. Marcó un antes y un después en el estudio.'],
+     videos:[{src:'assets/zoulcraftprsentacion.mp4', caption:'Presentación del evento'}],
+     gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'}],
+     team:[{name:'Zansumi', role:'Desarrollo, plugins y promocionales'},{name:'yDaantiX', role:'Idea original, dirección creativa y colaboración'}]}}
 ];
+projects.sort((a,b) => b.date.localeCompare(a.date));
 
 const slugify = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 projects.forEach(p => p.slug = slugify(p.name));
@@ -742,12 +1060,12 @@ const grid = document.getElementById('grid');
 projects.forEach(p => {
   const el = document.createElement('article');
   el.className = 'card';
-  el.dataset.cat = p.cat;
+  el.dataset.cat = p.cat; el.dataset.date = p.date;
   el.innerHTML =
     `<div class="media" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="Imagen de ${esc(p.name)}" loading="lazy"></div>
      <div class="body">
-       ${p.status ? `<span class="status">${esc(p.status)}</span>` : ''}
-       <span class="cat">${esc(p.cat)}</span>
+       ${p.status ? `<span class="status"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> ${esc(p.status)}</span>` : ''}
+       <span class="cat">${esc(p.cat)} <span class="date">· ${esc(p.dateLabel)}</span></span>
        <h3>${esc(p.name)}</h3>
        <p>${esc(p.desc)}</p>
        ${p.credit ? `<span class="credit">${esc(p.credit)}</span>` : ''}
@@ -756,19 +1074,120 @@ projects.forEach(p => {
   grid.appendChild(el);
 });
 
+/* ORDEN CRONOLÓGICO (más recientes primero / más antiguos primero) */
+const sortBtn = document.getElementById('sort');
+let newestFirst = true;
+sortBtn.addEventListener('click', () => {
+  newestFirst = !newestFirst;
+  sortBtn.querySelector('span').textContent = newestFirst ? 'Más recientes primero' : 'Más antiguos primero';
+  sortBtn.querySelector('i').className = newestFirst ? 'fa-solid fa-arrow-down-wide-short' : 'fa-solid fa-arrow-up-wide-short';
+  [...grid.children].sort((a, b) => (newestFirst ? -1 : 1) * a.dataset.date.localeCompare(b.dataset.date)).forEach(c => grid.appendChild(c));
+});
+
+/* NOVEDADES (inicio): pega aquí el último anuncio de Discord */
+const DISCORD_ANUNCIO = {
+  fecha: '',
+  titulo: 'Actualización de nuestra página web | LMC Studios ™',
+  texto: 'Hemos renovado nuestra página web con un diseño más minimalista, profesional y agradable para el público, buscando ofrecer una mejor experiencia y presentar nuestros proyectos de una forma más clara.\n\nNos gustaría conocer su opinión. Si tienen sugerencias o comentarios, pueden compartirlos mediante un ticket en nuestro Discord.\n\nAgradecemos su apoyo y feedback para seguir mejorando.',
+  link: 'https://zansumilmc.github.io/LMC-STUDIOS/',
+  firma: 'LMC Studios ™ — Creando experiencias',
+  img: '',
+  url: 'https://discord.gg/jCFjYJ5Eye'
+};
+(function(){
+  const d = DISCORD_ANUNCIO, root = document.getElementById('news');
+  const recent = projects.filter(p => p.news).slice(0, 3);
+  const slides = [
+    `<article class="cs-slide cs-d">
+       <div class="nw-top"><i class="fa-brands fa-discord" aria-hidden="true"></i><span>Último anuncio de Discord</span>${d.fecha ? `<em>${esc(d.fecha)}</em>` : ''}</div>
+       <h3>${esc(d.titulo)}</h3>
+       <div class="cs-txt">${d.texto.split('\n\n').map(t => `<p>${esc(t)}</p>`).join('')}<p><a href="${esc(d.link)}" target="_blank" rel="noopener"><i class="fa-solid fa-link" aria-hidden="true"></i> ${esc(d.link)}</a></p></div>
+       <div class="cs-foot"><span>${esc(d.firma)}</span><a class="btn primary" href="${esc(d.url)}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i>Ver en Discord</a></div>
+     </article>`,
+    ...recent.map(p => `<a class="cs-slide cs-p" href="#/proyecto/${p.slug}"><div class="cs-img" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="" loading="lazy"></div><div class="cs-body"><span class="cat">${esc(p.dateLabel)} · ${esc(p.cat)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><span class="more">Ver detalles <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></div></a>`)
+  ];
+  root.innerHTML = `<div class="cs" role="region" aria-roledescription="carrusel" aria-label="Novedades">
+    <div class="cs-stage">${slides.join('')}</div>
+    <button class="cs-nav pv" type="button" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="cs-nav nx" type="button" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="cs-dots">${slides.map((_, k) => `<button type="button" data-k="${k}" aria-label="Ir a la novedad ${k + 1}"></button>`).join('')}</div>
+  </div>
+  <a class="jump" href="#/proyectos">Ver todos los proyectos por fecha<i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>`;
+  const els = [...root.querySelectorAll('.cs-slide')], dots = [...root.querySelectorAll('.cs-dots button')], cs = root.querySelector('.cs');
+  const n = els.length; let cur = 0, timer = null;
+  function paint(){
+    const half = Math.floor(n / 2), narrow = innerWidth < 760, f = cs.clientWidth < 760 ? 36 : 56;
+    els.forEach((el, k) => {
+      const o = ((k - cur + n + half) % n) - half, a = Math.abs(o);
+      const x = o * (narrow ? 0 : f);
+      el.style.transform = `translateX(calc(-50% + ${x}%)) translateZ(${-a * 140}px) rotateY(${-o * 26}deg) scale(${1 - a * .1})`;
+      el.style.opacity = a === 0 ? 1 : a === 1 && !narrow ? .4 : 0;
+      el.style.zIndex = 10 - a; el.style.pointerEvents = a === 0 ? 'auto' : a === 1 && !narrow ? 'auto' : 'none';
+      el.tabIndex = a === 0 ? 0 : -1; el.setAttribute('aria-hidden', a !== 0);
+      el.dataset.off = o;
+    });
+    dots.forEach((b, k) => b.setAttribute('aria-current', k === cur));
+  }
+  const go = k => { cur = (k + n) % n; paint(); };
+  const start = () => { stop(); timer = setInterval(() => go(cur + 1), 3000); };
+  const stop = () => { clearInterval(timer); timer = null; };
+  root.querySelector('.pv').addEventListener('click', () => { go(cur - 1); start(); });
+  root.querySelector('.nx').addEventListener('click', () => { go(cur + 1); start(); });
+  dots.forEach(b => b.addEventListener('click', () => { go(+b.dataset.k); start(); }));
+  els.forEach((el, k) => el.addEventListener('click', e => { if (el.dataset.off !== '0') { e.preventDefault(); go(k); start(); } }));
+  cs.addEventListener('mouseenter', stop); cs.addEventListener('mouseleave', start);
+  cs.addEventListener('focusin', stop); cs.addEventListener('focusout', start);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  addEventListener('resize', paint);
+  paint(); start();
+})();
+
 /* ---------- DETALLE DE PROYECTO ---------- */
-const KNOWN = {'zansumi':'zansumi.png','theandreuspr':'andreus.png','iwanmc':'iwan.png','lmc studios ™':'lmcstudios.png','team lmc ™':'sas.png'};
+const PEOPLE = {
+  'zansumi':{src:A+'zansumi.png', url:'https://www.youtube.com/@zansumii'},
+  'theandreuspr':{src:A+'andreus.png', url:'https://www.kick.com/theandreuspr'},
+  'iwanmc':{src:A+'iwan.png', url:'https://www.twitch.tv/iwanhx'},
+  'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'#/inicio'},
+  'team lmc ™':{src:A+'sas.png', logo:1, url:'https://zansumilmc.github.io/TeamLMC2/'},
+  'santiagovlog':{src:'assets/santiagovlog.gif', url:'https://santiivlog.netlify.app/'},
+  'ydaantix':{src:'assets/dantix.png', url:'https://x.com/yDaantiX'},
+  'zfrixz':{src:'assets/zfrixz.jpg', url:'https://www.youtube.com/channel/UCXgx_X4FqE1tAkxXnnhTfLw'},
+  'oshawott0m':{src:'assets/osha.png', url:'https://www.youtube.com/channel/UC4huuB0xXvwjcyXt_ZSNj-g'},
+  'raulcasual_07':{src:'assets/raul.png', url:'https://x.com/Raulcasual7'}
+};
+/* VISUALIZADOR DE VIDEOS DE X */
+const xurl = u => u.replace(/\/video\/\d+.*$/, '').replace('x.com', 'twitter.com');
+function xvHTML(list){
+  return `<figure class="xv" data-list="${esc(JSON.stringify(list.map(l => ({u:l.url, c:l.label || l.caption || ''}))))}">
+    <div class="xv-head"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><b>Videos en X</b></div>
+    ${list.length > 1 ? `<div class="xv-tabs">${list.map((l,k) => `<button type="button" class="xv-tab" data-i="${k}" aria-pressed="${k===0}">${esc(l.label || l.caption || 'Video ' + (k+1))}</button>`).join('')}</div>` : ''}
+    <div class="xv-stage"></div>
+    <a class="xv-open" target="_blank" rel="noopener"></a></figure>`;
+}
+function xvShow(fig, i){
+  const it = JSON.parse(fig.dataset.list)[i], st = fig.querySelector('.xv-stage');
+  fig.querySelectorAll('.xv-tab').forEach(b => b.setAttribute('aria-pressed', +b.dataset.i === i));
+  st.innerHTML = `<blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none"><a href="${esc(xurl(it.u))}">Cargando video…</a></blockquote>`;
+  const o = fig.querySelector('.xv-open'); o.href = it.u; o.innerHTML = 'Abrir en X <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>';
+  const go = () => window.twttr && twttr.widgets && twttr.widgets.load(st);
+  const sc = document.getElementById('twjs');
+  if (window.twttr && twttr.widgets) go();
+  else if (!sc) { const t = document.createElement('script'); t.id = 'twjs'; t.async = true; t.src = 'https://platform.twitter.com/widgets.js'; t.onload = go; document.head.appendChild(t); }
+  else sc.addEventListener('load', go, {once:true});
+}
 const srcLabel = u => /x\.com|twitter/.test(u) ? ['Ver publicación en X','fa-brands fa-x-twitter']
   : /tiktok/.test(u) ? ['Ver en TikTok','fa-brands fa-tiktok']
   : /youtube|youtu\.be/.test(u) ? ['Ver en YouTube','fa-brands fa-youtube']
   : /twitch/.test(u) ? ['Ver en Twitch','fa-brands fa-twitch']
   : ['Ver publicación','fa-solid fa-arrow-up-right-from-square'];
+const fsrc = s => /^https?:|^assets\//.test(s) ? s : 'assets/' + s;
 let shots = [];
 
 function renderProject(p){
   const d = p.details || {};
   const img = encodeURI(A + p.img);
   const stats = [
+    {icon:'fa-regular fa-calendar', value:p.dateLabel, label:p.dateNote || ''},
     {icon:'fa-solid fa-layer-group', value:p.cat, label:'Categoría'},
     ...(p.credit ? [{icon:'fa-solid fa-people-group', value:p.credit, label:'Producción'}] : []),
     ...(p.status ? [{icon:'fa-solid fa-circle-check', value:p.status, label:''}] : []),
@@ -780,6 +1199,17 @@ function renderProject(p){
   const [lbl, ico] = srcLabel(p.url);
   shots = (d.gallery || []).map(g => typeof g === 'string' ? {src:g} : g)
     .map(g => ({src: /^https?:|^assets\//.test(g.src) ? g.src : G + g.src, caption: g.caption || ''}));
+  const xl = [...(d.links || []).filter(l => /\/video\/\d+/.test(l.url)), ...(d.xvideos || [])];
+  const cap = c => c ? `<figcaption>${esc(c)}</figcaption>` : '';
+  const media = [
+    ...(xl.length ? [xvHTML(xl)] : []),
+    ...(d.videos || []).map(v => (typeof v === 'string' ? {src:v} : v)).map(v =>
+      `<figure class="mv"><video controls preload="metadata" playsinline src="${encodeURI(fsrc(v.src))}"></video>${cap(v.caption)}</figure>`),
+    ...(d.twitch ? [`<figure class="mv"><div class="embed"><iframe src="https://clips.twitch.tv/embed?clip=${esc(d.twitch.clip)}&parent=${esc(location.hostname || 'localhost')}&autoplay=false" title="Clip de ${esc(p.name)}" loading="lazy" allowfullscreen></iframe></div>${cap(d.twitch.caption)}</figure>`] : []),
+    ...(d.video ? [`<figure class="mv"><div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(d.video)}" title="Video de ${esc(p.name)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></figure>`] : []),
+    ...(shots.length ? [`<div class="shots">${shots.map((g,i) => `<button class="shot${i === 0 && shots.length % 2 ? ' wide' : ''}" type="button" data-i="${i}" aria-label="Ampliar imagen ${i+1}"><img src="${encodeURI(g.src)}" alt="${esc(g.caption || 'Captura de ' + p.name)}" loading="lazy">${g.caption ? `<span>${esc(g.caption)}</span>` : ''}</button>`).join('')}</div>`] : [])
+  ];
+  const extra = (d.links || []).filter(l => !/\/video\/\d+/.test(l.url)).map(l => `<a class="btn ghost" href="${esc(l.url)}" target="_blank" rel="noopener"><i class="${l.icon || 'fa-solid fa-link'}" aria-hidden="true"></i>${esc(l.label)}</a>`).join('');
 
   document.getElementById('proj').innerHTML =
   `<div class="proj-hero" style="--bgimg:url('${img}')"><img src="${img}" alt="Imagen de ${esc(p.name)}"></div>
@@ -788,20 +1218,29 @@ function renderProject(p){
      <div class="proj-tags"><span class="cat">${esc(p.cat)}</span></div>
      <h1>${esc(p.name)}</h1>
      <div class="stats">${stats.map(x => `<div class="stat"><i class="${x.icon}" aria-hidden="true"></i><span><b>${esc(x.value)}</b>${x.label ? ' ' + esc(x.label) : ''}</span></div>`).join('')}</div>
-     <div class="proj-desc">${paras.map(t => `<p>${esc(t)}</p>`).join('')}</div>
-     <div class="proj-actions">
-       <a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>
-       <a class="btn ghost" href="#/contacto">Quiero algo así</a>
+     <div class="proj-main">
+       <div class="proj-text">
+         <div class="proj-desc">${paras.map(t => `<p>${esc(t)}</p>`).join('')}</div>
+         
+         <div class="proj-actions">
+           <a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>
+           ${extra}
+           <a class="btn ghost" href="#/contacto">Quiero algo así</a>
+         </div>
+       </div>
+       <aside class="proj-media" aria-label="Capturas y material">${media.length ? media.join('') : '<div class="media-empty"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Próximamente: capturas y material de este proyecto</span></div>'}</aside>
      </div>
-     ${d.video ? `<div class="proj-sec"><h2>Video</h2><div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(d.video)}" title="Video de ${esc(p.name)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div></div>` : ''}
-     ${shots.length ? `<div class="proj-sec"><h2>Capturas del desarrollo</h2><div class="shots">${shots.map((g,i) => `<button class="shot" type="button" data-i="${i}" aria-label="Ampliar imagen ${i+1}"><img src="${encodeURI(g.src)}" alt="${esc(g.caption || 'Captura de ' + p.name)}" loading="lazy">${g.caption ? `<span>${esc(g.caption)}</span>` : ''}</button>`).join('')}</div></div>` : ''}
+     ${d.points && d.points.length ? `<div class="proj-sec"><h2>Historia de desarrollo</h2><ol class="tl">${d.points.map((t,k) => `<li class="tl-i"><div class="tl-c"><span class="tl-n">Hito ${String(k+1).padStart(2,'0')}</span><p>${esc(t)}</p></div></li>`).join('')}</ol></div>` : ''}
      ${d.tools && d.tools.length ? `<div class="proj-sec"><h2>Herramientas y mods</h2><div class="tools">${d.tools.map(t => `<div class="tool"><i class="${t.icon || 'fa-solid fa-puzzle-piece'}" aria-hidden="true"></i><div><h3>${esc(t.name)}</h3>${t.note ? `<p>${esc(t.note)}</p>` : ''}</div></div>`).join('')}</div></div>` : ''}
      ${team.length ? `<div class="proj-sec"><h2>Equipo</h2><div class="crew">${team.map(m => {
-        const f = KNOWN[m.name.toLowerCase()];
-        return `<div class="crew-m">${f ? `<img class="av" src="${A + f}" alt="">` : `<span class="av" aria-hidden="true">${esc(m.name.trim()[0] || '?').toUpperCase()}</span>`}<div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div></div>`;
+        const f = PEOPLE[m.name.toLowerCase()] || {}, tag = f.url ? 'a' : 'div', ext = /^https?:/.test(f.url || '');
+        return `<${tag} class="crew-m${f.url ? ' lnk' : ''}"${f.url ? ` href="${esc(f.url)}"${ext ? ' target="_blank" rel="noopener"' : ''}` : ''}>${f.src ? `<img class="av${f.logo ? ' logo' : ''}" src="${esc(f.src)}" alt="" loading="lazy">` : `<span class="av" aria-hidden="true">${esc(m.name.trim()[0] || '?').toUpperCase()}</span>`}<div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div>${f.url ? '<i class="fa-solid fa-arrow-up-right-from-square go" aria-hidden="true"></i>' : ''}</${tag}>`;
       }).join('')}</div></div>` : ''}
    </div>`;
 }
+
+document.getElementById('proj').addEventListener('click', e => { const b = e.target.closest('.xv-tab'); if (b) xvShow(b.closest('.xv'), +b.dataset.i); });
+document.getElementById('proj').addEventListener('error', e => { const im = e.target; if (im.classList && im.classList.contains('av')) { const sp = document.createElement('span'); sp.className = 'av'; sp.textContent = (im.closest('.crew-m').querySelector('h3').textContent[0] || '?').toUpperCase(); im.replaceWith(sp); } }, true);
 
 /* LIGHTBOX */
 const lb = document.getElementById('lb'); let lbI = 0;
@@ -870,7 +1309,7 @@ function route(){
   if (id === 'proyecto') {
     proj = projects.find(p => p.slug === arg);
     if (!proj) { location.replace('#/proyectos'); return; }
-    renderProject(proj);
+    renderProject(proj); document.querySelectorAll('#proj .xv').forEach(f => xvShow(f, 0));
   }
   if (id === 'proyecto' && prevId === 'proyectos') savedY = window.scrollY;
   lbClose();
@@ -912,7 +1351,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries =
 }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
 
 if (io) {
-  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story h2,.story .txt,.note,.contact-sec .contact>*,.filters,.card').forEach(el => {
+  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story-side,.story .txt,.note,.contact-sec .contact>*,.filters,.card,.nw').forEach(el => {
     el.style.setProperty('--i', Math.min([...el.parentElement.children].indexOf(el) % 6, 5));
     el.classList.add('reveal');
     io.observe(el);

@@ -449,31 +449,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .member{justify-items:center;text-align:center}
 .member a.link{margin-top:6px}
 
-/* NOVEDADES */
-.nv-stage{--band:104px;position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
-.nv-slide{position:absolute;inset:0;display:block;opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility .8s}
-.nv-slide.on{opacity:1;visibility:visible}
-.nv-img{position:absolute;inset:0;isolation:isolate;overflow:hidden}
-.nv-img::before{content:"";position:absolute;inset:-24px;z-index:-1;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.45) saturate(1.1)}
-.nv-img img{position:absolute;left:0;top:0;width:100%;height:calc(100% - var(--band));object-fit:contain;padding:16px 52px 4px}
-.nv-txt{position:absolute;left:0;right:0;bottom:0;height:var(--band);display:grid;align-content:center;justify-items:center;gap:4px;padding:0 20px 8px;text-align:center;background:linear-gradient(0deg,rgba(9,9,10,.92),rgba(9,9,10,.6) 70%,transparent)}
-.nv-txt .cat{font-size:.8rem;color:var(--red-soft);font-weight:600}
-.nv-txt h3{font-size:clamp(1.15rem,2vw,1.5rem)}
-.nv-txt p{color:#d4d4d1;font-size:.88rem;line-height:1.4;max-width:46ch;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.nv-arrow{position:absolute;top:calc(50% - 52px - 18px);z-index:5;width:36px;height:36px;border-radius:50%;background:rgba(20,20,21,.8);border:1px solid var(--line);color:var(--text);cursor:pointer;font-size:.8rem;transition:border-color .25s}
-.nv-arrow:hover{border-color:var(--red)}
-.nv-arrow.pv{left:10px}.nv-arrow.nx{right:10px}
-.nv-bar{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:5;background:rgba(255,255,255,.08)}
-.nv-bar i{display:block;height:100%;background:var(--red);transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
-.nv-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
-.nv-dots button{width:9px;height:9px;border-radius:50%;border:0;background:#3a3a3d;cursor:pointer;transition:.3s var(--ease)}
-.nv-dots button[aria-current="true"]{background:var(--red);width:26px;border-radius:999px}
-.dc-note{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;padding:9px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.85rem;transition:border-color .25s,color .25s}
-.dc-note:hover{border-color:var(--red);color:var(--text)}
-.dc-note i{color:var(--red-soft);flex:none}
-.dc-note span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dc-note em{font-style:normal;color:var(--red-soft);font-weight:600;flex:none}
-@media(max-width:700px){.nv-arrow{display:none}.nv-img img{padding:12px 12px 4px}}
+
 
 /* ===== DETALLE DE PROYECTO: portada completa y mejor reparto ===== */
 .proj-hero{display:flex;flex-direction:column;height:clamp(280px,32vw,380px);padding:clamp(20px,3vw,36px) 4vw 0}
@@ -516,6 +492,157 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .who:hover{border-color:var(--red);transform:translateY(-2px)}
 .who:hover i{color:var(--red-soft);transform:translate(2px,-2px)}
 @media(max-width:1000px){.proj-main.pm-3,.proj-main.pm-2{grid-template-columns:1fr}.proj-text{order:-1}.pm-side{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}}
+
+/* ===== HERO: texto a la izquierda, Novedades a la derecha ===== */
+.hero .socials{margin:0}
+.hero .socials a{background:rgba(9,9,10,.55);backdrop-filter:blur(4px)}
+.hero-news{display:grid;gap:18px;align-content:center}
+.news-head h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800}
+.ref{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s,border-color .2s}
+.ref:hover{color:var(--red-soft);border-color:var(--red-soft)}
+
+/* ===== NOVEDADES (estilo cartelera) ===== */
+.nv{min-width:0}
+.nv-stage{position:relative;min-height:clamp(360px,34vw,440px);overflow:hidden;border:1px solid rgba(224,33,47,.55);border-radius:4px;background:#111;box-shadow:0 0 52px -10px rgba(224,33,47,.4)}
+.nv-slide{position:absolute;inset:0;display:block;color:inherit;opacity:0;visibility:hidden;transition:opacity .8s var(--ease),visibility .8s}
+.nv-slide.on{opacity:1;visibility:visible}
+.nv-img{position:absolute;inset:0;isolation:isolate;overflow:hidden;background:#141415}
+.nv-img::before{content:"";position:absolute;inset:-30px;z-index:-1;background:var(--bg) center/cover no-repeat;filter:blur(26px) brightness(.42) saturate(1.1)}
+.nv-img::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  repeating-linear-gradient(0deg,rgba(0,0,0,.26) 0 1px,transparent 1px 4px),
+  linear-gradient(0deg,rgba(9,9,10,.9) 0%,rgba(9,9,10,.4) 26%,transparent 48%)}
+/* imagen del proyecto: ocupa todo el recuadro, completa y sin recortes */
+.nv-img img{position:absolute;inset:0;width:100%;height:100%;padding:12px 12px 0;object-fit:contain;object-position:center top;filter:drop-shadow(0 14px 34px rgba(0,0,0,.65))}
+.nv-txt{position:absolute;z-index:2;left:clamp(18px,2.6vw,30px);right:clamp(18px,2.6vw,30px);bottom:clamp(20px,3vw,30px);display:grid;justify-items:start;gap:9px}
+.nv-badge{display:inline-flex;align-items:center;gap:10px}
+.nv-badge i{width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid #7a0d15;box-shadow:0 0 12px rgba(224,33,47,.9)}
+.nv-badge b{font:700 .7rem var(--body);letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border:1px solid rgba(224,33,47,.65);background:rgba(224,33,47,.16);color:#fff;border-radius:2px}
+.nv-txt h3{font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:800;line-height:1;letter-spacing:-.03em;margin-top:4px}
+.nv-txt p{color:#bdbdb9;font-size:.92rem;line-height:1.4;max-width:48ch;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.nv-more{margin-top:4px;font-weight:600;color:#fff;padding-bottom:4px;border-bottom:2px solid var(--red);transition:color .2s,padding .3s var(--ease)}
+.nv-slide:hover .nv-more{color:var(--red-soft);padding-right:10px}
+.nv-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:36px;height:36px;border-radius:50%;background:rgba(10,10,10,.55);border:1px solid rgba(255,255,255,.14);color:#cfcfcf;cursor:pointer;font-size:.75rem;transition:border-color .25s,color .25s,background .25s}
+.nv-arrow:hover{border-color:var(--red);color:#fff;background:rgba(224,33,47,.25)}
+.nv-arrow.pv{left:10px}.nv-arrow.nx{right:10px}
+.nv-bar{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:5;background:rgba(255,255,255,.08)}
+.nv-bar i{display:block;height:100%;background:var(--red);transform-origin:left;transform:scaleX(0);transition:transform .1s linear}
+.nv-dots{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.nv-dots button{width:9px;height:9px;border-radius:50%;border:0;background:#4a4a4d;cursor:pointer;transition:.3s var(--ease)}
+.nv-dots button[aria-current="true"]{background:#ff2a38;width:30px;border-radius:999px}
+
+/* Noticias del studio: slide dentro del carrusel */
+.nv-slide.nv-tweet{display:flex;flex-direction:column;background:#101011}
+.nv-tw-head{display:flex;align-items:center;gap:12px;padding:16px 22px 12px;border-bottom:1px solid var(--line)}
+.nv-tw-head>i{font-size:1.15rem;color:var(--red-soft)}
+.nv-tw-head h3{font-size:1.15rem;font-weight:700}
+.nv-tw-head span{display:block;font-size:.78rem;color:var(--muted);margin-top:1px}
+.nv-tw-body{flex:1;min-height:0;overflow:auto;padding:12px 56px 14px;display:flex;justify-content:center;align-items:flex-start}
+.nv-tw-body .twitter-tweet,.nv-tw-body iframe{margin:0 auto!important;max-width:100%!important}
+.nv-tw-foot{padding:10px 22px 14px;border-top:1px solid var(--line);font-size:.85rem;font-weight:600;color:var(--muted);text-align:right;transition:color .2s}
+.nv-tw-foot:hover{color:var(--red-soft)}
+.nv-tw-foot i{margin-left:6px;font-size:.72rem}
+
+/* ===== IDEAS QUE SE CONVIERTEN EN EXPERIENCIAS + HISTORIA (simétrico) ===== */
+.studio{padding-top:clamp(96px,13vw,170px)}
+.studio .wrap{display:block}
+.studio-head{display:grid;justify-items:center;text-align:center}
+.eyebrow{display:inline-block;font:700 .78rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--red-soft);margin-bottom:22px}
+.studio h2{font-size:clamp(2.2rem,5vw,4rem);font-weight:700;max-width:16ch;margin:0 auto}
+.studio-intro{display:grid;grid-template-columns:1fr 1fr;max-width:980px;margin:clamp(40px,5vw,64px) auto 0;color:var(--muted)}
+.studio-intro p{padding:0 clamp(20px,4vw,56px)}
+.studio-intro p+p{border-left:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(48px,6vw,80px);border:1px solid var(--line)}
+.facts div{padding:26px 22px;border-right:1px solid var(--line);text-align:center}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font:700 1.3rem var(--display);color:var(--text);letter-spacing:-.02em}
+.facts b a{border-bottom:1px solid var(--red);transition:color .2s}
+.facts b a:hover{color:var(--red-soft)}
+.facts span{display:block;font-size:.85rem;color:var(--muted);line-height:1.4;margin-top:6px}
+.hist{margin-top:clamp(72px,9vw,120px)}
+.hist-head{display:grid;justify-items:center;text-align:center;gap:10px;margin-bottom:32px}
+.hist-head h3{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700}
+.hist-head .jump{margin:0}
+.hist-tl{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line)}
+.hist-tl li{position:relative;padding:26px 22px 8px 0;color:var(--muted);font-size:.98rem;line-height:1.55}
+.hist-tl li::before{content:"";position:absolute;left:0;top:-1px;width:48px;height:2px;background:var(--red)}
+.hist-tl time{display:block;font:700 .78rem var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--red-soft);margin-bottom:8px}
+.hist-tl strong{color:var(--text);font-weight:600}
+
+/* ===== SERVICIOS (minimalista) ===== */
+.svc-sec .sec-head{justify-items:start;text-align:left;margin:0 0 clamp(28px,4vw,48px)}
+.svc-sec .sec-head p{margin-inline:0}
+.svc-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(32px,7vw,110px);align-items:start}
+.sv-list{border-top:1px solid var(--line)}
+.sv{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--line)}
+.sv>i{color:var(--red-soft);font-size:1.15rem;padding-top:6px;transition:transform .4s var(--ease)}
+.sv:hover>i{transform:translateY(-3px) scale(1.12)}
+.sv h3{font-size:clamp(1.2rem,2vw,1.5rem);font-weight:700}
+.sv p{color:var(--muted);font-size:.98rem;margin-top:4px;max-width:46ch}
+.flow-h{margin-top:40px;font:700 .78rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--red-soft)}
+.flow{list-style:none;display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:16px}
+.flow li{color:var(--muted);font-size:.95rem;display:flex;align-items:baseline;gap:8px}
+.flow b{font:700 .8rem var(--display);color:var(--red-soft)}
+.svc-video{width:min(100%,300px);justify-self:center;position:sticky;top:110px;display:grid;gap:12px}
+.svc-video .vbox{position:relative;aspect-ratio:9/16;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#000;box-shadow:0 0 44px -14px rgba(224,33,47,.5)}
+.svc-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.svc-video a{justify-self:center;font-size:.85rem;font-weight:600;color:var(--muted);transition:color .2s}
+.svc-video a:hover{color:var(--red-soft)}
+
+/* ===== LAUNCHER ===== */
+.beta-pill{justify-self:center;display:inline-flex;align-items:center;gap:8px;font:700 .75rem var(--body);letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(224,33,47,.65);background:rgba(224,33,47,.14);border-radius:2px;color:#fff}
+.beta-pill i{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.launcher .socials{justify-content:center;margin:-20px 0 clamp(36px,5vw,56px)}
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin-inline:auto}
+.dl-card{display:grid;gap:14px;align-content:start;padding:32px;border:1px solid var(--line);background:var(--panel);border-radius:6px;transition:border-color .3s,box-shadow .4s}
+.dl-card:not(.soon):hover{border-color:var(--red);box-shadow:0 20px 50px -30px rgba(224,33,47,.8)}
+.dl-card>i{font-size:1.6rem;color:var(--red-soft)}
+.dl-card h3{font-size:1.6rem;font-weight:700}
+.dl-ver{justify-self:start;font-size:.8rem;border:1px solid #3a3a3d;color:var(--muted);padding:3px 12px;border-radius:999px}
+.dl-card p{color:var(--muted);font-size:.98rem}
+.dl-card .btn{justify-self:start;margin-top:6px}
+.dl-card.soon{border-style:dashed;opacity:.85}
+.dl-card.soon .btn{opacity:.55;cursor:not-allowed;background:none;color:var(--muted);pointer-events:none}
+.beta-note{display:flex;gap:16px;align-items:flex-start;max-width:960px;margin:20px auto 0;padding:22px 26px;border:1px solid rgba(224,33,47,.4);background:rgba(224,33,47,.07);border-radius:6px}
+.beta-note>i{color:var(--red-soft);font-size:1.2rem;padding-top:4px}
+.beta-note p{color:#d4d4d1;font-size:.98rem}
+.beta-note b{color:var(--text)}
+.beta-note a{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s}
+.beta-note a:hover{color:var(--red-soft)}
+.jar-hint{font-size:.82rem!important;color:#7d7d7a!important}
+
+/* ===== PROYECTO CENSURADO ===== */
+.card.censored .media img{filter:blur(10px) brightness(.7)}
+.card.censored p,.card.censored .credit,.card.censored .status,.card.censored .cat .date{filter:blur(5px);user-select:none}
+.censored .stats,.censored .proj-desc,.censored .tl,.censored .crew{filter:blur(9px);user-select:none;pointer-events:none}
+.censored .ph-img img{filter:blur(14px) brightness(.7)}
+.cens-banner{display:flex;align-items:center;gap:12px;padding:14px 20px;margin-bottom:22px;border:1px dashed rgba(224,33,47,.6);background:rgba(224,33,47,.08);color:#fff;font:700 .78rem var(--body);letter-spacing:.16em;text-transform:uppercase;border-radius:6px}
+.cens-banner i{color:var(--red-soft)}
+.btn.off{opacity:.55;cursor:not-allowed;pointer-events:none}
+
+@media(max-width:980px){
+  .studio figure{position:static}
+  .hist-tl{grid-template-columns:1fr 1fr}
+  .svc-layout{grid-template-columns:1fr}
+  .svc-video{position:static}
+  .dl-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .nv-arrow{display:none}
+  .nv-stage{min-height:420px}
+  .facts{grid-template-columns:1fr}
+  .facts div{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .facts div:last-child{border-bottom:0!important}
+  .hist-tl{grid-template-columns:1fr}
+}
+
+@media(max-width:980px){
+  .studio-intro{grid-template-columns:1fr;gap:20px}
+  .studio-intro p{padding:0}
+  .studio-intro p+p{border-left:0;border-top:1px solid var(--line);padding-top:20px}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:nth-child(2n){border-right:0}
+  .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
 </style>
 </head>
 <body>
@@ -531,6 +658,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
       <li><a href="#/inicio" data-link="inicio">Inicio</a></li>
       <li><a href="#/servicios" data-link="servicios">Servicios</a></li>
       <li><a href="#/proyectos" data-link="proyectos">Proyectos</a></li>
+      <li><a href="#/launcher" data-link="launcher">Launcher</a></li>
       <li><a href="#/estudio" data-link="estudio">Nosotros</a></li>
       <li><a href="#/partners" data-link="partners">Partners</a></li>
       <li><a href="#/contacto" data-link="contacto">Contacto</a></li>
@@ -551,94 +679,87 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         <h1>LMC Studios ™</h1>
         <h2 class="lead">Creamos experiencias que dejan huella.</h2>
         <p>Diseñamos, desarrollamos y producimos eventos y proyectos de Minecraft para comunidades y creadores de contenido.</p>
+        <div class="socials" aria-label="Redes sociales de LMC Studios">
+          <a href="https://x.com/LMCStudi0s" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://www.tiktok.com/@lmcstudi0s" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/lmcstudi0s/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@LMC_Studi0s" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
         <div class="actions">
           <a class="btn primary" href="#/proyectos">Explorar proyectos</a>
           <a class="btn ghost" href="#/contacto">Hablemos de tu idea</a>
         </div>
       </div>
-      <div class="hero-news" id="novedades"><div id="news"></div></div>
+      <div class="hero-news" id="novedades">
+        <div class="news-head"><h2>Novedades</h2></div>
+        <div id="news"></div>
+      </div>
     </div>
   </section>
+
   <section class="studio">
     <div class="wrap">
-      <div>
+      <div class="studio-head">
+        <span class="eyebrow">Sobre el estudio</span>
         <h2>Ideas que se convierten en experiencias.</h2>
-        <div class="txt">
-          <p>LMC Studios ™ reúne creatividad, desarrollo técnico y producción para llevar un concepto hasta un proyecto funcional dentro de Minecraft.</p>
-          <p>También nos encargamos del branding y la promoción de cada proyecto, para que llegue a su comunidad con una imagen coherente.</p>
-        </div>
       </div>
-      <figure>
-        <img src="assets/avatars/pedaafio2026.png" alt="Imagen del evento PEDSAFIO" loading="lazy">
-        <figcaption>PEDSAFIO, evento producido con Axolotl Studios.</figcaption>
-      </figure>
+      <div class="studio-intro">
+        <p>LMC Studios ™ reúne creatividad, desarrollo técnico y producción para llevar un concepto hasta un proyecto funcional dentro de Minecraft.</p>
+        <p>También nos encargamos del branding y la promoción de cada proyecto, para que llegue a su comunidad con una imagen coherente.</p>
+      </div>
+      <div class="facts">
+        <div><b>6 nov 2025</b><span>Fundación como Team LMC Studios</span></div>
+        <div><b data-count>13</b><span>Proyectos, eventos y servidores</span></div>
+        <div><b><a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></b><span>Partner oficial desde junio de 2026</span></div>
+        <div><b>Jul 2026</b><span>Independencia como estudio</span></div>
+      </div>
+      <div class="hist">
+        <div class="hist-head">
+          <h3>Nuestra historia</h3>
+          <a class="jump" href="#/estudio">Ver historia completa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <ol class="hist-tl">
+          <li><time>6 nov 2025</time><strong>Nace Team LMC Studios</strong> con la misión de crear eventos y experiencias en Minecraft. Su primer proyecto: <a class="ref" href="#/proyecto/oshanzumi">OshanZumi</a>.</li>
+          <li><time>20 ene 2026</time><a class="ref" href="#/proyecto/hardcore-of-elite">Hardcore of Elite</a>, creado en una semana, impulsa el crecimiento y consolida la visión del estudio.</li>
+          <li><time>Jun 2026</time>Somos partners oficiales de <a class="ref" href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>: su hosting y promoción amplían nuestro alcance.</li>
+          <li><time>Jul 2026</time>Nos independizamos de <a class="ref" href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a> e inauguramos el estudio con <a class="ref" href="#/proyecto/destruye-el-nexus">Destruye el Nexus</a>.</li>
+          <li><time>9 oct 2026</time><a class="ref" href="#/proyecto/zoulcraft">ZOULCRAFT</a> finaliza con 60 participantes y nos da una gran exposición.</li>
+        </ol>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- SERVICIOS -->
 <div class="page" data-page="servicios" tabindex="-1">
-  <section class="alt">
+  <section class="svc-sec">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Lo que hacemos</h2>
-        <p>Cuatro áreas de trabajo que se combinan según lo que necesite cada proyecto.</p>
+        <h2>Servicios</h2>
+        <p>De la idea al evento, en cuatro áreas.</p>
       </div>
-      <div class="svc-list">
-        <article class="svc">
-          <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
-          <h3>Event Production<span>Producción de eventos</span></h3>
-          <ul>
-            <li>Diseño y organización de eventos</li>
-            <li>Mecánicas personalizadas</li>
-            <li>Configuración de dinámicas y desafíos</li>
-            <li>Preparación técnica y soporte durante el evento</li>
-          </ul>
-        </article>
-        <article class="svc">
-          <i class="fa-solid fa-server" aria-hidden="true"></i>
-          <h3>Server Development<span>Desarrollo de servidores</span></h3>
-          <ul>
-            <li>Configuración y personalización de servidores</li>
-            <li>Plugins, sistemas y funcionalidades</li>
-            <li>Modalidades personalizadas</li>
-            <li>Optimización y administración técnica</li>
-          </ul>
-        </article>
-        <article class="svc">
-          <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
-          <h3>Creative Design<span>Diseño creativo</span></h3>
-          <ul>
-            <li>Identidad visual de proyectos</li>
-            <li>Branding y recursos gráficos</li>
-            <li>Promoción y difusión de proyectos</li>
-            <li>Interfaces y presentación visual</li>
-            <li>Ambientación y coherencia estética</li>
-          </ul>
-        </article>
-        <article class="svc">
-          <i class="fa-solid fa-cubes" aria-hidden="true"></i>
-          <h3>Custom Experiences<span>Experiencias a medida</span></h3>
-          <ul>
-            <li>Survival y hardcore</li>
-            <li>Roleplay y experiencias narrativas</li>
-            <li>Minijuegos y competiciones</li>
-            <li>Eventos para comunidades y creadores</li>
-          </ul>
-        </article>
-      </div>
-      <p class="note">El alcance de cada trabajo se define según el proyecto. Si tu idea no encaja exactamente en estas áreas, consúltanos.</p>
-    </div>
-  </section>
-  <section>
-    <div class="wrap">
-      <div class="sec-head"><h2>Cómo trabajamos</h2></div>
-      <div class="steps">
-        <div class="step"><b>01</b><h3>Aprobación</h3><p>Un Owner de LMC Studios ™ revisa tu proyecto y confirma si podemos trabajar en él.</p></div>
-        <div class="step"><b>02</b><h3>Concepto</h3><p>Definimos la idea, los objetivos y el formato del proyecto.</p></div>
-        <div class="step"><b>03</b><h3>Diseño y desarrollo</h3><p>Construimos la experiencia, configuramos sus sistemas y preparamos su identidad visual y su promoción.</p></div>
-        <div class="step"><b>04</b><h3>Preparación y pruebas</h3><p>Revisamos mecánicas, funcionamiento, rendimiento y detalles técnicos.</p></div>
-        <div class="step"><b>05</b><h3>Producción</h3><p>Coordinamos la puesta en marcha y el desarrollo del proyecto.</p></div>
+      <div class="svc-layout">
+        <div>
+          <div class="sv-list">
+            <article class="sv"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><div><h3>Producción de eventos</h3><p>Diseño, mecánicas y soporte técnico durante el evento.</p></div></article>
+            <article class="sv"><i class="fa-solid fa-server" aria-hidden="true"></i><div><h3>Desarrollo de servidores</h3><p>Configuración, plugins y modalidades personalizadas.</p></div></article>
+            <article class="sv"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i><div><h3>Diseño creativo</h3><p>Identidad visual, branding y promoción.</p></div></article>
+            <article class="sv"><i class="fa-solid fa-cubes" aria-hidden="true"></i><div><h3>Experiencias a medida</h3><p>Survival, roleplay, minijuegos y competiciones.</p></div></article>
+          </div>
+          <h3 class="flow-h">Cómo trabajamos</h3>
+          <ol class="flow">
+            <li><b>01</b>Aprobación</li>
+            <li><b>02</b>Concepto</li>
+            <li><b>03</b>Desarrollo</li>
+            <li><b>04</b>Pruebas</li>
+            <li><b>05</b>Producción</li>
+          </ol>
+        </div>
+        <figure class="svc-video">
+          <div class="vbox"><iframe src="https://www.youtube-nocookie.com/embed/ColQa3lkBs8?rel=0&amp;playsinline=1" title="Video de LMC Studios ™" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          <a href="https://www.youtube.com/shorts/ColQa3lkBs8" target="_blank" rel="noopener">Ver en YouTube <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </figure>
       </div>
     </div>
   </section>
@@ -661,6 +782,47 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         <button class="sortbtn" id="sort" type="button" aria-label="Cambiar orden cronológico"><i class="fa-solid fa-arrow-down-wide-short" aria-hidden="true"></i> <span>Más recientes primero</span></button>
       </div>
       <div class="grid" id="grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- LAUNCHER -->
+<div class="page" data-page="launcher" tabindex="-1">
+  <section class="launcher">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="beta-pill"><i aria-hidden="true"></i>En beta</span>
+        <h2>LMC Launcher</h2>
+        <p>Nuestro launcher está en beta, en espera de ser lanzado. Mira nuestras redes para saber más próximamente. Launcher de uso exclusivo para eventos.</p>
+      </div>
+      <div class="socials" aria-label="Redes sociales de LMC Studios">
+        <a href="https://x.com/LMCStudi0s" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://www.tiktok.com/@lmcstudi0s" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/lmcstudi0s/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@LMC_Studi0s" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="dl-grid">
+        <article class="dl-card">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <h3>Versión estándar</h3>
+          <span class="dl-ver">v0.4.0 · No premium</span>
+          <p>Versión temprana del launcher, aún con errores. Ayúdanos con tu feedback mediante nuestro Discord oficial.</p>
+          <a class="btn primary" href="https://cdn.discordapp.com/attachments/1557870289394729081/1560886724555571240/lmc-launcher-0.4.0-off.jar?ex=6ad5014b&amp;is=6ad3afcb&amp;hm=a09fcb7f2d3799a15c6dda02a4c1b4f426afb743cf1ff928eb0991a481070089&amp;" target="_blank" rel="noopener" download><i class="fa-solid fa-download" aria-hidden="true"></i>Descargar (.jar)</a>
+          <p class="jar-hint">Es un archivo .jar: necesitas Java instalado para ejecutarlo.</p>
+        </article>
+        <article class="dl-card soon" aria-disabled="true">
+          <i class="fa-solid fa-crown" aria-hidden="true"></i>
+          <h3>Versión Premium</h3>
+          <span class="dl-ver">Próximamente</span>
+          <p>La versión premium estará disponible próximamente. Síguenos en nuestras redes para enterarte cuando salga.</p>
+          <span class="btn ghost"><i class="fa-solid fa-lock" aria-hidden="true"></i>No disponible aún</span>
+        </article>
+      </div>
+      <div class="beta-note">
+        <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+        <p><b>Versión temprana.</b> El launcher todavía puede presentar errores. Ayúdanos con tu feedback mediante nuestro <a href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener">Discord oficial</a>.</p>
+      </div>
     </div>
   </section>
 </div>
@@ -708,9 +870,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         </figure>
       </div>
       <div class="txt">
-        <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <mark>OshanZumi</mark>, marcó el inicio de este camino, seguido por <mark>Hardcore of Elite</mark>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
+        <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <a class="ref" href="#/proyecto/oshanzumi">OshanZumi</a>, marcó el inicio de este camino, seguido por <a class="ref" href="#/proyecto/hardcore-of-elite">Hardcore of Elite</a>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
         <p>En <mark>junio de 2026</mark>, alcanzamos un hito importante al convertirnos en <b>partners oficiales de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></b>, cuyo apoyo con hosting y promoción nos ha permitido desarrollar eventos con mayor facilidad y ampliar nuestro alcance.</p>
-        <p>En <mark>julio de 2026</mark>, nos <b>independizamos oficialmente de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a></b> para enfocarnos plenamente en el desarrollo de proyectos de Minecraft. Más adelante, nuestra colaboración con <a href="https://x.com/yDaantiX" target="_blank" rel="noopener">yDaantix</a>, participante de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a>, dio vida a <a href="#/proyectos">ZOULCRAFT</a>, un evento finalizado el <mark>9 de octubre de 2026</mark> que nos brindó una gran exposición y representó un nuevo logro para el estudio.</p>
+        <p>En <mark>julio de 2026</mark>, nos <b>independizamos oficialmente de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a></b> para enfocarnos plenamente en el desarrollo de proyectos de Minecraft. Más adelante, nuestra colaboración con <a href="https://x.com/yDaantiX" target="_blank" rel="noopener">yDaantix</a>, participante de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a>, dio vida a <a class="ref" href="#/proyecto/zoulcraft">ZOULCRAFT</a>, un evento finalizado el <mark>9 de octubre de 2026</mark> que nos brindó una gran exposición y representó un nuevo logro para el estudio.</p>
         <p>Hoy seguimos creciendo gracias a <b>nuestra comunidad, nuestros colaboradores</b> y el respaldo de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>. La expectativa por nuestros próximos eventos nos impulsa a continuar creando experiencias cada vez más ambiciosas.</p>
         <p>Agradecemos a todas las personas y colaboradores que han formado parte de este recorrido. LMC Studios ™ sigue escribiendo su historia y estamos <b>abiertos a nuevos talentos, colaboraciones y proyectos</b> que quieran crecer junto a nosotros.</p>
         <p class="tag">LMC STUDIOS ™ — CREAMOS EXPERIENCIAS, CONSTRUIMOS HISTORIAS Y EL SIGUIENTE CAPÍTULO LO ESCRIBIMOS JUNTOS.</p>
@@ -741,7 +903,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
     <div class="wrap">
       <div class="sec-head">
         <h2>Partners</h2>
-        <p>LMC Studios ™ es afiliado de Minemu Hosting, nuestro partner de infraestructura.</p>
+        <p>LMC Studios ™ es afiliado de <a class="ref" href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>, nuestro partner de infraestructura.</p>
       </div>
       <div class="logos">
         <a class="logo-card" href="https://www.minemu.net/" target="_blank" rel="noopener">
@@ -803,6 +965,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         <ul>
           <li><a href="#/servicios">Servicios</a></li>
           <li><a href="#/proyectos">Proyectos</a></li>
+          <li><a href="#/launcher">Launcher</a></li>
           <li><a href="#/estudio">Nosotros</a></li>
           <li><a href="#/partners">Partners</a></li>
           <li><a href="#/contacto">Contacto</a></li>
@@ -993,18 +1156,28 @@ const projects = [
      points:["Plugins propios: libro de revivición y sistema de muertes personalizado.", "Desarrollo completado en 10 horas gracias a una planificación ajustada.", "De 140 formularios recibidos se seleccionaron 60 participantes; el servidor superó los 80 jugadores.", "Banners, flyers y anuncios en directo de cada tanda de participantes, a cargo de LMC Studios.", "Finalizó el 9 de octubre: HOLAQUEASE201 resistió hasta el final, sin equipo, y ganó 5 USD. Hosting oficial de Minemu Hosting."],
      videos:[{src:'assets/zoulcraftprsentacion.mp4', caption:'Presentación del evento'}],
      gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'}],
-     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "HOLAQUEASE201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}}
+     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "HOLAQUEASE201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
+
+  {name:'????', slug:'proximamente', censored:true, cat:'???', img:'lmcstudios.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
+   desc:'Un nuevo proyecto se acerca. Sistemas ocultos, un mapa secreto y una experiencia que nadie ha visto todavía.',
+   credit:'???', url:'#/proyectos', status:'???',
+   details:{
+     stats:[{icon:'fa-solid fa-users', value:'??', label:'Jugadores'},{icon:'fa-solid fa-microchip', value:'?????? ?.??', label:'Loader'},{icon:'fa-solid fa-trophy', value:'???', label:'Premio'}],
+     long:['Un proyecto cuya información todavía no puede revelarse. Hemos trabajado en secreto durante semanas con un equipo reducido y una idea que cambiará la forma de vivir nuestros eventos.',
+       'Mapa, sistemas y mecánicas completamente nuevos, con colaboradores aún sin anunciar. Muy pronto sabrás más en nuestras redes oficiales.'],
+     points:['Concepto aprobado y primeras pruebas internas del sistema principal.','Desarrollo del mapa y de los plugins personalizados en curso.','Pruebas cerradas con un grupo reducido de participantes.','Anuncio oficial y apertura de inscripciones próximamente.'],
+     team:[{name:'???', role:'???'},{name:'???', role:'???'},{name:'???', role:'???'}]}}
 ];
 projects.sort((a,b) => b.date.localeCompare(a.date));
 
 const slugify = t => t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-projects.forEach(p => p.slug = slugify(p.name));
+projects.forEach(p => p.slug = p.slug || slugify(p.name));
 const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 const grid = document.getElementById('grid');
 projects.forEach(p => {
   const el = document.createElement('article');
-  el.className = 'card';
+  el.className = 'card' + (p.censored ? ' censored' : '');
   el.dataset.cat = p.cat; el.dataset.date = p.date;
   el.innerHTML =
     `<div class="media" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="Imagen de ${esc(p.name)}" loading="lazy"></div>
@@ -1041,16 +1214,28 @@ const DISCORD_ANUNCIO = {
 };
 (function(){
   const d = DISCORD_ANUNCIO, root = document.getElementById('news');
-  const slides = projects.filter(p => p.news).slice(0, 4).map(p => `<a class="nv-slide" href="#/proyecto/${p.slug}"><div class="nv-img" style="--bg:url('${encodeURI(A + p.img)}')"><img src="${encodeURI(A + p.img)}" alt="" loading="lazy"></div><div class="nv-txt"><span class="cat">${esc(p.dateLabel)} · ${esc(p.cat)}</span><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p></div></a>`);
+  const tweetSlide = `<div class="nv-slide nv-tweet">
+    <div class="nv-tw-head"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><div><h3>Noticias del studio</h3><span>Lo más reciente en @LMCStudi0s</span></div></div>
+    <div class="nv-tw-body" id="tw-embed"><blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none" data-lang="es"><a href="https://twitter.com/LMCStudi0s/status/2109732756137935111">Ver el último tuit del studio</a></blockquote></div>
+    <a class="nv-tw-foot" href="https://x.com/LMCStudi0s/status/2109732756137935111" target="_blank" rel="noopener">Ver en X<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`;
+  const slide = s => s.tweet ? tweetSlide : `<a class="nv-slide${s.img ? '' : ' tease'}" href="${esc(s.href)}"${s.ext ? ' target="_blank" rel="noopener"' : ''}>
+    <div class="nv-img"${s.img ? ` style="--bg:url('${encodeURI(s.img)}')"` : ''}>${s.img ? `<img src="${encodeURI(s.img)}" alt="" loading="lazy">` : ''}</div>
+    <div class="nv-txt"><span class="nv-badge"><i></i><b>${esc(s.badge)}</b></span><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><span class="nv-more">Ver detalles</span></div></a>`;
+  /* Para editar las novedades: cambia esta lista (badge = etiqueta, title, desc, href, img) */
+  const list = [
+    {tweet:true},
+    {badge:'Beta', title:'LMC Launcher', desc:'Launcher de uso exclusivo para eventos. En beta, en espera de ser lanzado.', href:'#/launcher', img:A + 'lmcstudios.png'},
+    ...projects.filter(p => p.news).slice(0, 4).map(p => ({badge:p.status || p.cat, title:p.name, desc:p.desc, href:'#/proyecto/' + p.slug, img:A + p.img})),
+    {badge:'Próximamente', title:'????', desc:'??? proyecto', href:'#/proyecto/proximamente'}
+  ];
   root.innerHTML = `<div class="nv" role="region" aria-roledescription="carrusel" aria-label="Novedades">
-    <div class="nv-stage">${slides.join('')}
+    <div class="nv-stage">${list.map(slide).join('')}
       <button class="nv-arrow pv" type="button" aria-label="Anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
       <button class="nv-arrow nx" type="button" aria-label="Siguiente"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
       <div class="nv-bar" aria-hidden="true"><i></i></div>
     </div>
-    <div class="nv-dots">${slides.map((_, k) => `<button type="button" data-k="${k}" aria-label="Ir a la novedad ${k + 1}"></button>`).join('')}</div>
-  </div>
-  <a class="dc-note" href="${esc(d.url)}" target="_blank" rel="noopener"><i class="fa-brands fa-discord" aria-hidden="true"></i><span>${esc(d.titulo)}</span><em>Ver en Discord</em></a>`;
+    <div class="nv-dots">${list.map((_, k) => `<button type="button" data-k="${k}" aria-label="Ir a la novedad ${k + 1}"></button>`).join('')}</div>
+  </div>`;
   const nv = root.querySelector('.nv'), els = [...root.querySelectorAll('.nv-slide')], dots = [...root.querySelectorAll('.nv-dots button')], bar = root.querySelector('.nv-bar i');
   const n = els.length, DUR = 10000; let cur = 0, t = 0, hold = false;
   function show(k){
@@ -1070,6 +1255,22 @@ const DISCORD_ANUNCIO = {
   nv.addEventListener('mouseenter', () => hold = true); nv.addEventListener('mouseleave', () => hold = false);
   nv.addEventListener('focusin', e => { if (e.target.matches(':focus-visible')) hold = true; }); nv.addEventListener('focusout', () => hold = false);
   show(0);
+})();
+
+/* Contador de proyectos en "Sobre el estudio" */
+document.querySelectorAll('[data-count]').forEach(el => el.textContent = projects.filter(p => !p.censored).length);
+
+/* Último tuit (Noticias del studio): cambia el ID en el HTML (#tw-embed) cuando publiquen uno nuevo */
+(function(){
+  const box = document.getElementById('tw-embed'); if (!box) return;
+  const go = () => window.twttr && twttr.widgets && twttr.widgets.load(box);
+  const start = () => {
+    const sc = document.getElementById('twjs');
+    if (window.twttr && twttr.widgets) go();
+    else if (!sc) { const t = document.createElement('script'); t.id = 'twjs'; t.async = true; t.src = 'https://platform.twitter.com/widgets.js'; t.onload = go; document.head.appendChild(t); }
+    else sc.addEventListener('load', go, {once:true});
+  };
+  'requestIdleCallback' in window ? requestIdleCallback(start, {timeout:2500}) : setTimeout(start, 800);
 })();
 
 /* ---------- DETALLE DE PROYECTO ---------- */
@@ -1120,6 +1321,7 @@ function lmcCard(m){
 }
 function renderProject(p){
   const d = p.details || {};
+  document.getElementById('proj').className = p.censored ? 'censored' : '';
   const img = encodeURI(A + p.img);
   const stats = [
     {icon:'fa-regular fa-calendar', value:p.dateLabel, label:p.dateNote || ''},
@@ -1154,6 +1356,7 @@ function renderProject(p){
   `<div class="proj-hero" style="--bgimg:url('${img}')"><div class="ph-img"><img src="${img}" alt="Imagen de ${esc(p.name)}"></div><div class="ph-txt"><span class="cat">${esc(p.cat)}</span><h1>${esc(p.name)}</h1></div></div>
    <div class="proj-wrap">
      <a class="back" href="#/proyectos"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Todos los proyectos</a>
+     ${p.censored ? '<div class="cens-banner"><i class="fa-solid fa-eye-slash" aria-hidden="true"></i>Información censurada · ???</div>' : ''}
      <div class="stats">${stats.map(x => `<div class="stat"><i class="${x.icon}" aria-hidden="true"></i><span><b>${esc(x.value)}</b>${x.label ? ' ' + esc(x.label) : ''}</span></div>`).join('')}</div>
      <div class="proj-main ${cls}">
        ${L.length ? `<div class="pm-side">${L.join('')}</div>` : ''}
@@ -1161,7 +1364,7 @@ function renderProject(p){
          <div class="proj-desc">${paras.map(t => `<p>${esc(t)}</p>`).join('')}</div>
          ${d.points && d.points.length ? `<h2 class="dev-h">Historia de desarrollo</h2><ol class="tl">${d.points.map((t,k) => `<li class="tl-i"><div class="tl-c"><span class="tl-n">Etapa ${String(k+1).padStart(2,'0')}</span><p>${esc(t)}</p></div></li>`).join('')}</ol>` : ''}
          <div class="proj-actions">
-           <a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>
+           ${p.censored ? '<span class="btn ghost off"><i class="fa-solid fa-lock" aria-hidden="true"></i>???</span>' : `<a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>`}
            ${extra}
            <a class="btn ghost" href="#/contacto">Quiero algo así</a>
          </div>
@@ -1219,8 +1422,8 @@ chips.forEach(chip => chip.addEventListener('click', () => {
 
 /* NAVEGACIÓN POR PÁGINAS (hash: #/servicios, #/proyectos, ...) */
 const pages = [...document.querySelectorAll('.page')];
-const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', estudio:'Nosotros', partners:'Partners', contacto:'Contacto', proyecto:''};
-const ORDER = ['inicio','servicios','proyectos','estudio','partners','contacto'];
+const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', launcher:'Launcher', estudio:'Nosotros', partners:'Partners', contacto:'Contacto', proyecto:''};
+const ORDER = ['inicio','servicios','proyectos','launcher','estudio','partners','contacto'];
 const base = document.title;
 let firstLoad = true, prevId = '', savedY = 0;
 const pgPrev = document.getElementById('pg-prev'), pgNext = document.getElementById('pg-next');
@@ -1289,7 +1492,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries =
 }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
 
 if (io) {
-  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story-side,.story .txt,.note,.contact-sec .contact>*,.filters,.card,.nw').forEach(el => {
+  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story-side,.story .txt,.note,.contact-sec .contact>*,.filters,.card,.sv,.svc-video,.hist-tl li,.dl-card,.beta-note,.facts,.mini-tl,.tw-card').forEach(el => {
     el.style.setProperty('--i', Math.min([...el.parentElement.children].indexOf(el) % 6, 5));
     el.classList.add('reveal');
     io.observe(el);

@@ -204,6 +204,32 @@ section{padding:clamp(72px,10vw,130px) 0}
 .logo-card span{color:var(--muted);font-size:.92rem}
 .logo-card b{color:var(--text)}
 
+.partner-hero{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;padding:clamp(24px,4vw,44px);border:1px solid var(--line);background:#000;margin-bottom:28px}
+.partner-hero img{height:84px;width:auto;max-width:220px;object-fit:contain}
+.partner-hero h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:10px}
+.partner-hero p{color:var(--muted);max-width:62ch}
+.partner-hero .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.partner-hero .tags span{font-size:.82rem;font-weight:600;color:var(--red-soft);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.partner-hero .tags i{margin-right:7px}
+.p-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+.p-feat{display:grid;gap:10px;align-content:start;padding:26px;border:1px solid var(--line);background:#000;transition:border-color .3s,box-shadow .4s}
+.p-feat:hover{border-color:var(--red);box-shadow:0 20px 50px -30px rgba(224,33,47,.8)}
+.p-feat i{font-size:1.4rem;color:var(--red-soft)}
+.p-feat h4{font-size:1.1rem}
+.p-feat p{color:var(--muted);font-size:.95rem}
+.promo{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:clamp(24px,4vw,40px);border:1px dashed var(--red);background:#000}
+.promo small{color:var(--red-soft);font-weight:700;letter-spacing:.14em}
+.promo h3{font-size:clamp(1.6rem,3.4vw,2.4rem);margin:8px 0}
+.promo p{color:var(--muted);max-width:56ch}
+.promo-code{display:grid;gap:12px;justify-items:center}
+.code-box{display:flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid var(--line);background:var(--bg)}
+.code-box code{font:700 1.8rem var(--display);letter-spacing:.16em;color:var(--text)}
+.code-box button{background:var(--red);border:0;color:#fff;font-weight:600;padding:9px 16px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .25s}
+.code-box button:hover{background:#f2323f}
+@media(max-width:860px){.partner-hero,.promo{grid-template-columns:1fr}.p-feats{grid-template-columns:1fr}.promo-code{justify-items:start}}
+@media(min-width:861px) and (max-width:1100px){.p-feats{grid-template-columns:repeat(2,1fr)}}
+
+.partners-head{margin-top:clamp(40px,7vw,96px);margin-bottom:14px}
 /* EQUIPO */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .member{display:grid;gap:14px;padding:28px;border:1px solid var(--line);background:var(--bg);align-content:start;transition:border-color .3s}
@@ -901,15 +927,45 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 <div class="page" data-page="partners" tabindex="-1">
   <section>
     <div class="wrap">
-      <div class="sec-head">
-        <h2>Partners</h2>
-        <p>LMC Studios ™ es afiliado de <a class="ref" href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>, nuestro partner de infraestructura.</p>
+      <div class="sec-head partners-head">
+        <h2>Partner</h2>
       </div>
-      <div class="logos">
-        <a class="logo-card" href="https://www.minemu.net/" target="_blank" rel="noopener">
-          <img src="assets/avatars/24Sep24%20Simon%20Free%20Upl444oad%20.png" alt="Logotipo de Minemu Hosting" loading="lazy">
-          <span><b>Minemu Hosting</b><br>Partner afiliado. Usa el código <b>lmc</b>.</span>
-        </a>
+
+      <div class="partner-hero">
+        <img src="assets/color%20degradado.png" alt="Logotipo de Minemu Hosting" loading="lazy">
+        <div>
+          <h3>Hosting de Minecraft rápido y confiable</h3>
+          <p>Lanza tu servidor de Minecraft en minutos con una plataforma de hosting optimizada para el mejor rendimiento. Es el hosting oficial de nuestros eventos y proyectos desde junio de 2026.</p>
+          <div class="tags">
+            <span><i class="fa-solid fa-shield-halved"></i>Protección DDoS</span>
+            <span><i class="fa-solid fa-bolt"></i>Activación instantánea</span>
+            <span><i class="fa-solid fa-server"></i>Uptime 99.9%</span>
+          </div>
+          <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px"><a class="btn primary" href="https://www.minemu.net/store/" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i> Ver planes</a>
+            <a class="btn ghost" href="https://discord.gg/NmwwZshX2N" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i> Discord</a>
+            <a class="btn ghost" href="https://x.com/MinemuNetwork" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X</a></div>
+        </div>
+      </div>
+
+      <div class="p-feats">
+        <div class="p-feat"><i class="fa-solid fa-gauge-high"></i><h4>Rendimiento optimizado</h4><p>Servidores con hardware de última generación para garantizar un juego fluido sin lag.</p></div>
+        <div class="p-feat"><i class="fa-solid fa-lock"></i><h4>Protección total</h4><p>Protección DDoS avanzada y copias de seguridad para mantener tu servidor seguro.</p></div>
+        <div class="p-feat"><i class="fa-solid fa-sliders"></i><h4>Panel de control intuitivo</h4><p>Interfaz fácil de usar para gestionar tu servidor e instalar plugins con un solo clic.</p></div>
+        <div class="p-feat"><i class="fa-solid fa-microchip"></i><h4>El mejor hardware</h4><p>Servidores con hardware de calidad para la mejor conexión y rendimiento para ti y tus jugadores.</p></div>
+        <div class="p-feat"><i class="fa-solid fa-bolt"></i><h4>Activación instantánea</h4><p>Tu servidor estará listo en segundos después de la compra, sin esperas ni complicaciones.</p></div>
+        <div class="p-feat"><i class="fa-solid fa-headset"></i><h4>Soporte 24/7</h4><p>Nuestro equipo de soporte está disponible en todo momento para ayudarte con cualquier problema.</p></div>
+      </div>
+
+      <div class="promo">
+        <div>
+          <small>CÓDIGO DE DESCUENTO</small>
+          <h3>20% de descuento en cualquier host</h3>
+          <p>Usa nuestro código al comprar cualquier plan de hosting en Minemu Hosting y apoya a LMC Studios ™ al mismo tiempo.</p>
+          <div style="margin-top:20px"><a class="btn ghost" href="https://www.minemu.net/store/" target="_blank" rel="noopener">Ir a Minemu Hosting <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+        </div>
+        <div class="promo-code">
+          <div class="code-box"><code id="promoCode">lmc</code><button type="button" id="copyPromo"><i class="fa-regular fa-copy"></i> Copiar</button></div>
+        </div>
       </div>
     </div>
   </section>
@@ -1155,10 +1211,10 @@ const projects = [
        'Uno de los mayores eventos de LMC Studios como estudio independiente, desarrollado completamente por su equipo: LMC Studios y yDaantiX. Idea de yDaantiX por completo, con libertad creativa, y una recreación inspirada en Hardcore Z 2 del creador de contenido Farfadox.'],
      points:["Plugins propios: libro de revivición y sistema de muertes personalizado.", "Desarrollo completado en 10 horas gracias a una planificación ajustada.", "De 140 formularios recibidos se seleccionaron 60 participantes; el servidor superó los 80 jugadores.", "Banners, flyers y anuncios en directo de cada tanda de participantes, a cargo de LMC Studios.", "Finalizó el 9 de octubre: HOLAQUEASE201 resistió hasta el final, sin equipo, y ganó 5 USD. Hosting oficial de Minemu Hosting."],
      videos:[{src:'assets/zoulcraftprsentacion.mp4', caption:'Presentación del evento'}],
-     gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'}],
+     gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'},{src:'assets/zoulcraftrebir.png', caption:'Sistema de revivición'}],
      team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "HOLAQUEASE201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
 
-  {name:'????', slug:'proximamente', censored:true, cat:'???', img:'lmcstudios.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
+  {name:'????', slug:'proximamente', censored:true, cat:'???', img:'../zoulcraftrebir.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
    desc:'Un nuevo proyecto se acerca. Sistemas ocultos, un mapa secreto y una experiencia que nadie ha visto todavía.',
    credit:'???', url:'#/proyectos', status:'???',
    details:{
@@ -1285,7 +1341,7 @@ const PEOPLE = {
   'zfrixz':{src:'assets/zfrixz.jpg', url:'https://www.youtube.com/channel/UCXgx_X4FqE1tAkxXnnhTfLw'},
   'oshawott0m':{src:'assets/osha.png', url:'https://www.youtube.com/channel/UC4huuB0xXvwjcyXt_ZSNj-g'},
   'raulcasual_07':{src:'assets/raul.png', url:'https://x.com/Raulcasual7'},
-  'minemu hosting':{src:'assets/avatars/24Sep24%20Simon%20Free%20Upl444oad%20.png', logo:1, url:'https://www.minemu.net/'}
+  'minemu hosting':{src:'assets/color%20degradado.png', logo:1, url:'https://www.minemu.net/'}
 };
 /* VISUALIZADOR DE VIDEOS DE X */
 const xurl = u => u.replace(/\/video\/\d+.*$/, '').replace('x.com', 'twitter.com');
@@ -1492,7 +1548,7 @@ const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries =
 }, {threshold:.12, rootMargin:'0px 0px -40px 0px'}) : null;
 
 if (io) {
-  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story-side,.story .txt,.note,.contact-sec .contact>*,.filters,.card,.sv,.svc-video,.hist-tl li,.dl-card,.beta-note,.facts,.mini-tl,.tw-card').forEach(el => {
+  document.querySelectorAll('.sec-head,.svc,.step,.member,.division,.logo-card,.studio .txt,.studio figure,.story-side,.story .txt,.note,.contact-sec .contact>*,.filters,.card,.sv,.svc-video,.hist-tl li,.dl-card,.beta-note,.facts,.mini-tl,.tw-card,.partner-hero,.p-feat,.promo').forEach(el => {
     el.style.setProperty('--i', Math.min([...el.parentElement.children].indexOf(el) % 6, 5));
     el.classList.add('reveal');
     io.observe(el);
@@ -1583,6 +1639,9 @@ const CONTACT = {
 })();
 
 route();
+</script>
+<script>
+(function(){var b=document.getElementById('copyPromo');if(!b)return;b.addEventListener('click',function(){var t=document.getElementById('promoCode').textContent;var done=function(){b.innerHTML='<i class="fa-solid fa-check"></i> Copiado';setTimeout(function(){b.innerHTML='<i class="fa-regular fa-copy"></i> Copiar'},1800)};if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,done)}else{done()}})})();
 </script>
 </body>
 </html>

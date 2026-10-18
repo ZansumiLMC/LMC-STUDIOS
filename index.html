@@ -2,6 +2,20 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<base href="/">
+<script>
+/* Rutas limpias en GitHub Pages: restaura la ruta que 404.html pasó por ?/ y migra enlaces viejos con #/ */
+(function(l){
+  if (l.search[1] === '/') {
+    var d = l.search.slice(1).split('&').map(function(x){ return x.replace(/~and~/g, '&'); }).join('?');
+    history.replaceState(null, null, l.pathname.slice(0, -1) + d + l.hash);
+  }
+  if (l.hash.indexOf('#/') === 0) {
+    var h = l.hash.slice(1).replace(/^\/inicio\/?$/, '/');
+    history.replaceState(null, null, h);
+  }
+})(window.location);
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LMC Studios ™ | Estudio creativo de eventos y experiencias de Minecraft</title>
 <meta name="description" content="LMC Studios ™ diseña, desarrolla, produce y promociona eventos, servidores y experiencias personalizadas de Minecraft para comunidades y creadores de contenido.">
@@ -714,19 +728,19 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="./" aria-label="LMC Studios ™, inicio">
+    <a class="brand" href="/" aria-label="LMC Studios ™, inicio">
       <img src="assets/avatars/lmcstudios.png" alt="Logotipo de LMC Studios">LMC Studios ™
     </a>
     <ul id="menu">
-      <li><a href="./" data-link="inicio">Inicio</a></li>
-      <li><a href="#/servicios" data-link="servicios">Servicios</a></li>
-      <li><a href="#/proyectos" data-link="proyectos">Proyectos</a></li>
-      <li><a href="#/launcher" data-link="launcher">Launcher</a></li>
-      <li><a href="#/estudio" data-link="estudio">Nosotros</a></li>
-      <li><a href="#/partners" data-link="partners">Partners</a></li>
-      <li><a href="#/contacto" data-link="contacto">Contacto</a></li>
+      <li><a href="/" data-link="inicio">Inicio</a></li>
+      <li><a href="/servicios" data-link="servicios">Servicios</a></li>
+      <li><a href="/proyectos" data-link="proyectos">Proyectos</a></li>
+      <li><a href="/launcher" data-link="launcher">Launcher</a></li>
+      <li><a href="/estudio" data-link="estudio">Nosotros</a></li>
+      <li><a href="/partners" data-link="partners">Partners</a></li>
+      <li><a href="/contacto" data-link="contacto">Contacto</a></li>
     </ul>
-    <a class="btn primary" href="#/contacto">Hablemos de tu proyecto</a>
+    <a class="btn primary" href="/contacto">Hablemos de tu proyecto</a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
@@ -750,8 +764,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
           <a href="https://www.youtube.com/@LMC_Studi0s" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
         <div class="actions">
-          <a class="btn primary" href="#/proyectos">Explorar proyectos</a>
-          <a class="btn ghost" href="#/contacto">Hablemos de tu idea</a>
+          <a class="btn primary" href="/proyectos">Explorar proyectos</a>
+          <a class="btn ghost" href="/contacto">Hablemos de tu idea</a>
         </div>
       </div>
       <div class="hero-news" id="novedades">
@@ -780,14 +794,14 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
       <div class="hist">
         <div class="hist-head">
           <h3>Nuestra historia</h3>
-          <a class="jump" href="#/estudio">Ver historia completa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="jump" href="/estudio">Ver historia completa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
         <ol class="hist-tl">
-          <li><time>6 nov 2025</time><strong>Nace Team LMC Studios</strong> con la misión de crear eventos y experiencias en Minecraft. Su primer proyecto: <a class="ref" href="#/proyecto/oshanzumi">OshanZumi</a>.</li>
-          <li><time>20 ene 2026</time><a class="ref" href="#/proyecto/hardcore-of-elite">Hardcore of Elite</a>, creado en una semana, impulsa el crecimiento y consolida la visión del estudio.</li>
+          <li><time>6 nov 2025</time><strong>Nace Team LMC Studios</strong> con la misión de crear eventos y experiencias en Minecraft. Su primer proyecto: <a class="ref" href="/proyecto/oshanzumi">OshanZumi</a>.</li>
+          <li><time>20 ene 2026</time><a class="ref" href="/proyecto/hardcore-of-elite">Hardcore of Elite</a>, creado en una semana, impulsa el crecimiento y consolida la visión del estudio.</li>
           <li><time>Jun 2026</time>Somos partners oficiales de <a class="ref" href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>: su hosting y promoción amplían nuestro alcance.</li>
-          <li><time>Jul 2026</time>Nos independizamos de <a class="ref" href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a> e inauguramos el estudio con <a class="ref" href="#/proyecto/destruye-el-nexus">Destruye el Nexus</a>.</li>
-          <li><time>9 oct 2026</time><a class="ref" href="#/proyecto/zoulcraft">ZOULCRAFT</a> finaliza con 60 participantes y nos da una gran exposición.</li>
+          <li><time>Jul 2026</time>Nos independizamos de <a class="ref" href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a> e inauguramos el estudio con <a class="ref" href="/proyecto/destruye-el-nexus">Destruye el Nexus</a>.</li>
+          <li><time>9 oct 2026</time><a class="ref" href="/proyecto/zoulcraft">ZOULCRAFT</a> finaliza con 60 participantes y nos da una gran exposición.</li>
         </ol>
       </div>
     </div>
@@ -896,7 +910,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
     <div class="wrap">
       <div class="sec-head">
         <h2>Nosotros</h2>
-        <p>Las personas que dirigen LMC Studios ™ y la división que lo acompaña. <a class="jump" href="#/estudio" data-jump="historia">Mira abajo para conocer más sobre nosotros y nuestra historia <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></p>
+        <p>Las personas que dirigen LMC Studios ™ y la división que lo acompaña. <a class="jump" href="/estudio" data-jump="historia">Mira abajo para conocer más sobre nosotros y nuestra historia <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a></p>
       </div>
       <div class="team-grid">
         <article class="member">
@@ -962,14 +976,14 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
         </figure>
       </div>
       <div class="txt">
-        <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <a class="ref" href="#/proyecto/oshanzumi">OshanZumi</a>, marcó el inicio de este camino, seguido por <a class="ref" href="#/proyecto/hardcore-of-elite">Hardcore of Elite</a>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
+        <p>Fundado el <mark>6 de noviembre de 2025</mark> bajo el nombre de Team LMC Studios, nacimos con la misión de desarrollar <b>eventos y experiencias dentro de Minecraft</b>. Nuestro primer proyecto, <a class="ref" href="/proyecto/oshanzumi">OshanZumi</a>, marcó el inicio de este camino, seguido por <a class="ref" href="/proyecto/hardcore-of-elite">Hardcore of Elite</a>, el <mark>20 de enero de 2026</mark>, que impulsó nuestro crecimiento y consolidó nuestra visión como estudio.</p>
         <p>En <mark>junio de 2026</mark>, alcanzamos un hito importante al convertirnos en <b>partners oficiales de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></b>, cuyo apoyo con hosting y promoción nos ha permitido desarrollar eventos con mayor facilidad y ampliar nuestro alcance.</p>
-        <p>En <mark>julio de 2026</mark>, nos <b>independizamos oficialmente de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a></b> para enfocarnos plenamente en el desarrollo de proyectos de Minecraft. Más adelante, nuestra colaboración con <a href="https://x.com/yDaantiX" target="_blank" rel="noopener">yDaantix</a>, participante de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a>, dio vida a <a class="ref" href="#/proyecto/zoulcraft">ZOULCRAFT</a>, un evento finalizado el <mark>9 de octubre de 2026</mark> que nos brindó una gran exposición y representó un nuevo logro para el estudio.</p>
+        <p>En <mark>julio de 2026</mark>, nos <b>independizamos oficialmente de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a></b> para enfocarnos plenamente en el desarrollo de proyectos de Minecraft. Más adelante, nuestra colaboración con <a href="https://x.com/yDaantiX" target="_blank" rel="noopener">yDaantix</a>, participante de <a href="https://zansumilmc.github.io/TeamLMC2/" target="_blank" rel="noopener">Team LMC</a>, dio vida a <a class="ref" href="/proyecto/zoulcraft">ZOULCRAFT</a>, un evento finalizado el <mark>9 de octubre de 2026</mark> que nos brindó una gran exposición y representó un nuevo logro para el estudio.</p>
         <p>Hoy seguimos creciendo gracias a <b>nuestra comunidad, nuestros colaboradores</b> y el respaldo de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a>. La expectativa por nuestros próximos eventos nos impulsa a continuar creando experiencias cada vez más ambiciosas.</p>
         <p>Agradecemos a todas las personas y colaboradores que han formado parte de este recorrido. LMC Studios ™ sigue escribiendo su historia y estamos <b>abiertos a nuevos talentos, colaboraciones y proyectos</b> que quieran crecer junto a nosotros.</p>
         <p class="tag">LMC STUDIOS ™ — CREAMOS EXPERIENCIAS, CONSTRUIMOS HISTORIAS Y EL SIGUIENTE CAPÍTULO LO ESCRIBIMOS JUNTOS.</p>
         <div class="actions">
-          <a class="btn primary" href="#/contacto">Escríbenos</a>
+          <a class="btn primary" href="/contacto">Escríbenos</a>
           <a class="btn ghost" href="https://discord.gg/jCFjYJ5Eye" target="_blank" rel="noopener"><i class="fab fa-discord"></i>Unirse a la comunidad</a>
         </div>
       </div>
@@ -1070,7 +1084,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   </section>
 </div>
 
-<!-- DETALLE DE PROYECTO (se rellena con JS: #/proyecto/nombre) -->
+<!-- DETALLE DE PROYECTO (se rellena con JS: /proyecto/nombre) -->
 <div class="page" data-page="proyecto" tabindex="-1"><article id="proj"></article></div>
 
 </main>
@@ -1079,18 +1093,18 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="./"><img src="assets/avatars/lmcstudios.png" alt="">LMC Studios ™</a>
+        <a class="brand" href="/"><img src="assets/avatars/lmcstudios.png" alt="">LMC Studios ™</a>
         <p>Estudio creativo de eventos, servidores y experiencias de Minecraft.</p>
       </div>
       <div>
         <h4>Navegación</h4>
         <ul>
-          <li><a href="#/servicios">Servicios</a></li>
-          <li><a href="#/proyectos">Proyectos</a></li>
-          <li><a href="#/launcher">Launcher</a></li>
-          <li><a href="#/estudio">Nosotros</a></li>
-          <li><a href="#/partners">Partners</a></li>
-          <li><a href="#/contacto">Contacto</a></li>
+          <li><a href="/servicios">Servicios</a></li>
+          <li><a href="/proyectos">Proyectos</a></li>
+          <li><a href="/launcher">Launcher</a></li>
+          <li><a href="/estudio">Nosotros</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/contacto">Contacto</a></li>
         </ul>
       </div>
       <div>
@@ -1112,8 +1126,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 </footer>
 
 <nav class="pager" id="pager" aria-label="Cambiar de sección">
-  <a class="pg" id="pg-prev" href="./" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span></span></a>
-  <a class="pg" id="pg-next" href="#/servicios"><span></span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+  <a class="pg" id="pg-prev" href="/" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span></span></a>
+  <a class="pg" id="pg-next" href="/servicios"><span></span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
 </nav>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
@@ -1282,7 +1296,7 @@ const projects = [
 
   {name:'????', slug:'proximamente', censored:true, cat:'???', img:'../zoulcraftrebir.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
    desc:'Un nuevo proyecto se acerca. Sistemas ocultos, un mapa secreto y una experiencia que nadie ha visto todavía.',
-   credit:'???', url:'#/proyectos', status:'???',
+   credit:'???', url:'/proyectos', status:'???',
    details:{
      stats:[{icon:'fa-solid fa-users', value:'??', label:'Jugadores'},{icon:'fa-solid fa-microchip', value:'?????? ?.??', label:'Loader'},{icon:'fa-solid fa-trophy', value:'???', label:'Premio'}],
      long:['Un proyecto cuya información todavía no puede revelarse. Hemos trabajado en secreto durante semanas con un equipo reducido y una idea que cambiará la forma de vivir nuestros eventos.',
@@ -1309,7 +1323,7 @@ projects.forEach(p => {
        <h3>${esc(p.name)}</h3>
        <p>${esc(p.desc)}</p>
        ${p.credit ? `<span class="credit">${esc(p.credit)}</span>` : ''}
-       <a class="more" href="#/proyecto/${p.slug}" aria-label="Ver detalles: ${esc(p.name)}">Ver detalles<i class="fa-solid fa-arrow-right"></i></a>
+       <a class="more" href="/proyecto/${p.slug}" aria-label="Ver detalles: ${esc(p.name)}">Ver detalles<i class="fa-solid fa-arrow-right"></i></a>
      </div>`;
   grid.appendChild(el);
 });
@@ -1346,9 +1360,9 @@ const DISCORD_ANUNCIO = {
   /* Para editar las novedades: cambia esta lista (badge = etiqueta, title, desc, href, img) */
   const list = [
     {tweet:true},
-    {badge:'Beta', title:'LMC Launcher', desc:'Launcher de uso exclusivo para eventos. En beta, en espera de ser lanzado.', href:'#/launcher', img:A + 'lmcstudios.png'},
-    ...projects.filter(p => p.news).slice(0, 4).map(p => ({badge:p.status || p.cat, title:p.name, desc:p.desc, href:'#/proyecto/' + p.slug, img:A + p.img})),
-    {badge:'Próximamente', title:'????', desc:'??? proyecto', href:'#/proyecto/proximamente'}
+    {badge:'Beta', title:'LMC Launcher', desc:'Launcher de uso exclusivo para eventos. En beta, en espera de ser lanzado.', href:'/launcher', img:A + 'lmcstudios.png'},
+    ...projects.filter(p => p.news).slice(0, 4).map(p => ({badge:p.status || p.cat, title:p.name, desc:p.desc, href:'/proyecto/' + p.slug, img:A + p.img})),
+    {badge:'Próximamente', title:'????', desc:'??? proyecto', href:'/proyecto/proximamente'}
   ];
   root.innerHTML = `<div class="nv" role="region" aria-roledescription="carrusel" aria-label="Novedades">
     <div class="nv-stage">${list.map(slide).join('')}
@@ -1400,7 +1414,7 @@ const PEOPLE = {
   'zansumi':{src:A+'zansumi.png', url:'https://www.youtube.com/@zansumii'},
   'theandreuspr':{src:A+'andreus.png', url:'https://www.kick.com/theandreuspr'},
   'iwanmc':{src:A+'iwan.png', url:'https://www.twitch.tv/iwanhx'},
-  'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'./'},
+  'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'/'},
   'team lmc ™':{src:A+'sas.png', logo:1, url:'https://zansumilmc.github.io/TeamLMC2/'},
   'santiagovlog':{src:'assets/santiagovlog.gif', url:'https://santiivlog.netlify.app/'},
   'ydaantix':{src:'assets/dantix.png', url:'https://x.com/yDaantiX'},
@@ -1482,7 +1496,7 @@ function renderProject(p){
   document.getElementById('proj').innerHTML =
   `<div class="proj-hero" style="--bgimg:url('${img}')"><div class="ph-img"><img src="${img}" alt="Imagen de ${esc(p.name)}"></div><div class="ph-txt"><span class="cat">${esc(p.cat)}</span><h1>${esc(p.name)}</h1></div></div>
    <div class="proj-wrap">
-     <a class="back" href="#/proyectos"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Todos los proyectos</a>
+     <a class="back" href="/proyectos"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Todos los proyectos</a>
      ${p.censored ? '<div class="cens-banner"><i class="fa-solid fa-eye-slash" aria-hidden="true"></i>Información censurada · ???</div>' : ''}
      <div class="stats">${stats.map(x => `<div class="stat"><i class="${x.icon}" aria-hidden="true"></i><span><b>${esc(x.value)}</b>${x.label ? ' ' + esc(x.label) : ''}</span></div>`).join('')}</div>
      <div class="proj-main ${cls}">
@@ -1493,7 +1507,7 @@ function renderProject(p){
          <div class="proj-actions">
            ${p.censored ? '<span class="btn ghost off"><i class="fa-solid fa-lock" aria-hidden="true"></i>???</span>' : `<a class="btn primary" href="${esc(p.url)}" target="_blank" rel="noopener"><i class="${ico}" aria-hidden="true"></i>${lbl}</a>`}
            ${extra}
-           <a class="btn ghost" href="#/contacto">Quiero algo así</a>
+           <a class="btn ghost" href="/contacto">Quiero algo así</a>
          </div>
        </div>
        ${R.length ? `<div class="pm-side">${R.join('')}</div>` : ''}
@@ -1547,7 +1561,7 @@ chips.forEach(chip => chip.addEventListener('click', () => {
   });
 }));
 
-/* NAVEGACIÓN POR PÁGINAS (hash: #/servicios, #/proyectos, ...) */
+/* NAVEGACIÓN POR PÁGINAS (rutas limpias: /servicios, /proyectos, ...) */
 const pages = [...document.querySelectorAll('.page')];
 const titles = {inicio:'', servicios:'Servicios', proyectos:'Proyectos', launcher:'Launcher', estudio:'Nosotros', partners:'Partners', contacto:'Contacto', proyecto:''};
 const ORDER = ['inicio','servicios','proyectos','launcher','estudio','partners','contacto'];
@@ -1561,7 +1575,7 @@ function updatePager(id){
     a.hidden = !target;
     if (!target) return;
     const name = target === 'inicio' ? 'Inicio' : titles[target];
-    a.setAttribute('href', target === 'inicio' ? './' : '#/' + target);
+    a.setAttribute('href', target === 'inicio' ? '/' : '/' + target);
     a.querySelector('span').textContent = name;
     a.setAttribute('aria-label', 'Ir a ' + name);
     a.title = name;
@@ -1571,13 +1585,12 @@ function updatePager(id){
 }
 
 function route(){
-  const [rawId, arg] = (location.hash.replace(/^#\/?/, '') || 'inicio').split('/');
+  const [rawId, arg] = (location.pathname.replace(/^\/+|\/+$/g, '') || 'inicio').split('/');
   let id = rawId, proj = null;
   if (!(id in titles)) id = 'inicio';
-  if (id === 'inicio' && location.hash) cleanHome();
   if (id === 'proyecto') {
     proj = projects.find(p => p.slug === arg);
-    if (!proj) { location.replace('#/proyectos'); return; }
+    if (!proj) { history.replaceState(null, '', '/proyectos'); route(); return; }
     renderProject(proj); document.querySelectorAll('#proj .xv').forEach(f => xvShow(f, 0));
   }
   if (id === 'proyecto' && prevId === 'proyectos') savedY = window.scrollY;
@@ -1594,18 +1607,19 @@ function route(){
   firstLoad = false; prevId = id;
   setMenu(false);
 }
-window.addEventListener('hashchange', route);
+window.addEventListener('popstate', route);
 
-/* INICIO SIN HASH: lmcstudios.art en vez de lmcstudios.art/#/inicio */
-function cleanHome(){ history.replaceState(null, '', location.pathname + location.search); }
-function goHome(){
-  if (location.hash) { history.pushState(null, '', location.pathname + location.search); route(); }
-  else window.scrollTo({top:0, behavior:'smooth'});
-}
+/* Enlaces internos sin recargar la página ni usar # */
 document.addEventListener('click', e => {
-  const a = e.target.closest && e.target.closest('a[href="./"]');
+  const a = e.target.closest && e.target.closest('a[href^="/"]');
   if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  e.preventDefault(); goHome();
+  if (a.target && a.target !== '_self') return;
+  const href = a.getAttribute('href');
+  if (href.startsWith('//')) return;
+  e.preventDefault();
+  if (href === location.pathname) { window.scrollTo({top:0, behavior:'smooth'}); return; }
+  history.pushState(null, '', href);
+  route();
 });
 
 /* MENÚ MÓVIL */

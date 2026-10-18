@@ -488,6 +488,8 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center;padding:0}
 .hero-copy{display:grid;gap:20px;justify-items:start}
 .hero h1{font-size:clamp(2.6rem,5.6vw,4.8rem);max-width:none;line-height:1}
+.hero h1.hero-logo{line-height:0;width:100%}
+.hero h1.hero-logo img{display:block;width:min(100%,440px);height:auto}
 .hero .lead{font:700 clamp(1.2rem,2.2vw,1.65rem) var(--display);letter-spacing:-.01em;max-width:none}
 .hero p{max-width:46ch}
 .hero .actions{justify-content:flex-start}
@@ -753,8 +755,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
     <div class="hero-bg" role="img" aria-label="Escena del evento ZOULCRAFT producido por LMC Studios"></div>
     <div class="wrap">
       <div class="hero-copy">
-        <h1>LMC Studios ™</h1>
-        <h2 class="lead">Creamos experiencias que dejan huella.</h2>
+        <h1 class="hero-logo"><img src="assets/logo-lmc-studios.png" alt="LMC Studios ™ · Minecraft Events Studio" width="1921" height="354"></h1>
         <p>Diseñamos, desarrollamos y producimos eventos y proyectos de Minecraft para comunidades y creadores de contenido.</p>
         <div class="socials" aria-label="Redes sociales de LMC Studios">
           <a href="https://x.com/LMCStudi0s" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>

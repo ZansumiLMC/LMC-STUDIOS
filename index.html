@@ -449,8 +449,11 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .crew-m{min-height:84px}
 .crew-m .av{width:56px;height:56px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;object-position:center;overflow:hidden}
 .crew-m .av.logo{object-fit:contain;padding:7px}
+.crew-m .av.logo.wide{border-radius:14px;padding:9px;object-fit:contain;object-position:center;background:#0e0e0f}
 .crew-m>div{flex:1;min-width:0}
 .crew-m p{line-height:1.4;margin-top:2px}
+.crew-m .crew-tag{font-size:.8rem;margin-top:3px;color:var(--red-soft)}
+.crew-m .crew-tag i{margin-right:4px}
 .crew-m .go{color:var(--muted);font-size:.8rem;flex:none;transition:color .2s,transform .3s var(--ease)}
 .crew-m.lnk:hover{border-color:var(--red)}
 .crew-m.lnk:hover .go{color:var(--red-soft);transform:translate(2px,-2px)}
@@ -1174,7 +1177,7 @@ const projects = [
      points:["Apertura el 20 de abril de 2024 como network de minijuegos bajo Team LMC, antecedente directo del estudio.", "Plugins y sistemas personalizados desarrollados por LMC Studios; promoción en TikTok y mediante streamers invitados.", "Alcanzó cerca de 20 jugadores simultáneos, resultado acorde a lo esperado.", "La experiencia consolidó la decisión de crear nuevos proyectos y dio origen a LMC Studios ™.", "El cierre se realizó junto a la comunidad y quedó registrado en un clip."],
      twitch:{clip:'PiercingLightHawkSeemsGood-RIo9-XtNTc6wm2Er', caption:'Clip del cierre del server, por zansumi en Twitch'},
      gallery:[{src:'assets/zanfirxz.png', caption:'El server abierto'}],
-     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins"}, {"name": "zFrixz", "role": "Desarrollo y promoción desde las cuentas oficiales"}, {"name": "HOLAQUEASE201", "role": "Builder"}, {"name": "ULIMAN276", "role": "Builder"}]}},
+     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins"}, {"name": "zFrixz", "role": "Desarrollo y promoción desde las cuentas oficiales"}, {"name": "hola_qease201", "role": "Builder"}, {"name": "ULIMAN276", "role": "Builder"}]}},
 
   {name:'SumixCraft', cat:'Servidores y networks', img:'sm.png', date:'2025-11-15', dateLabel:'nov 2025 (aprox.)', dateNote:'Lanzamiento',
    desc:'Network ambiciosa con tienda web, hosting externo y 10 jugadores activos.',
@@ -1258,21 +1261,21 @@ const projects = [
      stats:[{icon:'fa-solid fa-users', value:'20', label:'Pico de jugadores'},{icon:'fa-regular fa-clock', value:'1.5 meses', label:'De duración'},{icon:'fa-solid fa-microchip', value:'Mohist 1.21.1', label:'Loader'}],
      long:['Evento hecho por LMC Studios como iniciativa de nuevos proyectos en el estudio, de los primeros en concretarse y con una duración de mes y medio. Lore, roleplay y una experiencia inmersiva con mods gratuitos, producida por LMC Studios.',
        'Con aportaciones de Santiagovlog, que ayudó a LMC Studios a convertirlo en un servidor muy entretenido: cumpleaños, series en un cine comunitario y más. Marcó un antes y un después en el estudio.'],
-     points:["Idea de Juliokingdom, ElMarcoPlays, TheKingMathias y LMC Studios; concluyó el 17 de mayo de 2026 tras mes y medio de actividad.", "Migrado de Mohist 1.20.1 a 1.21.1 con apoyo de Santiagovlog; modpack optimizado por Raulcasual_07.", "El costo del host contó con el respaldo económico de Emcant.", "Picos de 20 jugadores simultáneos, con hosting de Minemu Hosting y promoción desde @DeadLandsSMP en X.", "Fue uno de los proyectos más grandes del estudio hasta ser superado por ZOULCRAFT."],
+     points:["Idea de Juliokingdom, ElMarcoPlays y LMC Studios; concluyó el 17 de mayo de 2026 tras mes y medio de actividad.", "Migrado de Mohist 1.20.1 a 1.21.1 con apoyo de Santiagovlog; modpack optimizado por Raulcasual_07.", "El costo del host contó con el respaldo económico de Emcant.", "Picos de 20 jugadores simultáneos, con hosting de Minemu Hosting y promoción desde @DeadLandsSMP en X.", "Fue uno de los proyectos más grandes del estudio hasta ser superado por ZOULCRAFT."],
      links:[{label:'Cine comunitario', url:'https://x.com/LMCStudi0s/status/2056803443797360729/video/1', icon:'fa-brands fa-x-twitter'},{label:'Créditos finales', url:'https://x.com/LMCStudi0s/status/2056226683246563512/video/1', icon:'fa-brands fa-x-twitter'}],
-     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · producción, dirección y migración"}, {"name": "Juliokingdom", "role": "Idea original"}, {"name": "ElMarcoPlays", "role": "Idea original"}, {"name": "TheKingMathias", "role": "Idea original"}, {"name": "Santiagovlog", "role": "Apoyo en desarrollo y dinámicas"}, {"name": "Raulcasual_07", "role": "Optimización del modpack"}, {"name": "Emcant", "role": "Apoyo económico"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
+     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · producción, dirección y migración"}, {"name": "Juliokingdom", "role": "Idea original"}, {"name": "ElMarcoPlays", "role": "Idea original"}, {"name": "Santiagovlog", "role": "Apoyo en desarrollo y dinámicas"}, {"name": "Raulcasual_07", "role": "Optimización del modpack"}, {"name": "Emcant", "role": "Apoyo económico"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
 
   {name:'ZOULCRAFT', cat:'Eventos', img:'zoulcraft.gif', date:'2026-10-09', dateLabel:'9 oct 2026', dateNote:'Finalización', news:true, status:'Evento terminado',
    desc:'Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie.',
    credit:'LMC Studios ™ y yDaantiX', url:'https://x.com/LMCStudi0s/status/2105026597166125064',
    details:{
-     stats:[{icon:'fa-solid fa-users', value:'60', label:'Participantes'},{icon:'fa-solid fa-trophy', value:'HOLAQUEASE201', label:'Ganador · 5 USD'}],
+     stats:[{icon:'fa-solid fa-users', value:'60', label:'Participantes'},{icon:'fa-solid fa-trophy', value:'hola_qease201', label:'Ganador · 5 USD'}],
      long:['Evento de supervivencia en el que 60 participantes compiten por sobrevivir a una invasión zombie. Producido por LMC Studios ™ en colaboración con yDaantiX, participante de Team LMC. Nos brindó una gran exposición como estudio.',
        'Uno de los mayores eventos de LMC Studios como estudio independiente, desarrollado completamente por su equipo: LMC Studios y yDaantiX. Idea de yDaantiX por completo, con libertad creativa, y una recreación inspirada en Hardcore Z 2 del creador de contenido Farfadox.'],
-     points:["Plugins propios: libro de revivición y sistema de muertes personalizado.", "Desarrollo completado en 10 horas gracias a una planificación ajustada.", "De 140 formularios recibidos se seleccionaron 60 participantes; el servidor superó los 80 jugadores.", "Banners, flyers y anuncios en directo de cada tanda de participantes, a cargo de LMC Studios.", "Finalizó el 9 de octubre: HOLAQUEASE201 resistió hasta el final, sin equipo, y ganó 5 USD. Hosting oficial de Minemu Hosting."],
+     points:["Plugins propios: libro de revivición y sistema de muertes personalizado.", "Desarrollo completado en 10 horas gracias a una planificación ajustada.", "De 140 formularios recibidos se seleccionaron 60 participantes; el servidor superó los 80 jugadores.", "Banners, flyers y anuncios en directo de cada tanda de participantes, a cargo de LMC Studios.", "Finalizó el 9 de octubre: hola_qease201 resistió hasta el final, sin equipo, y ganó 5 USD. Hosting oficial de Minemu Hosting."],
      videos:[{src:'assets/zoulcraftprsentacion.mp4', caption:'Presentación del evento'}],
      gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'},{src:'assets/zoulcraftrebir.png', caption:'Sistema de revivición'}],
-     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "HOLAQUEASE201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
+     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "hola_qease201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
 
   {name:'????', slug:'proximamente', censored:true, cat:'???', img:'../zoulcraftrebir.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
    desc:'Un nuevo proyecto se acerca. Sistemas ocultos, un mapa secreto y una experiencia que nadie ha visto todavía.',
@@ -1401,7 +1404,12 @@ const PEOPLE = {
   'zfrixz':{src:'assets/zfrixz.jpg', url:'https://www.youtube.com/channel/UCXgx_X4FqE1tAkxXnnhTfLw'},
   'oshawott0m':{src:'assets/osha.png', url:'https://www.youtube.com/channel/UC4huuB0xXvwjcyXt_ZSNj-g'},
   'raulcasual_07':{src:'assets/raul.png', url:'https://x.com/Raulcasual7'},
-  'minemu hosting':{src:'assets/color%20degradado.png', logo:1, url:'https://www.minemu.net/'}
+  'juliokingdom':{src:'assets/julio.png', url:'https://www.twitch.tv/juliokingdom21'},
+  'elmarcoplays':{src:'assets/elmarcoplays.png', url:'https://www.twitch.tv/elmarcoplays'},
+  'emcant':{src:'assets/emcant.png', url:'https://www.twitch.tv/emcant'},
+  'farfadox':{src:'assets/farfa.png', url:'https://www.youtube.com/watch?v=_CzWhEbVUaw&t=2863s'},
+  'hola_qease201':{src:'assets/hks.png'},
+  'minemu hosting':{src:'assets/color%20degradado.png', logo:1, wide:1, url:'https://www.minemu.net/'}
 };
 /* VISUALIZADOR DE VIDEOS DE X */
 const xurl = u => u.replace(/\/video\/\d+.*$/, '').replace('x.com', 'twitter.com');
@@ -1491,7 +1499,7 @@ function renderProject(p){
      ${team.length ? `<div class="proj-sec"><h2>Equipo</h2><div class="crew">${team.map(m => {
         if (m.name === 'LMC Studios ™') return lmcCard(m);
         const f = PEOPLE[m.name.toLowerCase()] || {}, tag = f.url ? 'a' : 'div', ext = /^https?:/.test(f.url || '');
-        return `<${tag} class="crew-m${f.url ? ' lnk' : ''}"${f.url ? ` href="${esc(f.url)}"${ext ? ' target="_blank" rel="noopener"' : ''}` : ''}>${f.src ? `<img class="av${f.logo ? ' logo' : ''}" src="${esc(f.src)}" alt="" loading="lazy">` : `<span class="av" aria-hidden="true">${esc(m.name.trim()[0] || '?').toUpperCase()}</span>`}<div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div>${f.url ? '<i class="fa-solid fa-arrow-up-right-from-square go" aria-hidden="true"></i>' : ''}</${tag}>`;
+        return `<${tag} class="crew-m${f.url ? ' lnk' : ''}"${f.url ? ` href="${esc(f.url)}"${ext ? ' target="_blank" rel="noopener"' : ''}` : ''}>${f.src ? `<img class="av${f.logo ? ' logo' : ''}${f.wide ? ' wide' : ''}" src="${esc(f.src)}" alt="" loading="lazy">` : `<span class="av" aria-hidden="true">${esc(m.name.trim()[0] || '?').toUpperCase()}</span>`}<div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}${f.tag ? `<p class="crew-tag"><i class="fab fa-discord" aria-hidden="true"></i> ${esc(f.tag)}</p>` : ''}</div>${f.url ? '<i class="fa-solid fa-arrow-up-right-from-square go" aria-hidden="true"></i>' : ''}</${tag}>`;
       }).join('')}</div></div>` : ''}
    </div>`;
 }

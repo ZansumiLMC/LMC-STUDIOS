@@ -77,6 +77,9 @@ section{padding:clamp(72px,10vw,130px) 0}
 .topbar{background:var(--panel);border-bottom:1px solid var(--line);font-size:.88rem;color:var(--muted);text-align:center;padding:9px 4vw}
 .topbar a{color:var(--text);font-weight:600;border-bottom:1px solid var(--red);transition:color .2s}
 .topbar a:hover{color:var(--red-soft)}
+.topbar a.tb-logo{display:inline-flex;align-items:center;vertical-align:middle;gap:7px;margin-left:4px}
+.topbar a.tb-logo img{height:18px;width:auto;display:block}
+.topbar a.tb-logo span{border-bottom:1px solid var(--red);transition:border-color .2s}
 .nav{position:sticky;top:0;z-index:50;background:rgba(9,9,10,.92);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;font:700 1.05rem var(--display);letter-spacing:.02em}
@@ -707,15 +710,15 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 </head>
 <body>
 
-<div class="topbar">Orgullosos partners de <a href="https://www.minemu.net/" target="_blank" rel="noopener">Minemu Hosting</a></div>
+<div class="topbar">Orgullosos partners de <a class="tb-logo" href="https://www.minemu.net/" target="_blank" rel="noopener"><img src="assets/color%20degradado.png" alt="" aria-hidden="true"><span>Minemu Hosting</span></a></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
-    <a class="brand" href="#/inicio" aria-label="LMC Studios ™, inicio">
+    <a class="brand" href="./" aria-label="LMC Studios ™, inicio">
       <img src="assets/avatars/lmcstudios.png" alt="Logotipo de LMC Studios">LMC Studios ™
     </a>
     <ul id="menu">
-      <li><a href="#/inicio" data-link="inicio">Inicio</a></li>
+      <li><a href="./" data-link="inicio">Inicio</a></li>
       <li><a href="#/servicios" data-link="servicios">Servicios</a></li>
       <li><a href="#/proyectos" data-link="proyectos">Proyectos</a></li>
       <li><a href="#/launcher" data-link="launcher">Launcher</a></li>
@@ -1076,7 +1079,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="#/inicio"><img src="assets/avatars/lmcstudios.png" alt="">LMC Studios ™</a>
+        <a class="brand" href="./"><img src="assets/avatars/lmcstudios.png" alt="">LMC Studios ™</a>
         <p>Estudio creativo de eventos, servidores y experiencias de Minecraft.</p>
       </div>
       <div>
@@ -1109,7 +1112,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 </footer>
 
 <nav class="pager" id="pager" aria-label="Cambiar de sección">
-  <a class="pg" id="pg-prev" href="#/inicio" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span></span></a>
+  <a class="pg" id="pg-prev" href="./" hidden><i class="fa-solid fa-chevron-left" aria-hidden="true"></i><span></span></a>
   <a class="pg" id="pg-next" href="#/servicios"><span></span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
 </nav>
 
@@ -1397,7 +1400,7 @@ const PEOPLE = {
   'zansumi':{src:A+'zansumi.png', url:'https://www.youtube.com/@zansumii'},
   'theandreuspr':{src:A+'andreus.png', url:'https://www.kick.com/theandreuspr'},
   'iwanmc':{src:A+'iwan.png', url:'https://www.twitch.tv/iwanhx'},
-  'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'#/inicio'},
+  'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'./'},
   'team lmc ™':{src:A+'sas.png', logo:1, url:'https://zansumilmc.github.io/TeamLMC2/'},
   'santiagovlog':{src:'assets/santiagovlog.gif', url:'https://santiivlog.netlify.app/'},
   'ydaantix':{src:'assets/dantix.png', url:'https://x.com/yDaantiX'},
@@ -1558,7 +1561,7 @@ function updatePager(id){
     a.hidden = !target;
     if (!target) return;
     const name = target === 'inicio' ? 'Inicio' : titles[target];
-    a.href = '#/' + target;
+    a.setAttribute('href', target === 'inicio' ? './' : '#/' + target);
     a.querySelector('span').textContent = name;
     a.setAttribute('aria-label', 'Ir a ' + name);
     a.title = name;
@@ -1571,6 +1574,7 @@ function route(){
   const [rawId, arg] = (location.hash.replace(/^#\/?/, '') || 'inicio').split('/');
   let id = rawId, proj = null;
   if (!(id in titles)) id = 'inicio';
+  if (id === 'inicio' && location.hash) cleanHome();
   if (id === 'proyecto') {
     proj = projects.find(p => p.slug === arg);
     if (!proj) { location.replace('#/proyectos'); return; }
@@ -1591,6 +1595,18 @@ function route(){
   setMenu(false);
 }
 window.addEventListener('hashchange', route);
+
+/* INICIO SIN HASH: lmcstudios.art en vez de lmcstudios.art/#/inicio */
+function cleanHome(){ history.replaceState(null, '', location.pathname + location.search); }
+function goHome(){
+  if (location.hash) { history.pushState(null, '', location.pathname + location.search); route(); }
+  else window.scrollTo({top:0, behavior:'smooth'});
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href="./"]');
+  if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  e.preventDefault(); goHome();
+});
 
 /* MENÚ MÓVIL */
 const nav = document.getElementById('nav'), burger = document.getElementById('burger');

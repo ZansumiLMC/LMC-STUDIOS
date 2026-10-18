@@ -6,20 +6,20 @@
 <title>LMC Studios ™ | Estudio creativo de eventos y experiencias de Minecraft</title>
 <meta name="description" content="LMC Studios ™ diseña, desarrolla, produce y promociona eventos, servidores y experiencias personalizadas de Minecraft para comunidades y creadores de contenido.">
 <meta name="theme-color" content="#e0212f">
-<link rel="canonical" href="https://zansumilmc.github.io/LMC-STUDIOS/">
+<link rel="canonical" href="https://lmcstudios.art/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LMC Studios ™">
 <meta property="og:locale" content="es_MX">
 <meta property="og:title" content="LMC Studios ™ | Eventos, servidores y experiencias de Minecraft">
 <meta property="og:description" content="Creamos experiencias que dejan huella: eventos, servidores y sistemas personalizados de Minecraft para comunidades y creadores de contenido.">
-<meta property="og:url" content="https://zansumilmc.github.io/LMC-STUDIOS/">
-<meta property="og:image" content="https://zansumilmc.github.io/LMC-STUDIOS/assets/avatars/banerlmcst.png">
+<meta property="og:url" content="https://lmcstudios.art/">
+<meta property="og:image" content="https://lmcstudios.art/assets/avatars/banerlmcst.png">
 <meta property="og:image:alt" content="Banner de LMC Studios ™">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@LMCStudi0s">
 <meta name="twitter:title" content="LMC Studios ™ | Eventos, servidores y experiencias de Minecraft">
 <meta name="twitter:description" content="Creamos experiencias que dejan huella: eventos, servidores y sistemas personalizados de Minecraft para comunidades y creadores de contenido.">
-<meta name="twitter:image" content="https://zansumilmc.github.io/LMC-STUDIOS/assets/avatars/banerlmcst.png">
+<meta name="twitter:image" content="https://lmcstudios.art/assets/avatars/banerlmcst.png">
 <meta name="twitter:image:alt" content="Banner de LMC Studios ™">
 <link rel="icon" type="image/png" href="assets/avatars/lmcstudios.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +27,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script>document.documentElement.classList.add('js')</script>
+<script>
+/* Avatares de devs: prueba varias rutas y, si ninguna existe, muestra la inicial */
+function avFallback(img, ini){
+  var next = (img.dataset.try || '').split(',').filter(Boolean);
+  if (next.length){ img.src = next.shift(); img.dataset.try = next.join(','); return; }
+  var sp = document.createElement('span'); sp.className = 'av-ini'; sp.textContent = ini; img.replaceWith(sp);
+}
+</script>
 <style>
 :root{
   --bg:#09090a; --panel:#141415; --line:#262628; --text:#f2f2f0; --muted:#a3a3a0;
@@ -669,6 +677,29 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
   .facts div:nth-child(2n){border-right:0}
   .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
+/* ===== ETIQUETA "NUEVO" (reutilizable) =====
+   Uso: <span class="tag-new" data-until="2026-12-31">Nuevo</span>
+   data-until (opcional): fecha en la que la etiqueta desaparece sola. */
+.tag-new{display:inline-flex;align-items:center;gap:6px;vertical-align:middle;margin-left:10px;padding:3px 10px;border-radius:999px;background:var(--red);color:#fff;font:700 .66rem/1.4 var(--body);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;box-shadow:0 0 0 0 rgba(224,33,47,.6);animation:tagPulse 2.4s ease-out infinite}
+.tag-new::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff}
+@keyframes tagPulse{0%{box-shadow:0 0 0 0 rgba(224,33,47,.55)}70%,100%{box-shadow:0 0 0 10px rgba(224,33,47,0)}}
+@media (prefers-reduced-motion:reduce){.tag-new{animation:none}}
+.nv-tw-head h3 .tag-new{margin-left:8px;font-size:.58rem}
+
+/* ===== DEVS PRACTICANTES ===== */
+.devs{margin-top:clamp(48px,7vw,84px);padding-top:clamp(36px,5vw,56px);border-top:1px solid var(--line)}
+.devs-head{display:grid;gap:12px;max-width:68ch;margin-bottom:clamp(28px,4vw,44px)}
+.devs-head h3{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:700}
+.devs-head p{color:var(--muted)}
+.devs .member{grid-template-rows:auto auto auto 1fr auto;align-content:stretch}
+.devs .member .handle,.devs .member a.link.pill{align-self:end;justify-self:center}
+.member .av-ini{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:#0e0e0f;font:800 2.2rem var(--display);color:var(--red-soft);transition:transform .5s var(--ease),border-color .3s}
+.member:hover .av-ini{transform:scale(1.06);border-color:var(--red)}
+.member .handle{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--text);font:600 .92rem var(--body);cursor:pointer;transition:border-color .25s,color .25s}
+.member .handle:hover{border-color:var(--red);color:var(--red-soft)}
+.member .handle small{color:var(--muted);font:500 .75rem var(--body)}
+.member a.link.pill{display:inline-flex;align-items:center;margin-top:auto;padding:9px 16px;border:1px solid var(--line);border-radius:999px;transition:border-color .25s,color .25s}
+.member a.link.pill:hover{border-color:var(--red)}
 </style>
 </head>
 <body>
@@ -883,6 +914,35 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
           <p>Gestión de la información, comunicación y soporte para la comunidad de LMC Studios ™.</p>
           <a class="link" href="https://www.twitch.tv/iwanhx" target="_blank" rel="noopener"><i class="fab fa-twitch"></i>Twitch</a>
         </article>
+      </div>
+      <div class="devs" id="devs">
+        <div class="devs-head">
+          <h3>Equipo de Desarrollo — LMC Studios ™ <span class="tag-new" data-until="2026-12-31">Nuevo</span></h3>
+          <p>Devs practicantes que trabajan dentro del estudio desarrollando, diseñando y dando soporte a nuestros proyectos de Minecraft, con compromiso y ganas de crecer junto a LMC Studios ™.</p>
+        </div>
+        <div class="team-grid">
+          <article class="member">
+            <img src="assets/avatars/yoki.png" data-try="assets/yoki.png,yoki.png" alt="Avatar de Yokiu" loading="lazy" onerror="avFallback(this,'Y')">
+            <h3>Yokiu</h3>
+            <div class="role">Desarrollo de software y modificaciones</div>
+            <p>Responsable del desarrollo de mods personalizados para Minecraft y de la creación de aplicaciones desarrolladas desde cero. Se enfoca en transformar ideas y necesidades específicas en soluciones funcionales mediante desarrollo de software propio.</p>
+            <button class="handle" type="button" data-copy="sweetyokiu" aria-label="Copiar usuario de Discord de Yokiu"><i class="fab fa-discord"></i>sweetyokiu <small>· copiar</small></button>
+          </article>
+          <article class="member">
+            <img src="assets/avatars/narel.png" data-try="assets/narel.png,narel.png" alt="Avatar de Narell" loading="lazy" onerror="avFallback(this,'N')">
+            <h3>Narell</h3>
+            <div class="role">Diseño e interfaces personalizadas</div>
+            <p>Encargada del diseño visual y la personalización de interfaces. Su trabajo incluye la creación de títulos y elementos gráficos para eventos, así como interfaces personalizadas para Minecraft, cuidando la identidad visual y la presentación de cada proyecto.</p>
+            <a class="link pill" href="https://www.twitch.tv/narellyt" target="_blank" rel="noopener"><i class="fab fa-twitch"></i>Twitch</a>
+          </article>
+          <article class="member">
+            <img src="assets/avatars/tony.png" data-try="assets/tony.png,tony.png" alt="Avatar de Tony" loading="lazy" onerror="avFallback(this,'T')">
+            <h3>Tony</h3>
+            <div class="role">Soporte técnico y gestión de proyectos</div>
+            <p>Colabora en la ejecución y gestión de proyectos, incluyendo la administración e integración de mods, la optimización de sistemas y la configuración de comandos. Su función se centra en mejorar el funcionamiento, la estabilidad y la organización técnica de los proyectos.</p>
+            <button class="handle" type="button" data-copy="t0nyjeje" aria-label="Copiar usuario de Discord de Tony"><i class="fab fa-discord"></i>t0nyjeje <small>· copiar</small></button>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -1263,7 +1323,7 @@ const DISCORD_ANUNCIO = {
   fecha: '',
   titulo: 'Actualización de nuestra página web | LMC Studios ™',
   texto: 'Hemos renovado nuestra página web con un diseño más minimalista, profesional y agradable para el público, buscando ofrecer una mejor experiencia y presentar nuestros proyectos de una forma más clara.\n\nNos gustaría conocer su opinión. Si tienen sugerencias o comentarios, pueden compartirlos mediante un ticket en nuestro Discord.\n\nAgradecemos su apoyo y feedback para seguir mejorando.',
-  link: 'https://zansumilmc.github.io/LMC-STUDIOS/',
+  link: 'https://lmcstudios.art/',
   firma: 'LMC Studios ™ — Creando experiencias',
   img: '',
   url: 'https://discord.gg/jCFjYJ5Eye'
@@ -1271,9 +1331,9 @@ const DISCORD_ANUNCIO = {
 (function(){
   const d = DISCORD_ANUNCIO, root = document.getElementById('news');
   const tweetSlide = `<div class="nv-slide nv-tweet">
-    <div class="nv-tw-head"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><div><h3>Noticias del studio</h3><span>Lo más reciente en @LMCStudi0s</span></div></div>
-    <div class="nv-tw-body" id="tw-embed"><blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none" data-lang="es"><a href="https://twitter.com/LMCStudi0s/status/2109732756137935111">Ver el último tuit del studio</a></blockquote></div>
-    <a class="nv-tw-foot" href="https://x.com/LMCStudi0s/status/2109732756137935111" target="_blank" rel="noopener">Ver en X<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`;
+    <div class="nv-tw-head"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i><div><h3>Noticias del studio <span class="tag-new" data-until="2026-11-17">Nuevo</span></h3><span>Lo más reciente en @LMCStudi0s</span></div></div>
+    <div class="nv-tw-body" id="tw-embed"><blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-conversation="none" data-lang="es"><a href="https://twitter.com/LMCStudi0s/status/2111636916701733064">Ver el último tuit del studio</a></blockquote></div>
+    <a class="nv-tw-foot" href="https://x.com/LMCStudi0s/status/2111636916701733064" target="_blank" rel="noopener">Ver en X<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`;
   const slide = s => s.tweet ? tweetSlide : `<a class="nv-slide${s.img ? '' : ' tease'}" href="${esc(s.href)}"${s.ext ? ' target="_blank" rel="noopener"' : ''}>
     <div class="nv-img"${s.img ? ` style="--bg:url('${encodeURI(s.img)}')"` : ''}>${s.img ? `<img src="${encodeURI(s.img)}" alt="" loading="lazy">` : ''}</div>
     <div class="nv-txt"><span class="nv-badge"><i></i><b>${esc(s.badge)}</b></span><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p><span class="nv-more">Ver detalles</span></div></a>`;
@@ -1642,6 +1702,21 @@ route();
 </script>
 <script>
 (function(){var b=document.getElementById('copyPromo');if(!b)return;b.addEventListener('click',function(){var t=document.getElementById('promoCode').textContent;var done=function(){b.innerHTML='<i class="fa-solid fa-check"></i> Copiado';setTimeout(function(){b.innerHTML='<i class="fa-regular fa-copy"></i> Copiar'},1800)};if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,done)}else{done()}})})();
+</script>
+<script>
+/* Etiquetas "Nuevo": desaparecen solas al pasar su data-until (AAAA-MM-DD) */
+(function(){
+  var hoy = new Date().toISOString().slice(0,10);
+  document.querySelectorAll('.tag-new[data-until]').forEach(function(t){ if (hoy > t.dataset.until) t.remove(); });
+  /* Copiar usuario de Discord */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-copy]'); if (!b) return;
+    var txt = b.dataset.copy, small = b.querySelector('small'), old = small ? small.textContent : '';
+    var ok = function(){ if (small){ small.textContent = '· ¡copiado!'; setTimeout(function(){ small.textContent = old; }, 1800); } };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(ok, function(){ if (small) small.textContent = '· ' + txt; });
+    else if (small) small.textContent = '· ' + txt;
+  });
+})();
 </script>
 </body>
 </html>

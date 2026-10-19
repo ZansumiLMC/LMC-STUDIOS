@@ -540,7 +540,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .proj-text .tl-i .tl-c{grid-column:1;margin:0 0 0 34px;padding:16px 20px}
 .crew-m.lmc{grid-column:1/-1}
 .crew-m.lmc{flex-wrap:wrap}
-.who-list{display:flex;flex-wrap:wrap;gap:10px;margin-left:auto}
+.who-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;flex:1 1 100%;margin:4px 0 0}
 .who{display:flex;align-items:center;gap:10px;padding:5px 14px 5px 5px;border:1px solid var(--line);border-radius:999px;background:var(--bg);transition:border-color .25s,transform .3s var(--ease)}
 .who img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#0e0e0f}
 .who b{color:var(--red-soft);font-weight:600;font-size:.95rem}
@@ -713,6 +713,9 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
 .devs-head{display:grid;gap:12px;max-width:68ch;margin-bottom:clamp(28px,4vw,44px)}
 .devs-head h3{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:700}
 .devs-head p{color:var(--muted)}
+.devs .team-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1100px){.devs .team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.devs .team-grid{grid-template-columns:1fr}}
 .devs .member{grid-template-rows:auto auto auto 1fr auto;align-content:stretch}
 .devs .member .handle,.devs .member a.link.pill{align-self:end;justify-self:center}
 .member .av-ini{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:#0e0e0f;font:800 2.2rem var(--display);color:var(--red-soft);transition:transform .5s var(--ease),border-color .3s}
@@ -962,6 +965,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 88px;font-size:.95rem}
             <div class="role">Soporte técnico y gestión de proyectos</div>
             <p>Colabora en la ejecución y gestión de proyectos, incluyendo la administración e integración de mods, la optimización de sistemas y la configuración de comandos. Su función se centra en mejorar el funcionamiento, la estabilidad y la organización técnica de los proyectos.</p>
             <button class="handle" type="button" data-copy="t0nyjeje" aria-label="Copiar usuario de Discord de Tony"><i class="fab fa-discord"></i>t0nyjeje <small>· copiar</small></button>
+          </article>
+          <article class="member">
+            <img src="assets/avatars/dantix.png" data-try="assets/dantix.png,dantix.png" alt="Avatar de Dantix" loading="lazy" onerror="avFallback(this,'D')">
+            <h3>Dantix</h3>
+            <div class="role">Configuración de modpacks y mecánicas de juego</div>
+            <p>Domina la configuración de modpacks, ajustando cada mod, recurso y balance para que todo funcione fluido y sin conflictos, y conoce a fondo las mecánicas del juego, lo que le permite diseñar experiencias más sólidas, equilibradas y divertidas para cada proyecto.</p>
+            <a class="link pill" href="https://x.com/yDaantiX" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i>yDaantiX</a>
           </article>
         </div>
       </div>
@@ -1293,7 +1303,7 @@ const projects = [
      points:["Plugins propios: libro de revivición y sistema de muertes personalizado.", "Desarrollo completado en 10 horas gracias a una planificación ajustada.", "De 140 formularios recibidos se seleccionaron 60 participantes; el servidor superó los 80 jugadores.", "Banners, flyers y anuncios en directo de cada tanda de participantes, a cargo de LMC Studios.", "Finalizó el 9 de octubre: hola_qease201 resistió hasta el final, sin equipo, y ganó 5 USD. Hosting oficial de Minemu Hosting."],
      videos:[{src:'assets/zoulcraftprsentacion.mp4', caption:'Presentación del evento'}],
      gallery:[{src:'assets/zoulcraft.png', caption:'Jugadores en el evento'},{src:'assets/estas invitado2.png', caption:'Invitación personalizada'},{src:'assets/zaza.jpg', caption:'Colaboración con yDaantiX: gracias por la idea y la ayuda'},{src:'assets/zoulcraft2renders.png', caption:'Logo oficial del evento'},{src:'assets/zoulcraftrebir.png', caption:'Sistema de revivición'}],
-     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales"}, {"name": "yDaantiX", "role": "Idea original, dirección creativa y colaboración"}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "hola_qease201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
+     team:[{"name": "LMC Studios ™", "role": "Equipo de desarrollo · plugins y promocionales", "also": ["ydaantix"]}, {"name": "Farfadox", "role": "Inspiración (Hardcore Z 2)"}, {"name": "hola_qease201", "role": "Ganador del evento"}, {"name": "Minemu Hosting", "role": "Hosting oficial"}]}},
 
   {name:'????', slug:'proximamente', censored:true, cat:'???', img:'../zoulcraftrebir.png', date:'2099-12-31', dateLabel:'???', dateNote:'???',
    desc:'Un nuevo proyecto se acerca. Sistemas ocultos, un mapa secreto y una experiencia que nadie ha visto todavía.',
@@ -1418,7 +1428,7 @@ const PEOPLE = {
   'lmc studios ™':{src:A+'lmcstudios.png', logo:1, url:'/'},
   'team lmc ™':{src:A+'sas.png', logo:1, url:'https://zansumilmc.github.io/TeamLMC2/'},
   'santiagovlog':{src:'assets/santiagovlog.gif', url:'https://santiivlog.netlify.app/'},
-  'ydaantix':{src:'assets/dantix.png', url:'https://x.com/yDaantiX'},
+  'ydaantix':{src:'assets/dantix.png', label:'yDaantiX', url:'https://x.com/yDaantiX'},
   'zfrixz':{src:'assets/zfrixz.jpg', url:'https://www.youtube.com/channel/UCXgx_X4FqE1tAkxXnnhTfLw'},
   'oshawott0m':{src:'assets/osha.png', url:'https://www.youtube.com/channel/UC4huuB0xXvwjcyXt_ZSNj-g'},
   'raulcasual_07':{src:'assets/raul.png', url:'https://x.com/Raulcasual7'},
@@ -1458,8 +1468,10 @@ const fsrc = s => /^https?:|^assets\//.test(s) ? s : 'assets/' + s;
 let shots = [];
 
 function lmcCard(m){
-  const who = [['zansumi','zansumi.png','Zansumi'],['theandreuspr','andreus.png','TheandreusPR'],['iwanmc','iwan.png','IwanMC']];
-  return `<div class="crew-m lmc"><img class="av logo" src="${A}lmcstudios.png" alt=""><div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div><div class="who-list">${who.map(w => `<a class="who" href="${esc(PEOPLE[w[0]].url)}" target="_blank" rel="noopener"><img src="${A}${w[1]}" alt="" loading="lazy"><b>${w[2]}</b><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`).join('')}</div></div>`;
+  const who = [['zansumi','zansumi.png','Zansumi'],['theandreuspr','andreus.png','TheandreusPR'],['iwanmc','iwan.png','IwanMC'],
+    ...(m.also || []).map(k => [k, PEOPLE[k].src, PEOPLE[k].label])];
+  const wsrc = w => /^assets\//.test(w[1]) ? w[1] : A + w[1];
+  return `<div class="crew-m lmc"><img class="av logo" src="${A}lmcstudios.png" alt=""><div><h3>${esc(m.name)}</h3>${m.role ? `<p>${esc(m.role)}</p>` : ''}</div><div class="who-list">${who.map(w => `<a class="who" href="${esc(PEOPLE[w[0]].url)}" target="_blank" rel="noopener"><img src="${wsrc(w)}" alt="" loading="lazy"><b>${w[2]}</b><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`).join('')}</div></div>`;
 }
 function renderProject(p){
   const d = p.details || {};

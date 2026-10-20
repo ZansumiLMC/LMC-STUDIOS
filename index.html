@@ -1712,8 +1712,15 @@ const CONTACT = {
       try {
         const data = new FormData(f);
         data.append('_subject', 'LMC Studios ™ · ' + subject); data.append('_replyto', data.get('correo')); data.append('_template', 'table'); data.append('_captcha', 'false');
-        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data }, 10000);
+        data.append('_url', location.href);
+        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data }, 15000);
         const j = await r.json().catch(() => ({}));
+        const msg = String(j.message || '').toLowerCase();
+        /* Si FormSubmit pide activación (dominio nuevo), NO cuenta como enviado por correo */
+        if (/activat|activa/.test(msg)) {
+          console.warn('FormSubmit necesita activación: abre el correo de activación en ' + CONTACT.email + ' (revisa spam) y pulsa «Activate Form».', j);
+          return false;
+        }
         if (r.ok && j.success !== 'false' && j.success !== false) return true;
         console.warn('FormSubmit:', r.status, j);
       } catch (err) { console.warn('FormSubmit:', err); }

@@ -1682,7 +1682,7 @@ const CONTACT = {
   endpoint: 'https://formsubmit.co/ajax/LMC-Studios-business@hotmail.com',
   /* URL de tu Cloudflare Worker que reenvía a Discord (ver discord-worker.js).
      Vacío = solo se envía por correo. Ejemplo: 'https://lmc-contacto.TU-USUARIO.workers.dev' */
-  discord: 'https://crimson-credit-c1f7.lmc-studios-business.workers.dev/'
+  discord: 'https://crimson-credit-c1f7.lmc-studios-business.workers.dev'
 };
 (function(){
   const mailBtn = document.getElementById('mail-addr'), copyBtn = document.getElementById('copy-mail');
@@ -1713,7 +1713,7 @@ const CONTACT = {
         const data = JSON.stringify({
           Nombre: fd.get('nombre'), Correo: fd.get('correo'), Asunto: fd.get('asunto'), Mensaje: fd.get('mensaje'),
           _honey: fd.get('_honey') || '',
-          _subject: 'LMC Studios ™ · ' + subject, _replyto: fd.get('correo'), _template: 'table', _captcha: 'false', _url: location.href
+          _subject: 'LMC Studios ™ · ' + subject, _replyto: fd.get('correo'), _template: 'table', _captcha: 'false'
         });
         const r = await post(CONTACT.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: data }, 30000);
         const j = await r.json().catch(() => ({}));

@@ -1710,10 +1710,12 @@ const CONTACT = {
     const post = (url, opts, ms) => { const c = new AbortController(); const t = setTimeout(() => c.abort(), ms); return fetch(url, { ...opts, signal: c.signal }).finally(() => clearTimeout(t)); };
     const viaMail = async () => {
       try {
-        const data = new FormData(f);
-        data.append('_subject', 'LMC Studios ™ · ' + subject); data.append('_replyto', data.get('correo')); data.append('_template', 'table'); data.append('_captcha', 'false');
-        data.append('_url', location.href);
-        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: data }, 15000);
+        const data = JSON.stringify({
+          Nombre: fd.get('nombre'), Correo: fd.get('correo'), Asunto: fd.get('asunto'), Mensaje: fd.get('mensaje'),
+          _honey: fd.get('_honey') || '',
+          _subject: 'LMC Studios ™ · ' + subject, _replyto: fd.get('correo'), _template: 'table', _captcha: 'false', _url: location.href
+        });
+        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: data }, 15000);
         const j = await r.json().catch(() => ({}));
         const msg = String(j.message || '').toLowerCase();
         /* Si FormSubmit pide activación (dominio nuevo), NO cuenta como enviado por correo */

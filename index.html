@@ -1715,7 +1715,7 @@ const CONTACT = {
           _honey: fd.get('_honey') || '',
           _subject: 'LMC Studios ™ · ' + subject, _replyto: fd.get('correo'), _template: 'table', _captcha: 'false', _url: location.href
         });
-        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: data }, 15000);
+        const r = await post(CONTACT.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: data }, 30000);
         const j = await r.json().catch(() => ({}));
         const msg = String(j.message || '').toLowerCase();
         /* Si FormSubmit pide activación (dominio nuevo), NO cuenta como enviado por correo */
@@ -1725,7 +1725,7 @@ const CONTACT = {
         }
         if (r.ok && j.success !== 'false' && j.success !== false) return true;
         console.warn('FormSubmit:', r.status, j);
-      } catch (err) { console.warn('FormSubmit:', err); }
+      } catch (err) { console.warn(err && err.name === 'AbortError' ? 'FormSubmit tardó más de 30 s (puede que el correo llegue igual, revisa tu bandeja).' : 'FormSubmit:', err); }
       return false;
     };
     const viaDiscord = async () => {
